@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>博弈论 - 1&nbsp; 绪论</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./note_2.html" rel="next">
+<link href="./note_0.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script defer="" src="./assets/katex/0.16.11/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="./assets/katex/0.16.11/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">绪论</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">博弈论</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">课程信息</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slides.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">课程资料</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">讲义</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">绪论</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">二人零和博弈</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">二人博弈</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">扩展式博弈</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">不完全信息博弈</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">非合作博弈的应用</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">合作博弈</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">合作博弈的应用</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./note_glossary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">中英文术语对照表</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assignments.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">作业和期末考核</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-1.1" id="toc-sec-1.1" class="nav-link active" data-scroll-target="#sec-1.1"><span class="header-section-number">1.1</span> 定义</a></li>
+  <li><a href="#sec-1.2" id="toc-sec-1.2" class="nav-link" data-scroll-target="#sec-1.2"><span class="header-section-number">1.2</span> 一些历史</a></li>
+  <li><a href="#sec-1.3" id="toc-sec-1.3" class="nav-link" data-scroll-target="#sec-1.3"><span class="header-section-number">1.3</span> 例子</a>
+  <ul class="collapse">
+  <li><a href="#sec-1.3.1" id="toc-sec-1.3.1" class="nav-link" data-scroll-target="#sec-1.3.1"><span class="header-section-number">1.3.1</span> 零和博弈</a></li>
+  <li><a href="#sec-1.3.2" id="toc-sec-1.3.2" class="nav-link" data-scroll-target="#sec-1.3.2"><span class="header-section-number">1.3.2</span> 非零和博弈</a></li>
+  <li><a href="#sec-1.3.3" id="toc-sec-1.3.3" class="nav-link" data-scroll-target="#sec-1.3.3"><span class="header-section-number">1.3.3</span> 扩展式博弈</a></li>
+  <li><a href="#sec-1.3.4" id="toc-sec-1.3.4" class="nav-link" data-scroll-target="#sec-1.3.4"><span class="header-section-number">1.3.4</span> 合作博弈</a></li>
+  <li><a href="#sec-1.3.5" id="toc-sec-1.3.5" class="nav-link" data-scroll-target="#sec-1.3.5"><span class="header-section-number">1.3.5</span> 讨价还价博弈</a></li>
+  </ul></li>
+  <li><a href="#sec-1.4" id="toc-sec-1.4" class="nav-link" data-scroll-target="#sec-1.4"><span class="header-section-number">1.4</span> 合作博弈 vs 非合作博弈</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">绪论</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span id="sec-1" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">绪论</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>入门博弈论最好的方式是先了解一些例子。在这一章中，我们首先给出博弈论的通用定义，然后介绍一些历史，并介绍几个常用的例子，最后我们将简单讨论非合作博弈和合作博弈的区别。</p>
+<section id="sec-1.1" class="level2 page-columns page-full" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-1.1"><span class="header-section-number">1.1</span> 定义</h2>
+<p>博弈论（game theory）是一门利用数学方法研究多个参与人间的竞争与合作的学科。这个定义虽然很宽泛，但是很契合博弈论所覆盖的众多应用问题。从战争策略到市场竞争，从经济和社会上的公正分配问题到物种间的生存竞争，从桌游到政治选举等都是博弈论的研究对象。</p>
+<p>虽然博弈论是美国经济学会官方公布的数学学科之一<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，但主要是经济学家在研究和应用它。在经济学领域，许多关于博弈论及其应用的论文和书籍都标注了美国经济学会的 JEL<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> 分类符号 C7x.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;AMS Classification code 90D.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Journal of Economic Literature.</p></div></div></section>
+<section id="sec-1.2" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-1.2"><span class="header-section-number">1.2</span> 一些历史</h2>
+<p>本节请参考原书。</p>
+</section>
+<section id="sec-1.3" class="level2 page-columns page-full" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-1.3"><span class="header-section-number">1.3</span> 例子</h2>
+<p>本节中的每个例子都伴随着一个<strong>故事</strong>。每个例子都以故事开始，之后再被翻译成正式的数学<strong>模型</strong>。数学模型是故事的另一种描述方式，它刻画了故事中的关键因素，同时省略了不重要的细节。换句话说，数学模型是对故事的抽象化。在确定模型后，我们会尝试对它进行<strong>求解</strong>：即对参与人的行动进行预测。博弈的解可能是规范性的（normative）也可能是描述性的（positive），或者介于两者之间，但更多时候这类话题会留给读者思考。一般来说，最优化理论和博弈论之间的区别在于，前者的最优解通常是没有争议的，而后者因为研究对象是人（或更广泛的生物）的行为，对什么是最优行动往往存在争议，甚至对<strong>最优</strong>意味着什么也并没有共识。</p>
+<p>在每个例子的最后都有一小段评论，也可能包含对该博弈解法的预告。例子被分成五组，分别是零和博弈，非零和博弈，扩展式博弈，合作博弈和讨价还价博弈。</p>
+<section id="sec-1.3.1" class="level3 page-columns page-full" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="sec-1.3.1"><span class="header-section-number">1.3.1</span> 零和博弈</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.1.1 俾斯麦海海战（the battle of the Bismarck Sea）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：故事发生在1943年的南太平洋。日军需要将部队从拉包尔送往新几内亚的莱城，而盟军则想通过空袭运输舰的方式阻止他们。日军有两种运输路线可以选择，北线（需2天）和南线（需3天），而盟军则需要选择一条线路进行空袭。如果盟军选择了错误路线，还可以召回轰炸机并重新派遣至正确的路线，但是可以空袭的天数会因此减1。我们假设空袭天数为盟军的收益（payoff），其负数为日军的收益。</p>
+
+<p><strong>模型</strong>：俾斯麦海海战问题可以用下面的表格描述 <span class="math display">
+\begin{align*}
+&amp; \begin{matrix} \text{北} &amp; \text{南} \end{matrix} \\
+\begin{matrix} \text{北} \\ \text{南} \end{matrix} \
+\Bigg( &amp;
+\begin{matrix}
+\, 2 &amp; \ \ \, 2 \, \\
+\, 1 &amp; \ \ \, 3 \,
+\end{matrix}
+\Bigg)
+\end{align*}
+</span></p>
+<p>这个表格描述了一个二人博弈，参与人（player）为盟军和日军。每个参与人都有两个选项：每一行代表盟军的一个选项，每一列代表日军的一个选项。两人需要同时且独立地进行选择。表格中的数字是盟军的收益，例如左上的 <span class="math inline">2</span> 代表当盟军和日军都选择北线的时候，盟军的收益是 <span class="math inline">2</span>，日军的收益是 <span class="math inline">-2</span>。我们习惯让表格中的数字代表参与人 2（列参与人, column player）支付给参与人 1（行参与人, row player）的“报酬”。这个博弈是一个零和博弈，因为双方的收益之和永远是零。</p>
+<p><strong>解</strong>：在这个例子中不难预测双方的行动选择。从表中可以看出，日军选择北线永远不会比选择南线更差。因为当盟军选择北线时，日军选择北线和南线的收益都是 <span class="math inline">-2</span>。而当盟军选择南线时，日军选择北线的收益是 <span class="math inline">-1</span>，大于选择南线的收益 <span class="math inline">-3</span>。因此我们可以安全地预测日军会选择北线。而盟军也会进行同样的推理并得出日军将选择北线的预测，因此盟军应当也选择北线，这是对日军选择北线的最佳响应（best reply）。这个例子中南线是日军的劣势（dominated）选项，即无论对手如何选择，北线至少能带来和南线相同的收益，有时候还会更好。</p>
+<p>如果换一个角度我们可以发现，(北，北) 的行动组合给盟军带来的收益 <span class="math inline">2</span> 在列方向取最大值（<span class="math inline">2 \geq 1</span>）并且在行方向取最小值（<span class="math inline">2 \leq 2</span>）。矩阵中满足这种性质的要素称为鞍点（saddle point）。在鞍点上，没有参与人愿意单方面改变自己的选择（事实上这个行动组合是纳什均衡）。同时鞍点也是行参与人最大化自己的最小收益，列参与人最小化自己的最大支付的结果。这个收益 <span class="math inline">2</span> （由参与人 2 支付给参与人 1）称作此博弈的值（value）。</p>
+<p><strong>评论</strong>：这个例子中的博弈是二人零和有限选择博弈（two-person zero-sum game with finitely many choices），也称为矩阵博弈（matrix game），因为它可以用一个矩阵表达。我们将在 <a href="note_2.html" class="quarto-xref"><span>Chapter 2</span></a> 中学习矩阵博弈。(北，北) 的行动组合是符合史实的。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-bismarck" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bismarck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/Battle-of-the-Bismarck-sea-map-768x720.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="assets/fig/Battle-of-the-Bismarck-sea-map-768x720.jpg" class="img-fluid figure-img"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bismarck-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.1: 俾斯麦海海战中日军可选择的路线（图片引自 https://policonomics.com/battle-of-the-bismarck-sea/）
+</figcaption>
+</figure>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.1.2 猜硬币（matching pennies）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：猜硬币游戏也是一个二人博弈，每个参与人手中有一枚硬币，两人需要同时展示硬币的一面。如果出现的面相同，则参与人 2 将硬币输给参与人 1；如果出现的面不同，则参与人 1 将硬币输给参与人 2。</p>
+<p><strong>模型</strong>：这也是一个零和博弈，可以用下面的收益矩阵表达， <span class="math display">
+\begin{align*}
+&amp; \begin{matrix} \ \text{正} &amp; \ \text{反} \end{matrix} \\
+\begin{matrix} \text{正} \\ \text{反} \end{matrix} \
+\Bigg( &amp;
+\begin{matrix}
+\, 1 &amp; -1 \, \\
+\, -1 &amp; 1 \,
+\end{matrix}
+\Bigg)
+\end{align*}
+</span></p>
+<p><strong>解</strong>：在这个博弈中，任意一方的选项都没有绝对的优势或劣势，选择正面比选择反面好或者差取决于对方的选择。同时，这个矩阵中不存在鞍点（在行方向取最小值同时在列方向取最大值的要素）。因此，这个博弈没有看上去比较自然的解。解决问题的一个办法是允许参与人在多个选项间随机选择：参与人 1 以概率 <span class="math inline">p</span> 选择正面，以概率 <span class="math inline">1-p</span> 选择反面；参与人 2 以概率 <span class="math inline">q</span> 选择正面，以概率 <span class="math inline">1-q</span> 选择反面。由于博弈的设定是对称的，那么让我们首先尝试假设 <span class="math inline">p=0.5</span>。此时参与人 1 的期望收益是</p>
+<p><span class="math display">
+\frac{1}{2}\big[q\cdot 1 + (1-q)\cdot (-1)\big] + \frac{1}{2}\big[q\cdot (-1) + (1-q)\cdot 1\big] = 0
+</span></p>
+<p>此式不依赖 <span class="math inline">q</span> 的取值，因此当参与人 1 选择 <span class="math inline">p=0.5</span> 时，他可以保证自己的期望收益是 <span class="math inline">0</span>（当然，博弈的结果要么是 <span class="math inline">1</span> 要么是 <span class="math inline">-1</span>）。同样的，参与人 2 如果选择 <span class="math inline">q=0.5</span> 也可以保证自己的期望收益是 <span class="math inline">0</span>。这里的 <span class="math inline">0</span> 期望收益起到一种类似鞍点的作用，因此我们定义此博弈的值为 <span class="math inline">0</span>。</p>
+<p><strong>评论</strong>：随机选择行动通常称为混合策略（mixed strategy）。如何理解随机选择？一个常用的解释是其他参与人“认为”这个参与人会如何做出选择，学术术语称作信念（belief）<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;另一种解释是当博弈重复进行时，选择特定选项的频率。</p></div></div></section>
+<section id="sec-1.3.2" class="level3 page-columns page-full" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="sec-1.3.2"><span class="header-section-number">1.3.2</span> 非零和博弈</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.2.1 囚徒困境（prisoner’s dilemma）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：两人因共同犯罪被捕，并且被分开审讯。每个罪犯有两种选择，一种是合作（cooperate, <span class="math inline">C</span>），即和同伙串供，另一种是背叛（defect, <span class="math inline">D</span>）并指证同伙的罪行。该罪行一旦确定需服刑10年，但需要有另一个人指证。在任何情况下选择背叛都会给自己减少1年刑期。如果自己没有被指证（即同伙没有背叛），则会因证据不足被判轻罪并服刑1年。</p>
+<p><strong>模型</strong>：这种情形可以总结为如下形式 <span class="math display">
+\begin{align*}
+&amp; \begin{matrix} \ \ \ \ \ C &amp; \ \ \ \ \ \ \ \ \ \ D \end{matrix} \\
+\begin{matrix} C \\ D \end{matrix} \
+\Bigg( &amp;
+\begin{matrix}
+\, -1, -1 &amp; -10, 0 \, \\
+\, 0, -10 &amp; -9, -9 \,
+\end{matrix}
+\Bigg)
+\end{align*}
+</span></p>
+<p>这个表格和前面的收益矩阵类似，区别是每个要素的位置有两个数字，分别是参与人 1（行）和参与人 2（列） 的收益。此博弈不再是零和，所以我们需要明示双方各自的收益。</p>
+<p><strong>解</strong>：对于任意参与人，合作 <span class="math inline">C</span> 都是严格劣势（strictly dominated）选项：因为无论对方选择什么，选择 <span class="math inline">D</span> 都好过选择 <span class="math inline">C</span>。因此，我们有理由认为此博弈的结果是双方选择 <span class="math inline">(D,D)</span> 组合并获得收益 <span class="math inline">(-9, -9)</span>。严格劣势策略的存在使囚徒困境博弈比较容易分析。</p>
+<p><strong>评论</strong>：收益 <span class="math inline">(-9, -9)</span> 谈不上好，因为它不是帕累托最优（Pareto optimal），每个参与人都可以通过选择 <span class="math inline">C</span> 来提升自己的收益至 <span class="math inline">-1</span>。有大量文献讨论如何实现合作，例如通过重复博弈中的声誉效果。原书第七章讨论了重复博弈的相关内容。</p>
+<p>囚徒困境用来比喻很多经济现象，其中一个很有名的例子是公地悲剧（tragedy of the common’s），见原书第六章的练习 6.27。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.2.2 性别战（battle of the sexes）<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：一男一女打算晚上出去约会，两人可以选择去看足球赛或者芭蕾舞。但是他们忘记约定具体去干什么了，并且（因为某些原因）无法在出发前相互联系而只能各自决定自己的目的地。他们最希望能在一起，但除此之外，男人更喜欢看足球赛，女人则更喜欢看芭蕾舞。</p>
+<p><strong>模型</strong>：下面的表格提供了一种描述此情形的方式 <span class="math display">
+\begin{align*}
+&amp; \begin{matrix} \text{足球} &amp; \text{芭蕾} \end{matrix} \\
+\begin{matrix} \text{足球} \\ \text{芭蕾} \end{matrix} \
+\Bigg( &amp;
+\begin{matrix}
+\, \ 2, 1 &amp; \ \ 0, 0 \, \\
+\, \ 0, 0 &amp; \ \ 1, 2 \,
+\end{matrix}
+\Bigg)
+\end{align*}
+</span></p>
+<p>此时男人是行参与人，女人是列参与人。</p>
+<p><strong>解</strong>：首先，双方都没有劣势选项。这说明两人需要在没有沟通手段的情况下进行协作（coordinate）。或许在前一天晚上两人曾经花很长时间讨论过足球赛，而两人都记住了这件事，且相信对方也记住了这件事，因此这可能成为一个决定因素。在缺乏这类前提的情况下，我们很难预测双方会怎样选择。但是我们可以说 (足球，足球) 和 (芭蕾，芭蕾) 的组合具有独特的性质：这个时候双方的选择都是对方选择的最佳响应（best reply）。如果男人选择了足球（芭蕾），那么女人的最优选项也是足球（芭蕾），反之亦然。在博弈论中，这种互为最佳响应的选项组合被称为纳什均衡（Nash equilibrium）。纳什均衡毋庸置疑是最常用的博弈解。</p>
+<p><strong>评论</strong>：性别战博弈经常用来探讨协作问题。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;此处的中文翻译总觉得有些不地道，你能想到更好的翻译吗？</p></div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.2.3 猜硬币
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>每个零和博弈都是非零和博弈的一种特殊形式，例如前面讨论过的猜硬币游戏就可以表达为 <span class="math display">
+\begin{align*}
+&amp; \begin{matrix} \ \ \ \text{正} &amp; \ \ \ \ \ \ \ \text{反} \end{matrix} \\
+\begin{matrix} \text{正} \\ \text{反} \end{matrix} \
+\Bigg( &amp;
+\begin{matrix}
+\, 1, -1 &amp; \ -1, 1 \, \\
+\, -1, 1 &amp; \ 1, -1 \,
+\end{matrix}
+\Bigg)
+\end{align*}
+</span></p>
+<p>可以明显的看出双方都没有劣势选项，也不存在纳什均衡。如果允许混合策略，则当参与人 2 以 <span class="math inline">0.5</span> 的概率选择正面时，参与人 1 也应当以 <span class="math inline">0.5</span> 的概率选择正面，反之亦然。这是混合策略纳什均衡，参照 <a href="note_3.html" class="quarto-xref"><span>Chapter 3</span></a>。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.2.4 古诺博弈（a Cournot game）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：有两家公司生产同一种产品。该产品的市场价格是 <span class="math inline">p= \max\{1-Q, 0\}</span>，<span class="math inline">Q</span> 是两家公司的总产量<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。我们假设不存在生产成本。</p>
+<p><strong>模型</strong>：两家公司分别是参与人 1 和 2。参与人 <span class="math inline">i</span> 选择自己的产量 <span class="math inline">q_i \geq 0</span>，并获得利润</p>
+<p><span class="math display">
+K_i(q_1, q_2) = q_i \max\{1-q_1 -q_2, 0\}
+</span></p>
+<p><strong>解</strong>：具有常识的参与人不会选择 <span class="math inline">q_i &gt; 1</span>。假设参与人 2 选择 <span class="math inline">q_2 = 1/3</span>，则参与人 1 为了最大化自身利润 <span class="math inline">q_1(1-q_1 - 1/3)</span> 会选择 <span class="math inline">q_1 = 1/3</span>。反之，当参与人 1 选择 <span class="math inline">q_1 = 1/3</span> 时，参与人 2 为了最大化自身利润 <span class="math inline">q_2(1 - 1/3 - q_2)</span> 也会选择 <span class="math inline">q_2 = 1/3</span>。这个策略组合 <span class="math inline">(q_1, q_2) = (1/3, 1/3)</span> 互为最佳响应，因此是纳什均衡。</p>
+<p><strong>评论</strong>：这个纳什均衡也被称为古诺均衡（Cournot equilibrium）。注意在这个例子中古诺均衡也不是帕累托最优：如果两个公司都选择产量为 <span class="math inline">1/4</span>，则双方都会获得更多利润（<span class="math inline">1/8 &gt; 1/9</span>）。这个例子和猜硬币游戏的主要区别是，在不考虑混合策略的情况下，这个例子中的参与人有无穷多个选项。参照 <a href="note_6.html" class="quarto-xref"><span>Chapter 6</span></a>。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;在什么情况下这个假设是合理的？</p></div></div></section>
+<section id="sec-1.3.3" class="level3 page-columns page-full" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="sec-1.3.3"><span class="header-section-number">1.3.3</span> 扩展式博弈</h3>
+<p>前面介绍的所有博弈都是单次（one-shot）博弈，即参与人只进行一次选择，且选择需要同时独立进行。所有的室内桌游，或者从现实的经济政治问题提炼出的博弈通常都不符合这一特征。参与人往往可以按一定顺序进行选择（称为序贯，sequentially），同时能够观察（或部分观察）对手的选择结果。这种情形可以用扩展式博弈（extensive form game）来建模。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.3.1 序贯性别战（sequential battle of the sexes）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：和 <a href="#sec-1.3.2" class="quarto-xref"><span>Section 1.3.2</span></a> 中性别战的例子类似，但这里我们令男人首先做出选择，女人可以观察到男人选择的结果。</p>
+<p><strong>模型</strong>：这种情况可以用 <a href="#fig-SeqBoS" class="quarto-xref">Figure&nbsp;<span>1.2</span></a> 中的决策树描述。参与人 1（男人）首先进行选择，参与人 2（女人）在观察到参与人 1 的行动后选择自己的行动。最下面的节点（终点）下的两个数字中，第一个对应参与人 1 的收益，第二个对应参与人 2 的收益。非终点的节点对应一个参与人的决策。</p>
+
+<p><strong>解</strong>：此博弈的一个解法是利用逆向推理。如果参与人 1 选择了 <span class="math inline">F</span>（即足球），则参与人 2 也应该选择 <span class="math inline">F</span>。如果参与人 1 选择了 <span class="math inline">B</span>（即芭蕾），则参与人 2 也应该选择 <span class="math inline">B</span>。假设参与人 1 了解参与人 2 的这种选择行为并依此进行决策，那么参与人 1 应当选择 <span class="math inline">F</span>。</p>
+<p><strong>评论</strong>：这个简单的例子告诉我们，在扩展式博弈里，参与人的行动计划和具体的选择是具有不同含义的两个概念。对于参与人 2 来说，当参与人 1 选择 <span class="math inline">F</span>（<span class="math inline">B</span>）时自己也选择 <span class="math inline">F</span>（<span class="math inline">B</span>）是行动计划，但是她最终选择的是 <span class="math inline">F</span>（假设参与人 1 选择了 <span class="math inline">F</span>）。我们称行动计划为策略（strategy），并称具体做出的选择为行动（action）。在单次博弈中二者并没有区别，因此我们统一采用策略一词。</p>
+<p>我们会在 <a href="note_4.html" class="quarto-xref"><span>Chapter 4</span></a> 和 <a href="note_5.html" class="quarto-xref"><span>Chapter 5</span></a> 中学习扩展式博弈。上面给出的解所采用的分析方法叫逆向归纳法（backward induction），也称为子博弈完美纳什均衡（subgame perfect Nash equilibrium）。这并不是唯一一种纳什均衡。例如，假设参与人 1 选择 <span class="math inline">B</span>，而参与人 2 的策略是无论参与人 1 如何选择，自己永远选择 <span class="math inline">B</span>。此时，当给出对方的策略时，双方都没有更好的策略了，因此这个策略组合也是纳什均衡。但是，参与人 2 的策略并不是完全可信的，因为如果参与人 1 没有选择 <span class="math inline">B</span> 而选择了 <span class="math inline">F</span>，那么参与人 2 更应当选择 <span class="math inline">F</span> 而不是 <span class="math inline">B</span>。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-SeqBoS" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SeqBoS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="assets/fig/fig-1.1.png" class="img-fluid figure-img" width="200"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SeqBoS-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.2: 序贯性别战博弈的决策树
+</figcaption>
+</figure>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.3.2 序贯古诺博弈
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：和前述的古诺博弈不同的是，这里假设公司 1 首先选择，而公司 2 可以观察公司 1 选择的结果。</p>
+<p><strong>模型</strong>：由于每个参与人 <span class="math inline">i=1,2</span> 都有无穷多个备选项 <span class="math inline">q_i \geq 0</span>，我们无法绘制类似 <a href="#fig-SeqBoS" class="quarto-xref">Figure&nbsp;<span>1.2</span></a> 的决策树。这里我们用折线替代直线来表达连续空间上的行动集合，于是我们可以得到 <a href="#fig-SeqCournot" class="quarto-xref">Figure&nbsp;<span>1.3</span></a>。参与人 1 首先选择 <span class="math inline">q_1 \geq 0</span>，参与人 2 随后在确认 <span class="math inline">q_1</span> 取值的情况下选择 <span class="math inline">q_2 \geq 0</span>。</p>
+
+<p><strong>解</strong>：和序贯性别战博弈一样，这里我们也用逆向思维来分析。已知当参与人 2 知道 <span class="math inline">q_1</span> 时，他对自身利润最大化的结果是 <span class="math inline">q_2 = \max\{\tfrac{1}{2}(1-q_1), 0\}</span>。因此参与人 1 在决策中可以利用这个函数来最大化自己的利润函数，即</p>
+<p><span class="math display">
+\max_{0 \leq q_1 \leq 1} q_1 \big[1 - q_1 - \tfrac{1}{2}(1-q_1)\big]
+</span></p>
+<p>其解是 <span class="math inline">q_1 = \tfrac{1}{2}</span>，对应 <span class="math inline">q_2 = \tfrac{1}{4}</span>。</p>
+<p><strong>评论</strong>：这个解也是一个子博弈完美纳什均衡，在这个应用问题中也称作斯塔克伯格均衡（Stackelberg equilibrium），参照 <a href="note_6.html" class="quarto-xref"><span>Chapter 6</span></a>。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-SeqCournot" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SeqCournot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="assets/fig/fig-1.2.png" class="img-fluid figure-img" width="250"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SeqCournot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.3: 序贯古诺博弈的扩展式表达
+</figcaption>
+</figure>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.3.3 市场进入与威慑（entry deterrence）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：在产业组织论中有一个古老的问题，说的是行业垄断企业能否通过威胁要开始价格战的方式阻止新企业进入该市场。我们可以考虑下面的情况来分析这个问题。假设有两个参与人，分别是新企业和垄断企业。新企业从进入（<span class="math inline">E</span>nter）和不进入（stay <span class="math inline">O</span>ut）间进行选择。如果它选择了进入（<span class="math inline">E</span>），则垄断企业可以选择和它共谋（<span class="math inline">C</span>ollude）或开始价格战（<span class="math inline">F</span>ight）。该市场的利润在垄断价格下为 <span class="math inline">100</span>，在价格战下为 <span class="math inline">0</span>。新企业进入市场的成本是 <span class="math inline">10</span>。当双方共谋时，它们将平分垄断价格下的利润。</p>
+<p><strong>模型</strong>：这个模型可以表达为 <a href="#fig-entry" class="quarto-xref">Figure&nbsp;<span>1.4</span></a>。</p>
+
+<p><strong>解</strong>：根据逆向归纳法，新企业会选择进入市场，而垄断企业会选择共谋。</p>
+<p><strong>评论</strong>：和序贯性别战博弈类似，此博弈中也存在其他的纳什均衡，即新企业选择不进入市场，而垄断企业的策略是当新企业选择进入时自己选择开始价格战。读者应该很容易就能确认这两个策略是互为最佳响应的。在这个纳什均衡中我们依然可以说垄断企业的“威慑”策略是不可信的，因为它损害了自身的利益。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-entry" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-entry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="assets/fig/fig-1.3.png" class="img-fluid figure-img" width="250"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-entry-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.4: 市场进入与威慑博弈
+</figcaption>
+</figure>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.3.4 不完全信息下的市场进入与威慑（entry deterrence with incomplete information）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：现在我们考虑市场进入问题的另一种设定。假设垄断企业在选择开始价格战（<span class="math inline">F</span>）时可以有 <span class="math inline">50\%</span> 的概率获得正收益 <span class="math inline">x</span> 而非 <span class="math inline">0</span>（这里 <span class="math inline">x</span> 是模型的参数而非变量）。新企业仍然首先进行选择，并且它知道垄断企业选择 <span class="math inline">F</span> 时的收益是 <span class="math inline">x</span> 还是 <span class="math inline">0</span>。垄断企业随后进行选择，但是在选择时不知道该收益是 <span class="math inline">x</span> 还是 <span class="math inline">0</span>。双方都知道垄断企业获得 <span class="math inline">x</span> 或 <span class="math inline">0</span> 收益的概率。当新企业的体量是机密信息（private information）时这个设定就显得比较合理了。如果新企业的体量较小，无法应付价格战，则开始价格战后大部分市场还是会被垄断企业所占有，从而带来正利润。我们实际上是在假设垄断企业预测新企业体量较小的概率是 <span class="math inline">50\%</span>，而新企业也了解这一点。</p>
+<p><strong>模型</strong>：以上设定可以通过在博弈树（game tree）中加入随机选择（chance move）节点来实现。这时的博弈树应当反映参与人之间的非对称信息结构。我们来看 <a href="#fig-entry-incomp" class="quarto-xref">Figure&nbsp;<span>1.5</span></a> 中的博弈树。首先，其中有一个随机选择节点<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。新企业在知道随机选择结果后选择是否进入市场。如果它选择进入，则垄断企业选择共谋或开始价格战，此时垄断企业不知道随机选择的结果，而这在图中表达为用虚线连接的两个节点。换句话说，垄断企业有两个决策节点，但是它不清楚自己究竟在二者中的哪个位置。因此它只能从 <span class="math inline">C</span> 和 <span class="math inline">F</span> 中进行选择，但无法将这些选项和随机选择的结果相结合。</p>
+
+<p><strong>解</strong>：如果 <span class="math inline">x \leq 50</span>，则垄断企业选择 <span class="math inline">C</span> 且新企业选择 <span class="math inline">E</span> 依然是子博弈完美纳什均衡。另一个纳什均衡是无论随机选择的结果如何，新企业都选择 <span class="math inline">O</span> 且垄断企业选择 <span class="math inline">F</span>。如果考虑此博弈中的概率分布信息，则有一个新的解的概念称作完美贝叶斯均衡（perfect Bayesian equilibrium），我们将在 <a href="note_5.html" class="quarto-xref"><span>Chapter 5</span></a> 中学习。</p>
+<p><strong>评论</strong>：用虚线连接起来的垄断企业的两个决策节点组成了一个信息集（information set）。一般情况下，信息集被用来给不完美信息（imperfect information）博弈建模。在这个例子中，由于垄断企业不知道随机选择的结果，导致产生不完美信息。另一种不完美信息源自一些参与人无法观察其他参与人的选择结果。例如在同时决策的性别战博弈中，参与人 2 在决策时不知道参与人 1 的选择是什么，如果我们用扩展式博弈进行建模，则可以得到 <a href="#fig-SeqBoSSimul" class="quarto-xref">Figure&nbsp;<span>1.6</span></a> 中的博弈树。</p>
+
+</div>
+</div><div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;通常解释为“外生”地决定哪种状态会真正实现，在这个例子中决定垄断企业选择 <span class="math inline">F</span> 时的收益是 <span class="math inline">x</span> 还是 <span class="math inline">0</span>。</p></div><div id="fig-entry-incomp" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-entry-incomp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="assets/fig/fig-1.4.png" class="img-fluid figure-img" width="340"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-entry-incomp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.5: 不完全信息下的市场进入与威慑博弈
+</figcaption>
+</figure>
+</div><div id="fig-SeqBoSSimul" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SeqBoSSimul-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6"><img src="assets/fig/fig-1.5.png" class="img-fluid figure-img" width="200"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SeqBoSSimul-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.6: 同时决策性别战博弈的扩展式表达
+</figcaption>
+</figure>
+</div></div>
+</section>
+<section id="sec-1.3.4" class="level3 page-columns page-full" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="sec-1.3.4"><span class="header-section-number">1.3.4</span> 合作博弈</h3>
+<p>在合作博弈中，分析的焦点不再是策略的选择，而是关于收益和联盟（coalition）。常用的分析方法也不再是均衡分析，而变成了公理化方法。这背后隐藏着一个假设，即参与人之间可以形成具有约束力的约定。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.4.1 三个城市间的合作
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：城市 1、2、3 打算接入附近的一个发电站。输电网及其费用显示在 <a href="#fig-3city" class="quarto-xref">Figure&nbsp;<span>1.7</span></a> 中。每个城市都可以租用任意一条输电线路。如果不同城市选择合作，则有可能减少整体租金（这里假设输电线路没有容量限制）。</p>
+
+<p><strong>模型</strong>：这个故事中的参与人是三个城市。令参与人集合为 <span class="math inline">N=\{1,2,3\}</span>。参与人之间可以形成联盟（coalition）：<span class="math inline">N</span> 的任意子集 <span class="math inline">S</span> 都是一个联盟。每个可能的联盟的总输电成本及其能够节省下的金额汇总在 <a href="#tbl-3city" class="quarto-xref">Table&nbsp;<span>1.1</span></a> 中。</p>
+<div id="tbl-3city" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-3city-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.1: 三个城市博弈
+</figcaption>
+<div aria-describedby="tbl-3city-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">c(S)</span></td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">140</span></td>
+<td><span class="math inline">130</span></td>
+<td><span class="math inline">150</span></td>
+<td><span class="math inline">130</span></td>
+<td><span class="math inline">150</span></td>
+<td><span class="math inline">150</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">90</span></td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">220</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>联盟 <span class="math inline">S</span> 的总成本 <span class="math inline">c(S)</span> 是连接发电成与联盟成员间最便宜路径的租金之和。能够节省下的金额 <span class="math inline">v(S)</span> 是由联盟成员都各自租用输电线路时的租金之和减去联盟的总成本得到的，即</p>
+<p><span class="math display">
+v(S) = \sum_{i \in S} c(\{i\}) - c(S)
+</span></p>
+<p><span class="math inline">(N,v)</span> 定义了一个合作博弈（cooperative game）。</p>
+<p><strong>解</strong>：合作博弈 <span class="math inline">(N,v)</span> 中的基本问题是哪个联盟能够真正成立，以及如何在联盟成员之间分配总收益（或总成本）。成立一个联盟需要所有成员同意，但是否同意加入联盟往往取决于在该联盟中可以获得多少利益。因此，第二个问题看上去更加的本质，因此这里我们主要关注分配问题。在合作博弈理论中，我们通常假设全体联盟（或大联盟，grand coalition）<span class="math inline">N</span> 成立，然后讨论如何分配 <span class="math inline">v(N)</span>。回到这个例子中就是怎样在三个城市间分配省下的 <span class="math inline">220</span> 成本。更严密地说，我们是在寻找一个向量 <span class="math inline">\boldsymbol{x} = x_1 + x_2 + x_3 \in \mathbb{R}^3</span> 使 <span class="math inline">x_1 + x_2 + x_3 = 220</span>。这里 <span class="math inline">x_i, i \in \{1,2,3\}</span> 代表参与人 <span class="math inline">i</span> 的收益。首先浮现在脑海的候选可能是 <span class="math inline">x_1 = x_2 = x_3 = 220/3</span>，但这无法反映例子中的非对称性，即某些联盟比其他联盟能够节省更多的成本。这一领域的文献中提供了很多不同的解，其中常用的包括<strong>核（core）</strong>，<strong>Shapley 值（Shapley value）</strong>和 <strong>nucleolus</strong>。</p>
+<p>核是一种无法通过子联盟获得更高收益的分配。在这个例子中，核分配满足下面的条件，</p>
+<p><span class="math display">
+\begin{align*}
+&amp; x_1 + x_2 + x_3 = 220, \\
+&amp; x_1 \geq 0, \ x_2 \geq 0, \ x_3 \geq 0, \\
+&amp; x_1 + x_2 \geq 90, \\
+&amp; x_1 + x_3 \geq 100, \\
+&amp; x_2 + x_3 \geq 120.
+\end{align*}
+</span></p>
+<p>可见这是一个很大的集合，作为此问题的解并不合适。</p>
+<p>而 Shapley 值是一个单值解（只包含一个分配向量）。粗略的说，Shapley 值分配给每个参与人的是他对各联盟做出贡献的平均值。我们可以想象让参与人们依此进入一间房间，例如按照 1-2-3 的顺序。当参与人 1 进入房间时，他自己就形成了一个单人联盟，其收益（节省的成本）为 <span class="math inline">0</span>。当参与人 2 进入房间时，他与房间里的参与人 1 形成了新的联盟 <span class="math inline">\{1,2\}</span>，此时参与人 2 的贡献为 <span class="math inline">v(\{1,2\}) - v(\{1\}) = 90 - 0 = 90</span>。最后，参与人 3 走进房间并形成了全体联盟，而他的贡献为 <span class="math inline">v(N) - v(\{1,2\}) = 220-90 = 130</span>。按照这个顺序进入房间会形成收益向量 <span class="math inline">(0,90,130)</span>。Shapley 值是针对所有可能的顺序重复这一计算，并对结果取算数平均。这个例子对应的 Shapley 值是 <span class="math inline">(65, 75, 80)</span>。</p>
+<p>Nucleolus 也是一个单值解，在这个例子中为 <span class="math inline">(56\tfrac{2}{3}, 76\tfrac{2}{3}, 86\tfrac{2}{3})</span>。Nucleolus 的定义更复杂，计算难度也更大，因此我们在这里暂时不做介绍。</p>
+<p>以上概念的正式定义将在 <a href="note_7.html" class="quarto-xref"><span>Chapter 7</span></a> 中介绍（或参照原书第九章）。</p>
+<p><strong>评论</strong>：此类博弈中有两个默认的假设：其一，能够成立的联盟都可以针对其收益分配形成具有约束力的约定；其二，不超过联盟可获得总价值的分配都是可行的。因此，这类博弈又被称作效用可转移合作博弈（cooperative games with transferable utility，或 TU-games）。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-3city" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3city-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-glightbox="description: .lightbox-desc-7"><img src="assets/fig/fig-1.6.png" class="img-fluid figure-img" width="250"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3city-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.7: 发电站与三个城市
+</figcaption>
+</figure>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.4.2 手套博弈（the glove game）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：考虑三个参与人 1、2、3。参与人 1 和 2 各自拥有一只右手的手套，而参与人 3 拥有一只左手的手套。一双手套的价值是 <span class="math inline">1</span>。参与人们可以通过合作获得收益。</p>
+<p><strong>模型</strong>：这个例子的有关信息汇总在 <a href="#tbl-glove" class="quarto-xref">Table&nbsp;<span>1.2</span></a> 中。</p>
+<div id="tbl-glove" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-glove-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.2: 手套博弈
+</figcaption>
+<div aria-describedby="tbl-glove-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">1</span></td>
+<td><span class="math inline">1</span></td>
+<td><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>解</strong>：此博弈的核只包含一个收益向量（你能找到吗？）。Shapley 值是 <span class="math inline">(1/6, 1/6, 2/3)</span>。Nucleolus 与核一致。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.4.3 排列博弈（a permutation game）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：小张、小李和小王分别在星期一、二、三约了牙医。但是这个安排对他们来说并不是最好的。<a href="#tbl-perm1" class="quarto-xref">Table&nbsp;<span>1.3</span></a> 中用数字描述了三人对日期的偏好。</p>
+<div id="tbl-perm1" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-perm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.3: 小张、小李和小王对看牙日期的偏好
+</figcaption>
+<div aria-describedby="tbl-perm1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>星期一</th>
+<th>星期二</th>
+<th>星期三</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>小张</td>
+<td><span class="math inline">2</span></td>
+<td><span class="math inline">4</span></td>
+<td><span class="math inline">8</span></td>
+</tr>
+<tr class="even">
+<td>小李</td>
+<td><span class="math inline">10</span></td>
+<td><span class="math inline">5</span></td>
+<td><span class="math inline">2</span></td>
+</tr>
+<tr class="odd">
+<td>小王</td>
+<td><span class="math inline">10</span></td>
+<td><span class="math inline">6</span></td>
+<td><span class="math inline">4</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>模型</strong>：在这个故事中，联盟意味着成员之间可以自由地调换预约日期。例如，如果小张和小李成立联盟，则他们可以获得的总收益会从 <span class="math inline">7</span> 上升为 <span class="math inline">14</span>。此博弈可以总结为 <a href="#tbl-perm2" class="quarto-xref">Table&nbsp;<span>1.4</span></a>。</p>
+<div id="tbl-perm2" class="quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-perm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1.4: 牙医博弈：参与人 1、2、3 分别为小张、小李、小王
+</figcaption>
+<div aria-describedby="tbl-perm2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">2</span></td>
+<td><span class="math inline">5</span></td>
+<td><span class="math inline">4</span></td>
+<td><span class="math inline">14</span></td>
+<td><span class="math inline">18</span></td>
+<td><span class="math inline">9</span></td>
+<td><span class="math inline">24</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><strong>解</strong>：此博弈的核是由 <span class="math inline">(15,5,4), (14,6,4), (8,6,10), (9,5,10)</span> 四点为顶点构成的四边形及其内部的点集。Shapley 值是 <span class="math inline">(9.5, 6.5, 8)</span>。Nucleolus 是 <span class="math inline">(11.5, 5.5, 7)</span>。</p>
+<p><strong>评论</strong>：排列博弈在原书第二十章中讨论。</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.4.4 投票博弈（a voting game）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>联合国安全理事会中有五个常任理事国（分别是大不列颠及北爱尔兰联合王国、俄罗斯联邦、法国、美利坚合众国、中国<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>）和十个非常任理事国。若要通过一项动议需要包括所有常任理事国在内的至少九个理事国同意。这个例子对应一个有 15 个参与人的投票博弈 <span class="math inline">(N,v)</span>，当联盟 <span class="math inline">S</span> 包含五个常任理事国和至少另外四个非常任理事国时，有 <span class="math inline">v(S)=1</span>，否则 <span class="math inline">v(S)=0</span>。联盟总价值为 <span class="math inline">0</span> 或 <span class="math inline">1</span> 的合作博弈也称作基本博弈（或简单博弈，simple game）。价值为 <span class="math inline">1</span> 的联盟也称为胜利联盟，反之价值为 <span class="math inline">0</span> 的联盟称为失败联盟。基本博弈可在原书第十六章详细学习。</p>
+<p>投票博弈的解可以解释为每个参与人对决议的影响力（voting power），而非收益或效用。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;<a href="https://main.un.org/securitycouncil/zh/content/current-members" class="uri">https://main.un.org/securitycouncil/zh/content/current-members</a></p></div></div></section>
+<section id="sec-1.3.5" class="level3 page-columns page-full" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="sec-1.3.5"><span class="header-section-number">1.3.5</span> 讨价还价博弈</h3>
+<p>讨价还价理论主要学习参与人间如何达成共识。</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+1.3.5.1 一个分配问题（a division problem）
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>故事</strong>：两个参与人需要针对如何分配一个单位的完美可分割物品（例如一升葡萄酒）达成共识。二人要么同意以 <span class="math inline">(\alpha, \beta)</span>, <span class="math inline">\alpha \geq 0, \beta \geq 0</span>, <span class="math inline">\alpha + \beta \leq 1</span> 的比例分配，要么什么也得不到。参与人对该物品的偏好以效用函数表达。</p>
+<p><strong>模型</strong>：为了方便分析，我们假设参与人 1 的效用函数是 <span class="math inline">u_1(\alpha) = \alpha</span>，参与人 2 的效用函数是 <span class="math inline">u_2(\beta) = \sqrt{\beta}</span>。此时，分配 <span class="math inline">(\alpha,1-\alpha)</span> 对应的效用组合为 <span class="math inline">(\alpha, \sqrt{1-\alpha})</span>。如果令 <span class="math inline">\alpha</span> 在 <span class="math inline">0</span> 和 <span class="math inline">1</span> 之间变化，我们就能得到所有的效用组合，如 <a href="#fig-division" class="quarto-xref">Figure&nbsp;<span>1.8</span></a> 中的加粗曲线所示。两人所分得比例之和也可以小于 <span class="math inline">1</span>，这对应着图中由曲线和两个坐标轴围起来的部分，我们称这部分及其边界为可行解。</p>
+
+<p><strong>解</strong>：根据纳什谈判解（Nash bargaining solution）的概念，此例子的解应该是可行解中使两个参与人的效用之积最大的点。由于该最大化问题的解必定在边界上，它等同于</p>
+<p><span class="math display">
+\max_{0\leq \alpha \leq 1} \alpha \sqrt{1-\alpha}
+</span></p>
+<p>最大值对应 <span class="math inline">\alpha = 2/3</span>，因此此例子的最优分配为 <span class="math inline">(2/3, 1/3)</span>，对应效用组合 <span class="math inline">(2/3, \sqrt{1/3})</span>，即 <a href="#fig-division" class="quarto-xref">Figure&nbsp;<span>1.8</span></a> 中的点 <span class="math inline">z</span>。那么采用纳什谈判解的理由是什么呢？因为它也可以用公理化的方式解释。</p>
+<p><strong>评论</strong>：在 <a href="note_8.html" class="quarto-xref"><span>Chapter 8</span></a> （或原书第十章）中有关于纳什谈判解的公理化讨论。在关于讨价还价的文献中也有很多基于非合作博弈的方法，例如鲁宾斯坦模型（<a href="note_6.html" class="quarto-xref"><span>Chapter 6</span></a>）。这个讨价还价问题也可以看作效用不可转移合作博弈（cooperative game without transferable utility，或 NTU-game）的一个例子。TU-game 是 NTU-game 的子集。</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-division" class="quarto-figure quarto-figure-center quarto-float anchored callout-margin-content">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-division-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-1.7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8"><img src="assets/fig/fig-1.7.png" class="img-fluid figure-img" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-division-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.8: 一个分配博弈
+</figcaption>
+</figure>
+</div></div></section>
+</section>
+<section id="sec-1.4" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-1.4"><span class="header-section-number">1.4</span> 合作博弈 vs 非合作博弈</h2>
+<p>合作博弈与非合作博弈的主要区别通常解释为合作博弈中存在有约束力的约定，而非合作博弈没有。这一区别其实并不是正式定义，而且也不十分清晰：例如，合作博弈中的核明显具有非合作的特性，而非合作博弈中的相关均衡（correlated equilibrium，见原书第十三章）明显具有合作的特性。在文献中也有不少研究用合作与非合作两个视角分析同一个问题，这有些时候被称为纳什计划（Nash program），前面的讨价还价问题就是它的一个例子。另外，博弈论中的实践（implementation）理论就是研究如何用某个非合作博弈的均衡来实现合作博弈的解。</p>
+<p>相比之下，更加具有实际意义的区别在于建模方法：在非合作博弈中，参与人拥有具体的策略；而合作博弈则更加抽象，参与人和联盟是由他们可以获得的收益来刻画的。<a href="#sec-1.3.1" class="quarto-xref"><span>Section 1.3.1</span></a> ～ <a href="#sec-1.3.3" class="quarto-xref"><span>Section 1.3.3</span></a> 中的例子都是非合作博弈，而 <a href="#sec-1.3.4" class="quarto-xref"><span>Section 1.3.4</span></a> 和 <a href="#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a> 中的例子都是合作博弈。</p>
+
+
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;1.1: 俾斯麦海海战中日军可选择的路线（图片引自 https://policonomics.com/battle-of-the-bismarck-sea/）</span>
+<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;1.2: 序贯性别战博弈的决策树</span>
+<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;1.3: 序贯古诺博弈的扩展式表达</span>
+<span class="glightbox-desc lightbox-desc-4">Figure&nbsp;1.4: 市场进入与威慑博弈</span>
+<span class="glightbox-desc lightbox-desc-5">Figure&nbsp;1.5: 不完全信息下的市场进入与威慑博弈</span>
+<span class="glightbox-desc lightbox-desc-6">Figure&nbsp;1.6: 同时决策性别战博弈的扩展式表达</span>
+<span class="glightbox-desc lightbox-desc-7">Figure&nbsp;1.7: 发电站与三个城市</span>
+<span class="glightbox-desc lightbox-desc-8">Figure&nbsp;1.8: 一个分配博弈</span>
+</div>
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./note_0.html" class="pagination-link" aria-label="前言">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">前言</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./note_2.html" class="pagination-link" aria-label="二人零和博弈">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">二人零和博弈</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
+
+
+
+
+</body></html>

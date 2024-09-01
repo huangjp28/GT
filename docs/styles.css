@@ -1,0 +1,14 @@
+/* css styles */
+
+/* fonts size */
+.callout-header {
+  font-size: 1rem !important;
+}
+
+.callout-body {
+  font-size: 1rem !important;
+}
+
+.katex {
+  font-size: 1.1em !important;
+}

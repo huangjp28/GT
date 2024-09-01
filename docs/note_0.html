@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="黄嘉平">
 
-<title>博弈论</title>
+<title>博弈论 - 前言</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -31,7 +50,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./slides.html" rel="next">
+<link href="./note_1.html" rel="next">
+<link href="./slides.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -41,9 +61,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,6 +89,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script defer="" src="./assets/katex/0.16.11/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="./assets/katex/0.16.11/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -85,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">课程信息</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_0.html">前言</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -112,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">课程信息</span></a>
   </div>
 </li>
@@ -133,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./note_0.html" class="sidebar-item-text sidebar-link">
+  <a href="./note_0.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">前言</span></a>
   </div>
 </li>
@@ -209,29 +269,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#基本信息" id="toc-基本信息" class="nav-link active" data-scroll-target="#基本信息">基本信息</a></li>
-  <li><a href="#学习目标" id="toc-学习目标" class="nav-link" data-scroll-target="#学习目标">学习目标</a></li>
+  <li><a href="#符号的定义" id="toc-符号的定义" class="nav-link active" data-scroll-target="#符号的定义">符号的定义</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_0.html">前言</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">博弈论</h1>
+<h1 class="title">前言</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>黄嘉平 </p>
-          </div>
-  </div>
     
   
     
@@ -242,80 +295,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>这里是<strong>深圳大学经济学院</strong>开设的本科课程《<strong>博弈论</strong>》的课程网站。本门课程面向经济学专业的本科高年级学生讲授博弈论的核心内容，包括<u>非合作博弈</u>中的零和博弈、二人非零和博弈、扩展式博弈、不完全信息博弈以及信息经济学中的经典应用问题，同时也兼顾<u>合作博弈</u>的基本理论及其应用。将合作博弈作为课程内容的一个主要部分是本门课程的特色。</p>
-<p>博弈论是微观经济学理论中不可或缺的重要内容，也是应用数学的一个研究领域，对学习者的数学基础要求较高。鉴于经济学专业本科生的平均数学能力有限，课程内容中不会涉及过多的数学推导和证明，因此大部分概念会以例子的形式进行介绍，但多数定义依然会保留数学上的严谨性。为了更好地理解博弈论的思维方式，建议数学基础较差的同学对集合论、线性代数和基本的最优化理论进行补充学习。</p>
-<section id="基本信息" class="level2 unnumbered page-columns page-full">
-<h2 class="unnumbered anchored" data-anchor-id="基本信息">基本信息</h2>
+<p>本讲义主要参考了 <span class="citation" data-cites="peters_game_2015">Peters (<a href="#ref-peters_game_2015" role="doc-biblioref">2015</a>)</span> 中的内容，包括非合作博弈和合作博弈的基础概念以及部分应用问题，涵盖原书中的第1～6、9、10章。这部分内容适用于数学基础有限（例如经济学等社会科学领域）的本科高年级学生学习。</p>
+<div class="no-row-height column-margin column-container"><div id="ref-peters_game_2015" class="csl-entry" role="listitem">
+Peters, Hans. 2015. <em>Game Theory: A Multi-Leveled Approach</em>. Springer Texts in Business and Economics. Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-662-46950-7">https://doi.org/10.1007/978-3-662-46950-7</a>.
+</div><div id="ref-fudenberg_game_1991" class="csl-entry" role="listitem">
+Fudenberg, Drew, and Jean Tirole. 1991. <em>Game Theory</em>. Cambridge, Mass: <span>MIT</span> Press.
+</div><div id="ref-osborne_course_1994" class="csl-entry" role="listitem">
+Osborne, Martin J., and Ariel Rubinstein. 1994. <em>A Course in Game Theory</em>. Cambridge, Mass: <span>MIT</span> Press.
+</div><div id="ref-tadelis_game_2013" class="csl-entry" role="listitem">
+Tadelis, Steve. 2013. <em>Game Theory: An Introduction</em>. Princeton ; Oxford: Princeton University Press.
+</div><div id="ref-peleg_introduction_2007" class="csl-entry" role="listitem">
+Peleg, Bezalel, and Peter Sudhölter. 2007. <em>Introduction to the Theory of Cooperative Games</em>. 2nd ed. Introduction to the Theory of Cooperative Games 34. Berlin: Springer.
+</div><div id="ref-gilles_cooperative_2010" class="csl-entry" role="listitem">
+Gilles, Robert P. 2010. <em>The Cooperative Game Theory of Networks and Hierarchies</em>. Theory and Decision Library. Series c, Game Theory, Mathematical Programming and Operations Research, v. 44. Heidelberg: Springer.
+</div></div><p>原书作者 Hans Peters 博士是荷兰 Maastricht University 的数理经济学荣休教授，国际著名理论经济学家，主要研究方向是博弈论和社会选择理论。该书采用了一种独特的编写方式，作者称之为 multi-leveled approach，可以理解为“从零开始的晋级之路”。简单的说，该方法就是将复杂深邃的博弈论内容分成两个阶段进行讲授，第一阶段注重对基本概念和方法的理解与应用，第二阶段则注重理论的构筑。因此，该书既可以作为本科高年级学生初学博弈论的参考书，也可以作为理论经济学学科的研究生用书。该书另一个重要特点是涵盖的话题比较全面，既包括标准教科书 <span class="citation" data-cites="fudenberg_game_1991 osborne_course_1994 tadelis_game_2013">(例如 <a href="#ref-fudenberg_game_1991" role="doc-biblioref">Fudenberg and Tirole 1991</a>; <a href="#ref-osborne_course_1994" role="doc-biblioref">Osborne and Rubinstein 1994</a>; 或 <a href="#ref-tadelis_game_2013" role="doc-biblioref">Tadelis 2013</a>)</span> 中包含的非合作博弈内容，也比较详细地介绍了合作博弈的内容，而后者通常是只能在更加专业的学术书籍 <span class="citation" data-cites="peleg_introduction_2007 gilles_cooperative_2010">(例如 <a href="#ref-peleg_introduction_2007" role="doc-biblioref">Peleg and Sudhölter 2007</a>; <a href="#ref-gilles_cooperative_2010" role="doc-biblioref">Gilles 2010</a>)</span> 中才会涉及。</p>
+<p>据我所知，原书还没有中文翻译版<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。因此本讲义的第一版将比较忠实地体现原书中的内容，同时不排除根据需要进行删减或补充的可能。随着本门课程的持续开展，我会不断充实和完善讲义的内容。</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;如果此信息有误，欢迎通过电子邮件指正。</p></div></div><p>作者在原书第一版的 Preface 中指出，</p>
+<blockquote class="blockquote">
+<p>Part I is meant for students who are knowledgeable in basic calculus, and does not try to avoid the use of mathematics on that basic level. There is, after all, a reason why we teach calculus courses to (for instance) undergraduate students in economics. Nevertheless, the mathematics in Part I does not go beyond such things as maximizing a quadratic function or elementary matrix notation. In my own experience, <strong>the difficulties that students encounter when studying formal models are usually conceptual rather than mathematical</strong>, but they are often confused with mathematical difficulties.</p>
+</blockquote>
+<p>因此，作者从第一阶段起就十分注意模型描述的准确性（这也是很多其他书籍的共同特征）。我非常认同这一做法，也会在本讲义中使用这种方式。</p>
+<section id="符号的定义" class="level3">
+<h3 class="anchored" data-anchor-id="符号的定义">符号的定义</h3>
+<p>以下是本讲义中出现的数学符号的用法和定义。</p>
 <ul>
-<li><p><strong>课程代码</strong>：0202860001</p></li>
-<li><p><strong>开课学期</strong>：2024秋冬</p></li>
-<li><p><strong>上课时间与地点</strong>：星期一 7-8节，丽湖校区四方楼 南104</p></li>
-<li><p><strong>任课教师</strong>：黄嘉平（中国经济特区研究中心）</p></li>
-<li><p><strong>联系方式</strong>：请发邮件至 huangjp #at# szu . edu . cn</p></li>
-<li><p><strong>办公室</strong>：粤海校区汇文楼 1510，丽湖校区守正楼 A 栋三楼公共办公室</p></li>
-<li><p><strong>接访时间</strong>：</p>
+<li><p>向量用粗体符号表示，例如 <span class="math inline">\boldsymbol{p}, \boldsymbol{e}</span></p></li>
+<li><p>矩阵和向量的转置仅在需要时明示，其符号为 <span class="math inline">\top</span>，例如 <span class="math inline">A^\top</span></p></li>
+<li><p>向量间的比较：</p>
 <ul>
-<li>粤海校区办公室：星期三 15:45-16:30</li>
-<li>丽湖校区临时办公室：需提前发邮件联系以确定接访时间和地点</li>
+<li><p><span class="math inline">\boldsymbol{a} &gt; \boldsymbol{b}</span> 代表对于任意 <span class="math inline">i</span>，<span class="math inline">a_i &gt; b_i</span></p></li>
+<li><p><span class="math inline">\boldsymbol{a} \geq \boldsymbol{b}</span> 代表对于任意 <span class="math inline">i</span>，<span class="math inline">a_i \geq b_i</span></p></li>
 </ul></li>
-<li><p><strong>成绩评价</strong>：出席情况 10% + 课堂表现 10% + 作业 20% + 期末考核 60%</p></li>
-<li><p><strong>教学辅助工具</strong>：微助教（主要用于签到和发布资料）</p></li>
-<li><p><strong>主要参考书</strong>：<br>
-Peters, H. (2015). <em>Game Theory: A Multi-Leveled Approach</em>, 2nd Edition. Springer.<br>
-<a href="https://link.springer.com/book/10.1007/978-3-662-46950-7" class="uri">https://link.springer.com/book/10.1007/978-3-662-46950-7</a><br>
-可通过 <a href="http://www.lib.szu.edu.cn/zh-hans/er/springer">深圳大学图书馆 &gt; 数据库 &gt; Springer Nature 电子图书</a> 下载 PDF 版本</p></li>
 </ul>
 
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>参考书封面</p>
-<p><a href="assets/fig/book.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="assets/fig/book.jpg" class="light-box img-fluid" width="200"></a></p>
-</div></div></section>
-<section id="学习目标" class="level2">
-<h2 class="anchored" data-anchor-id="学习目标">学习目标</h2>
-<p>本门课程的学习目标分为以下三个层次：</p>
-<ul>
-<li><p>Level 1：理解博弈论的基本概念及思维方式</p></li>
-<li><p>Level 2：会运用所学方法解答教材或教师给出的练习题</p></li>
-<li><p>Level 3：会运用所学方法对实际问题进行建模分析</p></li>
-</ul>
-<p>三个层次依次对应听懂了、会做题、能举一反三。我们并不要求理解方法背后的复杂数学原理，也不要求对定理进行证明，但是要求学生具备通用的文献阅读和学术写作能力，并遵循基本的学术规范。学习目标和考核方式之间的大致关系见下表：</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">学习目标</th>
-<th style="text-align: center;">出席</th>
-<th style="text-align: center;">课堂提问</th>
-<th style="text-align: center;">作业</th>
-<th style="text-align: center;">期末考核</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Level 1</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Level 2</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Level 3</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-</tbody>
-</table>
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -736,10 +752,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./slides.html" class="pagination-link" aria-label="课程资料">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">课程资料</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./slides.html" class="pagination-link" aria-label="课程资料">
-        <span class="nav-page-text">课程资料</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./note_1.html" class="pagination-link" aria-label="绪论">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">绪论</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -757,31 +776,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 

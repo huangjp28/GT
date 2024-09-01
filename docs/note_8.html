@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="黄嘉平">
 
-<title>博弈论</title>
+<title>博弈论 - 8&nbsp; 合作博弈的应用</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./slides.html" rel="next">
+<link href="./note_glossary.html" rel="next">
+<link href="./note_7.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -41,9 +41,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">课程信息</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">合作博弈的应用</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -112,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">课程信息</span></a>
   </div>
 </li>
@@ -181,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./note_8.html" class="sidebar-item-text sidebar-link">
+  <a href="./note_8.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">合作博弈的应用</span></span></a>
   </div>
 </li>
@@ -205,33 +202,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#基本信息" id="toc-基本信息" class="nav-link active" data-scroll-target="#基本信息">基本信息</a></li>
-  <li><a href="#学习目标" id="toc-学习目标" class="nav-link" data-scroll-target="#学习目标">学习目标</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">合作博弈的应用</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">博弈论</h1>
+<h1 class="title"><span id="sec-8" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">合作博弈的应用</span></span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>黄嘉平 </p>
-          </div>
-  </div>
     
   
     
@@ -242,82 +226,13 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>这里是<strong>深圳大学经济学院</strong>开设的本科课程《<strong>博弈论</strong>》的课程网站。本门课程面向经济学专业的本科高年级学生讲授博弈论的核心内容，包括<u>非合作博弈</u>中的零和博弈、二人非零和博弈、扩展式博弈、不完全信息博弈以及信息经济学中的经典应用问题，同时也兼顾<u>合作博弈</u>的基本理论及其应用。将合作博弈作为课程内容的一个主要部分是本门课程的特色。</p>
-<p>博弈论是微观经济学理论中不可或缺的重要内容，也是应用数学的一个研究领域，对学习者的数学基础要求较高。鉴于经济学专业本科生的平均数学能力有限，课程内容中不会涉及过多的数学推导和证明，因此大部分概念会以例子的形式进行介绍，但多数定义依然会保留数学上的严谨性。为了更好地理解博弈论的思维方式，建议数学基础较差的同学对集合论、线性代数和基本的最优化理论进行补充学习。</p>
-<section id="基本信息" class="level2 unnumbered page-columns page-full">
-<h2 class="unnumbered anchored" data-anchor-id="基本信息">基本信息</h2>
-<ul>
-<li><p><strong>课程代码</strong>：0202860001</p></li>
-<li><p><strong>开课学期</strong>：2024秋冬</p></li>
-<li><p><strong>上课时间与地点</strong>：星期一 7-8节，丽湖校区四方楼 南104</p></li>
-<li><p><strong>任课教师</strong>：黄嘉平（中国经济特区研究中心）</p></li>
-<li><p><strong>联系方式</strong>：请发邮件至 huangjp #at# szu . edu . cn</p></li>
-<li><p><strong>办公室</strong>：粤海校区汇文楼 1510，丽湖校区守正楼 A 栋三楼公共办公室</p></li>
-<li><p><strong>接访时间</strong>：</p>
-<ul>
-<li>粤海校区办公室：星期三 15:45-16:30</li>
-<li>丽湖校区临时办公室：需提前发邮件联系以确定接访时间和地点</li>
-</ul></li>
-<li><p><strong>成绩评价</strong>：出席情况 10% + 课堂表现 10% + 作业 20% + 期末考核 60%</p></li>
-<li><p><strong>教学辅助工具</strong>：微助教（主要用于签到和发布资料）</p></li>
-<li><p><strong>主要参考书</strong>：<br>
-Peters, H. (2015). <em>Game Theory: A Multi-Leveled Approach</em>, 2nd Edition. Springer.<br>
-<a href="https://link.springer.com/book/10.1007/978-3-662-46950-7" class="uri">https://link.springer.com/book/10.1007/978-3-662-46950-7</a><br>
-可通过 <a href="http://www.lib.szu.edu.cn/zh-hans/er/springer">深圳大学图书馆 &gt; 数据库 &gt; Springer Nature 电子图书</a> 下载 PDF 版本</p></li>
-</ul>
+
+
+
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>参考书封面</p>
-<p><a href="assets/fig/book.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="assets/fig/book.jpg" class="light-box img-fluid" width="200"></a></p>
-</div></div></section>
-<section id="学习目标" class="level2">
-<h2 class="anchored" data-anchor-id="学习目标">学习目标</h2>
-<p>本门课程的学习目标分为以下三个层次：</p>
-<ul>
-<li><p>Level 1：理解博弈论的基本概念及思维方式</p></li>
-<li><p>Level 2：会运用所学方法解答教材或教师给出的练习题</p></li>
-<li><p>Level 3：会运用所学方法对实际问题进行建模分析</p></li>
-</ul>
-<p>三个层次依次对应听懂了、会做题、能举一反三。我们并不要求理解方法背后的复杂数学原理，也不要求对定理进行证明，但是要求学生具备通用的文献阅读和学术写作能力，并遵循基本的学术规范。学习目标和考核方式之间的大致关系见下表：</p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">学习目标</th>
-<th style="text-align: center;">出席</th>
-<th style="text-align: center;">课堂提问</th>
-<th style="text-align: center;">作业</th>
-<th style="text-align: center;">期末考核</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Level 1</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Level 2</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-<td style="text-align: center;">✅</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Level 3</td>
-<td style="text-align: center;">–</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">✅</td>
-</tr>
-</tbody>
-</table>
 
-
-</section>
-
-</main> <!-- /main -->
+</div></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -736,10 +651,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./note_7.html" class="pagination-link" aria-label="合作博弈">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">合作博弈</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./slides.html" class="pagination-link" aria-label="课程资料">
-        <span class="nav-page-text">课程资料</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./note_glossary.html" class="pagination-link" aria-label="中英文术语对照表">
+        <span class="nav-page-text">中英文术语对照表</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -757,31 +675,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
-    }
-  });
-
-};
-          </script>
 
 
 
