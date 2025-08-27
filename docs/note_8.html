@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>博弈论 - 8&nbsp; 合作博弈的应用</title>
+<title>8&nbsp; 合作博弈的应用 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -37,10 +57,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,6 +92,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -79,13 +145,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">合作博弈的应用</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -121,9 +187,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -202,7 +268,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-8.1" id="toc-sec-8.1" class="nav-link active" data-scroll-target="#sec-8.1"><span class="header-section-number">8.1</span> 讨价还价问题</a>
+  <ul class="collapse">
+  <li><a href="#sec-8.1.1" id="toc-sec-8.1.1" class="nav-link" data-scroll-target="#sec-8.1.1"><span class="header-section-number">8.1.1</span> 纳什谈判解</a></li>
+  <li><a href="#sec-8.1.2" id="toc-sec-8.1.2" class="nav-link" data-scroll-target="#sec-8.1.2"><span class="header-section-number">8.1.2</span> 与鲁宾斯坦序贯议价模型的关系</a></li>
+  </ul></li>
+  <li><a href="#sec-8.2" id="toc-sec-8.2" class="nav-link" data-scroll-target="#sec-8.2"><span class="header-section-number">8.2</span> 交换经济</a></li>
+  <li><a href="#sec-8.3" id="toc-sec-8.3" class="nav-link" data-scroll-target="#sec-8.3"><span class="header-section-number">8.3</span> 匹配问题</a></li>
+  <li><a href="#sec-8.4" id="toc-sec-8.4" class="nav-link" data-scroll-target="#sec-8.4"><span class="header-section-number">8.4</span> 房屋置换</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -226,13 +305,499 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>本章内容基于原书第十章。</p>
+<p>以 <a href="note_7.html" class="quarto-xref"><span>Chapter 7</span></a> 的 TU-game 为代表的合作博弈模型通常包含以下特征：根据参与人的可选策略信息得到的抽象化描述，这通常体现为参与人或联盟可以获得的收益或者效用；从策略或公平、效率的角度定义的解；如果可能的话还会包括解的公理化结果，例如 Shapley 值可以通过有效性、对称性、公平性等公理的组合进行定义。</p>
+<p>在这一章中我们介绍一些合作博弈的应用模型，包括 <a href="#sec-8.1" class="quarto-xref"><span>Section 8.1</span></a> 中的讨价还价问题，<a href="#sec-8.2" class="quarto-xref"><span>Section 8.2</span></a> 中的交换经济，<a href="#sec-8.3" class="quarto-xref"><span>Section 8.3</span></a> 中的匹配问题，以及 <a href="#sec-8.4" class="quarto-xref"><span>Section 8.4</span></a> 中的房屋置换问题。</p>
+<section id="sec-8.1" class="level2 page-columns page-full" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sec-8.1"><span class="header-section-number">8.1</span> 讨价还价问题</h2>
+<p><a href="note_1.html#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a> 中的分配问题是我们见到的讨价还价问题的第一个例子。在 <a href="note_6.html#sec-6.7" class="quarto-xref"><span>Section 6.7</span></a> 中，我们在非合作博弈的框架内讨论了讨价还价问题。这一节里我们从合作博弈以及公理化的角度继续探讨这一问题。我们将会看到这两种方法有着让人意外的内在联系。</p>
+<section id="sec-8.1.1" class="level3 page-columns page-full" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="sec-8.1.1"><span class="header-section-number">8.1.1</span> 纳什谈判解</h3>
+<p>首先定义二人讨价还价问题<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;关于 <span class="math inline">n</span> 人讨价还价问题以及更具一般性的效用不可转移合作博弈（NTU-game）的讨论可以参考原书第二十一章。</p></div></div><div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-8.1" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.1</strong></span> 二人讨价还价问题（bargaining problem）是满足下列条件的二元组 <span class="math inline">(S, \boldsymbol{d})</span>：</p>
+<ol type="1">
+<li><p><span class="math inline">S \subseteq \mathbb{R}^2</span> 是有界闭凸集（bounded, closed, and convex set）<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>；</p></li>
+<li><p><span class="math inline">\boldsymbol{d} = (d_1, d_2) \in S</span> 满足 <span class="math inline">\exists \boldsymbol{x} = (x_1, x_2) \in S, x_1 &gt; d_1, x_2 &gt; d_2</span>。</p></li>
+</ol>
+<p><span class="math inline">S</span> 称为可行集（feasible set），<span class="math inline">\boldsymbol{d}</span> 称为分歧点（disagreement point）。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<span class="math inline">\mathbb{R}^k</span> 的一个子集如果满足其内部任意两点间的线段也在其内部，则称其为凸集；如果其包含所有边界点，则称其为闭集；如果其内部所有的点的任意坐标都是有限的，则称其为有界集。</p></div></div><p>我们可以这样理解讨价还价问题 <span class="math inline">(S, \boldsymbol{d})</span>：两个参与人针对可行集 <span class="math inline">S</span> 中的结果进行讨价还价，如果两人都同意 <span class="math inline">\boldsymbol{x} = (x_1, x_2) \in S</span>，则参与人 1 获得的效用为 <span class="math inline">x_1</span>，参与人 2 获得 <span class="math inline">x_2</span>。如果两人没有达成共识，则依照分歧点 <span class="math inline">\boldsymbol{d}</span> 进行结算，即参与人 1 获得 <span class="math inline">d_1</span>，参与人 2 获得 <span class="math inline">d_2</span>，博弈结束。这仅仅是对问题设定的一种解释，并不是对讨价还价过程的实际定义。</p>
+<p>在 <a href="note_1.html#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a> 的例子中，可行集与分歧点的定义是</p>
+<p><span class="math display">
+S = \{\boldsymbol{x} \in \mathbb{R}^2 \mid 0 \leq x_1, x_2 \leq 1, x_2 \leq \sqrt{1-x_1}\}, \quad d_1 = d_2 = 0.
+</span></p>
+<p>参考 <a href="note_1.html#fig-division" class="quarto-xref">Figure&nbsp;<span>1.8</span></a>。一般情况下，<span class="math inline">S</span> 和 <span class="math inline">\boldsymbol{d}</span> 的关系类似 <a href="#fig-8.1" class="quarto-xref">Figure&nbsp;<span>8.1</span></a> 中所描绘的样子。</p>
+
+<div class="no-row-height column-margin column-container"><div id="fig-8.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;8.1: 一个二人讨价还价问题"><img src="assets/fig/fig-8.1.png" class="img-fluid figure-img" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.1: 一个二人讨价还价问题
+</figcaption>
+</figure>
+</div><div id="ref-nash_bargaining_1950" class="csl-entry" role="listitem">
+Nash, John F. 1950. <span>“The Bargaining Problem.”</span> <em>Econometrica</em> 18 (2): 155. <a href="https://doi.org/10.2307/1907266">https://doi.org/10.2307/1907266</a>.
+</div></div><p>我们在 <span class="math inline">(S, \boldsymbol{d})</span> 中主要讨论的问题是，双方在哪一点妥协是最好的。这相当于寻找一个函数 <span class="math inline">F: \mathcal{B} \to \mathbb{R}^2</span>，其中 <span class="math inline">\mathcal{B}</span> 是所有讨价还价问题的集合。也就是说，<span class="math inline">F</span> 给每个讨价还价问题 <span class="math inline">(S, \boldsymbol{d}) \in \mathcal{B}</span> 赋予一个可行点 <span class="math inline">F(S, \boldsymbol{b})</span>。我们将函数 <span class="math inline">F</span> 称为（二人）谈判解或议价解（bargaining solution）。根据 <span class="citation" data-cites="nash_bargaining_1950">Nash (<a href="#ref-nash_bargaining_1950" role="doc-biblioref">1950</a>)</span>，一个谈判解需要满足四个性质：帕雷托最优性、对称性、标度协变性、以及无关方案独立性。见 <a href="#fig-8.2" class="quarto-xref">Figure&nbsp;<span>8.2</span></a>。下面我们分别讨论这四个性质。</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div id="fig-8.2" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-8.2" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-8.2-a" class="quarto-float quarto-figure quarto-figure-center anchored" width="300">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-8.2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.2.a.png" class="lightbox" data-gallery="fig-8.2" title="Figure&nbsp;8.2&nbsp;(a): "><img src="assets/fig/fig-8.2.a.png" id="fig-8.2-a" class="img-fluid figure-img" data-ref-parent="fig-8.2" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-8.2-a-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-8.2" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-8.2-b" class="quarto-float quarto-figure quarto-figure-center anchored" width="300">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-8.2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.2.b.png" class="lightbox" data-gallery="fig-8.2" title="Figure&nbsp;8.2&nbsp;(b): "><img src="assets/fig/fig-8.2.b.png" id="fig-8.2-b" class="img-fluid figure-img" data-ref-parent="fig-8.2" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-8.2-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-8.2" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-8.2-c" class="quarto-float quarto-figure quarto-figure-center anchored" width="350">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-8.2-c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.2.c.png" class="lightbox" data-gallery="fig-8.2" title="Figure&nbsp;8.2&nbsp;(c): "><img src="assets/fig/fig-8.2.c.png" id="fig-8.2-c" class="img-fluid figure-img" data-ref-parent="fig-8.2" width="350"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-8.2-c-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-8.2" style="flex-basis: 100.0%;justify-content: flex-start;">
+<div id="fig-8.2-d" class="quarto-float quarto-figure quarto-figure-center anchored" width="300">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-8.2-d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.2.d.png" class="lightbox" data-gallery="fig-8.2" title="Figure&nbsp;8.2&nbsp;(d): "><img src="assets/fig/fig-8.2.d.png" id="fig-8.2-d" class="img-fluid figure-img" data-ref-parent="fig-8.2" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-8.2-d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(d)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.2: <a href="#thm-NBS" class="quarto-xref">Theorem&nbsp;<span>8.1</span></a> 中四个条件（公理）示意图。（未完）
+</figcaption>
+</figure>
+</div>
+</div></div><p><strong>帕雷托最优性（Pareto optimality）</strong> 对讨价还价问题 <span class="math inline">(S, \boldsymbol{d}) \in \mathcal{B}</span>，<span class="math inline">S</span> 中的帕雷托最优点是那些无法在不减少一个参与人的效用的情况下增加另一个参与人效用的点，即</p>
+<p><span class="math display">
+P(S) = \{\boldsymbol{x} \in S \mid \text{for all }\ \boldsymbol{y} \in S \ \text{ with } \  y_1 \geq x_1, y_2 \geq x_2, \ \text{ we have } \ \boldsymbol{y} = \boldsymbol{x}\}
+</span></p>
+<p><span class="math inline">P(S)</span> 称为 <span class="math inline">S</span> 的帕雷托最优子集。谈判解 <span class="math inline">F</span> 如果满足 <span class="math inline">F(S,\boldsymbol{d}) \in P(S)</span> for all <span class="math inline">(S,\boldsymbol{d} \in S)</span>，则称 <span class="math inline">F</span> 为帕雷托最优（Pareto optimal）。帕雷托最优谈判解会给每个讨价还价问题赋予一个帕雷托最优的可行点。见 <a href="#fig-8.2-a" class="quarto-xref">Figure&nbsp;<span>8.2 (a)</span></a>。</p>
+<p><strong>对称性（symmetry）</strong> <span class="math inline">(S, \boldsymbol{d}) \in \mathcal{B}</span> 如果满足 <span class="math inline">d_1 = d_2</span> 且 <span class="math inline">S</span> 关于 <span class="math inline">45^\circ</span> 线对称，即</p>
+<p><span class="math display">
+S = \{(x_2, x_1) \in \mathbb{R}^2 \mid (x_1, x_2) \in S\},
+</span></p>
+<p>则称 <span class="math inline">(S, \boldsymbol{d})</span> 为对称（symmetric）。在对称的讨价还价问题中，除了给参与人人为命名以外，无法通过其他途径区分两个参与人。如果针对每个对称的 <span class="math inline">(S, \boldsymbol{d}) \in \mathcal{B}</span>，谈判解 <span class="math inline">F</span> 都满足 <span class="math inline">F_1(S, \boldsymbol{d}) = F_2(S, \boldsymbol{d})</span>，则 <span class="math inline">F</span> 也是对称的。因此，一个对称谈判解在对称讨价还价问题中给每个参与人赋予相同的效用。见 <a href="#fig-8.2-b" class="quarto-xref">Figure&nbsp;<span>8.2 (b)</span></a>。</p>
+<p>对于对称讨价还价问题 <span class="math inline">(S, \boldsymbol{d})</span>，满足帕雷托最优性和对称性的谈判解是唯一的，因为 <span class="math inline">S</span> 中的对称帕雷托最优点只有一个。</p>
+<p><strong>标度协变性（scale covariance）</strong> 这条性质要求，即使效用的单位发生变化（包括改变坐标系的原点和进行缩放），谈判解也应该保持不变。例如在 <a href="note_1.html#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a> 的分配问题中，即使我们将效用函数改为 <span class="math inline">\overline{u}_1 = a_1 \alpha + b_1</span>，<span class="math inline">\overline{u}_2 = a_2 \sqrt{\alpha} + b_2</span>，<span class="math inline">a_1, a_2, b_1, b_2 \in \mathbb{R}</span>，<span class="math inline">a_1, a_2 &gt; 0</span>，对葡萄酒的最终分配结果也不应发生变化。<span class="math inline">\overline{u}_1</span> 和 <span class="math inline">\overline{u}_2</span> 可以看作效用函数 <span class="math inline">u_1</span> 和 <span class="math inline">u_2</span> 在不同单位下的表达。下面是这一性质的正式表述。谈判解 <span class="math inline">F</span> 如果对所有 <span class="math inline">(S, \boldsymbol{d}) \in \mathcal{B}</span>，<span class="math inline">a_1, a_2, b_1, b_2 \in \mathbb{R}</span>，<span class="math inline">a_1, a_2 &gt; 0</span> 都满足</p>
+<p><span class="math display">
+F\big(\{\boldsymbol{a}^\top \boldsymbol{x} + \boldsymbol{b} \in \mathbb{R}^2 \mid \boldsymbol{x} \in S\}, \boldsymbol{a}^\top \boldsymbol{d} + \boldsymbol{b}\big) = \boldsymbol{a}^\top F(S, \boldsymbol{d}) + \boldsymbol{b}, \quad
+\boldsymbol{a} = \begin{pmatrix} a_1 \\ a_2\end{pmatrix},
+\boldsymbol{b} = \begin{pmatrix} b_1 \\ b_2\end{pmatrix}
+</span></p>
+<p>则称 <span class="math inline">F</span> 为标度协变（scale covariant）。<a href="#fig-8.2-c" class="quarto-xref">Figure&nbsp;<span>8.2 (c)</span></a> 展示了一个简单的例子。</p>
+<p><strong>无关方案独立性（independence of irrelevant alternatives, IIA）</strong> 这是四个性质中最具争议的一个。假设一个讨价还价问题 <span class="math inline">(S, \boldsymbol{d})</span> 的最终分配是 <span class="math inline">\boldsymbol{z} = F(S, \boldsymbol{d}) \in S</span>。它可以理解为 <span class="math inline">F</span> 在 <span class="math inline">S</span> 中找出的最佳妥协点。如果现在有一个更小的讨价还价问题 <span class="math inline">(T, \boldsymbol{d}), T \subseteq S</span> 满足 <span class="math inline">\boldsymbol{z} \in T</span>，那么 <span class="math inline">\boldsymbol{z}</span> 也应该是 <span class="math inline">T</span> 中的最佳妥协点，因为 <span class="math inline">T</span> 是 <span class="math inline">S</span> 的子集，且 <span class="math inline">T</span> 包含 <span class="math inline">\boldsymbol{z}</span>。因此，我们的结论应该是 <span class="math inline">F(T, \boldsymbol{d}) = \boldsymbol{z} = F(S, \boldsymbol{d})</span>。例如在葡萄酒分配问题中，假设最终分配方案是两人平分一升酒，对应效用 <span class="math inline">(1/2, \sqrt{1/2})</span>。现在假设两人各自最多只能喝 <span class="math inline">3/4</span> 升酒，喝更多不会带来更大的效用。这时新的可行集是</p>
+<p><span class="math display">
+\textstyle
+T = \{\boldsymbol{x} \in \mathbb{R}^2 \mid 0 \leq x_1 \leq 3/4, \ 0 \leq x_2 \leq \sqrt{3/4}, \ x_2 \leq \sqrt{1-x_1}\}.
+</span></p>
+<p>根据前面的逻辑，此时两人依然应该平分，因为 <span class="math inline">T \subseteq S</span> 且 <span class="math inline">(1/2, \sqrt{1/2}) \in T</span>。这看上去很有道理，但是其实可以很容易地找到至少存在讨论余地的其他例子。例如，假设参与人 1 依然觉得喝得越多越好，但参与人 2 最多只想喝 <span class="math inline">1/2</span> 升。这时的可行集是</p>
+<p><span class="math display">
+\textstyle
+T' = \{\boldsymbol{x} \in \mathbb{R}^2 \mid 0 \leq x_1 \leq 1, \ 0 \leq x_2 \leq \sqrt{1/2}, \ x_2 \leq \sqrt{1-x_1}\},
+</span></p>
+<p>而结果依然是保持平分。但这时参与人 2 获得了他可以获得的最大效用，只有参与人 1 做出了让步，这看上去也并不是那么的合理。</p>
+<p>谈判解 <span class="math inline">F</span> 如果对 <span class="math inline">(S, \boldsymbol{d}), (T, \boldsymbol{d}) \in \mathcal{B}</span>，<span class="math inline">T \subseteq S</span>，<span class="math inline">F(S, \boldsymbol{d}) \in T</span> 满足 <span class="math inline">F(T, \boldsymbol{d}) = F(S, \boldsymbol{d})</span>，则称其独立于其他无关方案（independent of irrelevant alternatives）。见 <a href="#fig-8.2-d" class="quarto-xref">Figure&nbsp;<span>8.2 (d)</span></a>。</p>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-NBS" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8.2</strong></span> 讨价还价问题 <span class="math inline">(S,\boldsymbol{d}) \in \mathcal{B}</span> 的纳什谈判解（Nash bargaining solution）<span class="math inline">F^\text{Nash}(S, \boldsymbol{d})</span> 对应 <span class="math inline">S</span> 中满足下列条件的唯一点 <span class="math inline">\boldsymbol{z} \in S</span>：</p>
+<p><span class="math display">
+\boldsymbol{z} = \underset{\boldsymbol{x} \in S, \ x_1 \geq d_1, \ x_2 \geq d_2}{\text{argmax}} \ (x_1 - d_1)(x_2 - d_2)
+</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="thm-NBS" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8.1</strong></span> 纳什谈判解 <span class="math inline">F^\text{Nash}</span> 是唯一同时满足帕雷托最优性、对称性、标度协变性、无关方案独立性的谈判解。</p>
+</div>
+</div>
+</div>
+</div>
+<p>对 <a href="#thm-NBS" class="quarto-xref">Theorem&nbsp;<span>8.1</span></a> 的证明感兴趣的同学可以参考原书第二十一章。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-8.1" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.1</strong></span> 这里我们通过例子展示 <a href="#thm-NBS" class="quarto-xref">Theorem&nbsp;<span>8.1</span></a> 中每个条件起到的作用。这也是将证明的思路放在例子中进行展示。令 <span class="math inline">S = \{(x_1, x_2) \in \mathbb{R}^2 \mid 0 \leq x_1 \leq 2, \ 0 \leq x_2 \leq 4 - x_1^2\}</span>，<span class="math inline">\boldsymbol{d} = (0,1)</span>。纳什谈判解是 <span class="math inline">\mathrm{argmax}_{\ 0\leq x_1 \leq 2} \ x_1 (3-x_1^2)</span> 的解，即 <span class="math inline">(1, 3)</span>。如果我们从第二坐标中减去 <span class="math inline">1</span>，可以获得新的讨价还价问题</p>
+<p><span class="math display">
+S' = \{(x_1, x_2) \in \mathbb{R}^2 \mid 0 \leq x_1 \leq 2, \ -1 \leq x_2 \leq 3 - x_1^2\}, \quad \boldsymbol{d}' = (0,0)
+</span></p>
+<p>如果继续将第二坐标除以 <span class="math inline">2</span>，则可以获得</p>
+<p><span class="math display">
+S'' = \Big\{(x_1, x_2) \in \mathbb{R}^2 \mid 0 \leq x_1 \leq 2, \ -\frac{1}{2} \leq x_2 \leq \frac{3}{2} - \frac{x_1^2}{2}\Big\}, \quad \boldsymbol{d}'' = (0,0)
+</span></p>
+<p><span class="math inline">S''</span> 的帕雷托最优边界是 <span class="math inline">f(x_1) = \frac{3}{2} - \frac{1}{2}x_1^2, 0 \leq x_1 \leq 2</span>。此函数在 <span class="math inline">x_1 = 1</span> 时的导函数值是 <span class="math inline">-1</span>，也就是说 <span class="math inline">S''</span> 在点 <span class="math inline">(1,1)</span> 的切线的斜率是 <span class="math inline">-1</span>。现在考虑由三点 <span class="math inline">(-1,-1), (3,-1), (-1,3)</span> 为顶点的三角形区域组成的可行集 <span class="math inline">T</span>，见 <a href="#fig-8.3" class="quarto-xref">Figure&nbsp;<span>8.3</span></a>。讨价还价问题 <span class="math inline">(T, (0,0))</span> 是对称的，根据对称性和帕雷托最优性，<span class="math inline">(T, (0,0))</span> 的纳什谈判解是 <span class="math inline">(1,1)</span>。这一点在 <span class="math inline">S''</span> 内部，且 <span class="math inline">S'' \subseteq T</span>，根据 IIA，<span class="math inline">(S'', (0,0))</span> 的纳什谈判解也是 <span class="math inline">(1,1)</span>。根据 scale covariance，可得 <span class="math inline">(S', (0,0))</span> 的纳什谈判解是 <span class="math inline">(1,2)</span>，同理可得 <span class="math inline">(S, (0,1))</span> 的纳什谈判解是 <span class="math inline">(1,3)</span>。这里我们仅用 <a href="#thm-NBS" class="quarto-xref">Theorem&nbsp;<span>8.1</span></a> 中的性质就解出了纳什谈判解，并且与利用定义公式的计算结果相同。</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fig-8.3" class="quarto-float quarto-figure quarto-figure-center anchored callout-margin-content callout-margin-content-simple" width="300">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;8.3: "><img src="assets/fig/fig-8.3.png" id="fig-8.3" class="img-fluid figure-img" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-8.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.3
+</figcaption>
+</figure>
+</div></div></section>
+<section id="sec-8.1.2" class="level3 page-columns page-full" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="sec-8.1.2"><span class="header-section-number">8.1.2</span> 与鲁宾斯坦序贯议价模型的关系</h3>
+<p>在 <a href="note_6.html#sec-6.7.2" class="quarto-xref"><span>Section 6.7.2</span></a> 中我们学习了（无限回合）鲁宾斯坦序贯议价模型，其中参与人通过交替报价的方式尝试达成共识。下面我们以 <a href="note_1.html#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a> 的分配问题为例考察鲁宾斯坦模型和纳什谈判解之间的关系。</p>
+<p>这个问题的纳什谈判解是 <span class="math inline">(2/3, \sqrt{1/3})</span>，这意味着参与人 1 分得 <span class="math inline">2/3</span> 升葡萄酒，参与人 2 分得 <span class="math inline">1/3</span> 升。而在鲁宾斯坦的无限回合模型（折现因子 <span class="math inline">0 &lt; \delta &lt; 1</span>）中，子博弈完美均衡策略是参与人 1 提议 <span class="math inline">\boldsymbol{x} = (x_1, x_2) \in P(S)</span>，参与人 2 提议 <span class="math inline">\boldsymbol{y} = (y_1, y_2) \in P(S)</span>，且满足</p>
+<p><span class="math display">
+x_2 = \delta y_2, \quad y_1 = \delta x_1.
+</span></p>
+<p>由此可得</p>
+<p><span class="math display">
+\sqrt{1-x_1} = x_2 = \delta y_2 = \delta \sqrt{1-y_1} = \delta \sqrt{1-\delta x_1}
+</span></p>
+<p>进而推出 <span class="math inline">1-x_1 = \delta^2 (1-\delta x_1)</span>，解之可得</p>
+<p><span class="math display">
+x_1 = \frac{1-\delta^2}{1-\delta^3} = \frac{1+\delta}{1+\delta+\delta^2}.
+</span></p>
+<p>如果我们令 <span class="math inline">\delta</span> 趋近于 <span class="math inline">1</span>，则 <span class="math inline">x_1</span> 的极限是</p>
+<p><span class="math display">
+\lim_{\delta \to 1} \frac{1+\delta}{1+\delta+\delta^2} = \frac{2}{3},
+</span></p>
+<p>和参与人 1 在纳什谈判解中获得的效用一致。这并不是巧合，从 <span class="math inline">x_2 = \delta y_2</span> 和 <span class="math inline">y_1 = \delta x_1</span> 可得</p>
+<p><span class="math display">
+(x_1 - d_1)(x_2 - d_2) = x_1 x_2 = (y_1 / \delta)(\delta y_2) = y_1 y_2 = (y_1 - d_1)(y_2 - d_2)
+</span></p>
+<p>也就是说，鲁宾斯坦模型的均衡中的提议 <span class="math inline">\boldsymbol{x}</span> 和 <span class="math inline">\boldsymbol{y}</span> 的“纳什积”相等。<a href="#fig-8.4" class="quarto-xref">Figure&nbsp;<span>8.4</span></a> 中画出了 <span class="math inline">\delta = 0.5</span> 时的两个提议点的位置。</p>
+
+<div class="no-row-height column-margin column-container"><div id="fig-8.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-8.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-8.4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;8.4: 葡萄酒分配问题。分歧点是原点，\boldsymbol{z} 是纳什谈判解。点 \boldsymbol{x} 和 \boldsymbol{y} 分别是 \delta = 0.5 的鲁宾斯坦模型中参与人 1 和 2 在子博弈完美均衡中的提议。"><img src="assets/fig/fig-8.4.png" class="img-fluid figure-img" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-8.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8.4: 葡萄酒分配问题。分歧点是原点，<span class="math inline">\boldsymbol{z}</span> 是纳什谈判解。点 <span class="math inline">\boldsymbol{x}</span> 和 <span class="math inline">\boldsymbol{y}</span> 分别是 <span class="math inline">\delta = 0.5</span> 的鲁宾斯坦模型中参与人 1 和 2 在子博弈完美均衡中的提议。
+</figcaption>
+</figure>
+</div></div><p>所以，鲁宾斯坦无限回合序贯议价模型的子博弈完美均衡收益在折现因子趋近于 <span class="math inline">1</span> 时的极限值和纳什谈判解的分配结果相同。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-8.2" class="theorem example">
+<p><span class="theorem-title"><strong>Example 8.2</strong></span> 在 <a href="#exm-8.1" class="quarto-xref">Example&nbsp;<span>8.1</span></a> 中，讨价还价问题 <span class="math inline">(S',(0,0))</span> 对应的鲁宾斯坦模型的均衡提议可以通过下面的方程组计算</p>
+<p><span class="math display">
+x_2 = \delta y_2, \quad y_1 = \delta x_1, \quad
+x_2 = 3 - x_1^2, \quad y_2 = 3 - y_1^2
+</span></p>
+<p>经计算可得</p>
+<p><span class="math display">
+x_1 = \sqrt{\frac{3(1-\delta)}{1-\delta^3}} = \sqrt{\frac{3}{1+\delta+\delta^2}}.
+</span></p>
+<p>当 <span class="math inline">\delta \to 1</span> 时，</p>
+<p><span class="math display">
+\lim_{\delta \to 1} \sqrt{\frac{3}{1+\delta+\delta^2}} = 1,
+</span> 这也是参与人 1 的纳什均衡解分配。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-8.2" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="sec-8.2"><span class="header-section-number">8.2</span> 交换经济</h2>
+<p>这里省略这一节的内容，请参考原书第十章第二节。</p>
+</section>
+<section id="sec-8.3" class="level2 page-columns page-full" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="sec-8.3"><span class="header-section-number">8.3</span> 匹配问题</h2>
+<p>匹配问题泛指参与人之间需要进行两两配对的问题，例如学生和学校、医院和医生、员工和企业、有结婚意愿的男女等。这些例子里有的一对多匹配，有的是一对一匹配。这一节中我们讨论一对一匹配。</p>
+<p>假设参与人可以分成人数相同的两个组（人数为有限且非空），分别记作 <span class="math inline">M</span> 和 <span class="math inline">W</span>。每个 <span class="math inline">M</span> 中的参与人都对 <span class="math inline">W</span> 中他认为可以在一起的参与人持有严格偏好（意味着和其他 <span class="math inline">W</span> 中的参与人在一起还不如保持单身），同样，每个 <span class="math inline">W</span> 中的参与人都对 <span class="math inline">M</span> 中她认为可以在一起的参与人持有严格偏好。在这个问题中，匹配（matching）指的是给每个 <span class="math inline">M</span> 中的参与人指定最多一个 <span class="math inline">W</span> 中的参与人，同时给每个 <span class="math inline">W</span> 中的参与人指定最多一个 <span class="math inline">M</span> 中的参与人。因此这是一个一对一的映射关系，也就是说不会给两个及以上 <span class="math inline">M</span> 中的参与人指定同一个 <span class="math inline">W</span> 中的参与人，反之亦然。</p>
+<p>这个匹配问题也可以称为结婚问题（marriage problem），<span class="math inline">M</span> 和 <span class="math inline">W</span> 分别代表男性和女性。但这仅仅是为了叙事上的方便，同样的设定也可以应用在房间和住户间的匹配等类似问题上。</p>
+<p>让我们首先考虑 <a href="#tbl-8.1" class="quarto-xref">Table&nbsp;<span>8.1</span></a> 中的例子。这里男性集合为 <span class="math inline">M = \{m_1, m_2, m_3\}</span>，女性集合为 <span class="math inline">W = \{w_1, w_2, w_3\}</span>。每一列给出了一个参与人的偏好。例如 <span class="math inline">m_1</span> 喜欢 <span class="math inline">w_2</span> 超过 <span class="math inline">w_1</span>，喜欢 <span class="math inline">w_1</span> 超过保持单身，喜欢保持单身超过 <span class="math inline">w_3</span>。一个匹配的例子是 <span class="math inline">(m_1, w_1), (m_3, w_2), m_2, w_3</span>，意味着 <span class="math inline">m_1</span> 和 <span class="math inline">w_1</span> 结婚，<span class="math inline">m_3</span> 和 <span class="math inline">w_2</span> 结婚，<span class="math inline">m_2</span> 和 <span class="math inline">w_3</span> 各自保持单身<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。这个匹配并不稳定（stable），因为 <span class="math inline">m_1</span> 和 <span class="math inline">w_2</span> 更偏好和彼此结婚而不是和匹配中的另一方结婚，同时 <span class="math inline">m_2</span> 和 <span class="math inline">w_3</span> 也更偏好和彼此结婚而不是各自保持单身。同理，所有包含 <span class="math inline">(m_1, w_3)</span> 的匹配都不稳定，因为相比和 <span class="math inline">w_3</span> 结婚，<span class="math inline">m_1</span> 更偏好保持单身。</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;这个问题中一共有 34 种不同的匹配。</p></div></div><div id="tbl-8.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-8.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.1: 一个匹配问题
+</figcaption>
+<div aria-describedby="tbl-8.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参与人</th>
+<th><span class="math inline">m_1</span></th>
+<th><span class="math inline">m_2</span></th>
+<th><span class="math inline">m_3</span></th>
+<th><span class="math inline">w_1</span></th>
+<th><span class="math inline">w_2</span></th>
+<th><span class="math inline">w_3</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>第一偏好</td>
+<td><span class="math inline">w_2</span></td>
+<td><span class="math inline">w_1</span></td>
+<td><span class="math inline">w_1</span></td>
+<td><span class="math inline">m_1</span></td>
+<td><span class="math inline">m_2</span></td>
+<td><span class="math inline">m_1</span></td>
+</tr>
+<tr class="even">
+<td>第二偏好</td>
+<td><span class="math inline">w_1</span></td>
+<td><span class="math inline">w_2</span></td>
+<td><span class="math inline">w_2</span></td>
+<td><span class="math inline">m_3</span></td>
+<td><span class="math inline">m_1</span></td>
+<td><span class="math inline">m_3</span></td>
+</tr>
+<tr class="odd">
+<td>第三偏好</td>
+<td></td>
+<td><span class="math inline">w_3</span></td>
+<td></td>
+<td><span class="math inline">m_2</span></td>
+<td><span class="math inline">m_3</span></td>
+<td><span class="math inline">m_2</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>为了排除不稳定匹配，一个显而易见的方法是寻找匹配问题的核。一个匹配中如果不存在能够通过不服从匹配（包括结婚和保持单身）而产生更好结果的参与人（联盟），那么该匹配就包含在核中。下面是核匹配的两个必要条件：</p>
+<ol type="1">
+<li><p>跟保持单身相比，每个参与人都更偏好和匹配中指定的人结婚；</p></li>
+<li><p>如果 <span class="math inline">m \in M</span> 和 <span class="math inline">w \in W</span> 没有被匹配成一对，则以下情况不会同时出现：</p>
+<ul>
+<li><p><span class="math inline">m</span> 更偏好和 <span class="math inline">w</span> 结婚（无论他被指定和其他人结婚或者保持单身），</p></li>
+<li><p><span class="math inline">w</span> 更偏好和 <span class="math inline">m</span> 结婚（无论她被指定和其他人结婚或者保持单身）。</p></li>
+</ul></li>
+</ol>
+<p>如果不符合第一条，则该参与人可以通过离婚让自己更加满足；如果不符合第二条，则 <span class="math inline">m</span> 和 <span class="math inline">w</span> 可以通过和彼此结婚让各自都更加满足。因此，符合这两个条件的匹配称为稳定匹配。在核中的匹配都是稳定匹配，并且任何稳定匹配都包含在核中。为了证明后半句（即这两个条件也是充分条件），我们可以假设一个不在核中的匹配符合这两个条件，此时就存在一个参与人联盟，使该联盟内的参与人通过相互结婚或者保持单身而更加满足。如果通过保持单身而变得更好，则不符合条件一；如果联盟里的两个人通过和彼此结婚而变得更好，则不符合条件二。这和假设相矛盾，因此任何稳定匹配都是核匹配。换句话说，匹配问题的核是所有稳定匹配的集合。</p>
+<p>那么如何找到稳定匹配呢？常用方法是由 Gale 和 Shapley 提出的延迟接受算法（deferred acceptance algorithm）。在这个算法中，由一组中的参与人进行求婚，另一组中的参与人则决定接受或者拒绝。这里假设让男性求婚。在第一回合，每个男性向他最想结婚的女性求婚（如果他更偏好保持单身则保持单身），每个女性从向自己求婚的男性当中选择自己最偏好的一位（如果更偏好保持单身或没有收到求婚则选择保持单身）。这样可以产生一些配对，我们称之为订婚。在第二回合，之前被拒绝的男性向自己第二偏好的女性求婚（或保持单身），然后每个女性从向自己求婚的男性以及当前订婚的男性中选择自己最偏好的一位。重复这一操作直至所有的求婚都被接受。最后让所有订婚的配对结婚，没有订婚的配对保持单身，从而产生一个匹配。</p>
+<p>由延迟接受算法得出的匹配是稳定的。最终保持单身的男性肯定是被所有求婚对象拒绝了，因此没有哪个女性认为和他结婚好于和现在的匹配对象结婚或者保持单身。最终保持单身的女性肯定是没有接到任何她想结婚的男性的求婚。最后考虑 <span class="math inline">m \in M</span> 和 <span class="math inline">w \in W</span> 最终各自结婚了但不是和彼此结婚的情况。如果 <span class="math inline">m</span> 更偏好和 <span class="math inline">w</span> 结婚而非现在的妻子，则说明 <span class="math inline">w</span> 在某一回合曾经拒绝 <span class="math inline">m</span> 的求婚而选择了更好的。如果 <span class="math inline">w</span> 更偏好和 <span class="math inline">m</span> 结婚而非现在的丈夫，则说明 <span class="math inline">m</span> 从未向 <span class="math inline">w</span> 求过婚，因此 <span class="math inline">m</span> 更偏好现在的妻子。</p>
+<p>如果让女性求婚，延迟接受算法也适用，但通常会得到一个不一样的稳定匹配。</p>
+<p><a href="#tbl-8.2" class="quarto-xref">Table&nbsp;<span>8.2</span></a> 展示了如何用延迟接受算法解 <a href="#tbl-8.1" class="quarto-xref">Table&nbsp;<span>8.1</span></a> 中的匹配问题。</p>
+<div id="tbl-8.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-8.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.2: 用延迟接受算法解 <a href="#tbl-8.1" class="quarto-xref">Table&nbsp;<span>8.1</span></a> 中的匹配问题。最终获得的匹配是 <span class="math inline">(m_1, w_1), (m_2, w_2), m_3, w_3</span>。
+</figcaption>
+<div aria-describedby="tbl-8.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>第一回合</th>
+<th>第二回合</th>
+<th>第三回合</th>
+<th>第四回合</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">m_1</span></td>
+<td><span class="math inline">\to w_2</span></td>
+<td>被拒绝</td>
+<td><span class="math inline">\to w_1</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">m_2</span></td>
+<td><span class="math inline">\to w_1</span> 被拒绝</td>
+<td><span class="math inline">\to w_2</span></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">m_3</span></td>
+<td><span class="math inline">\to w_1</span></td>
+<td></td>
+<td>被拒绝</td>
+<td><span class="math inline">\to w_2</span> 被拒绝</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>除了通过延迟接受算法获得的稳定匹配，还可能存在其他稳定匹配。而在延迟接受算法中，让男性求婚得到的稳定匹配对于男性来说是最优的，让女性求婚得到的稳定匹配对于女性来说是最优的。</p>
+</section>
+<section id="sec-8.4" class="level2 page-columns page-full" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="sec-8.4"><span class="header-section-number">8.4</span> 房屋置换</h2>
+<p>在房屋置换问题中存在有限多个参与人，每人个参与人拥有一套房子，并且每人都对所有房子有自己的偏好。参与人们可以通过置换房子达到收益最大化。</p>
+<p>令参与人集合为 <span class="math inline">N = \{1,\dots, n\}</span>，每个参与人 <span class="math inline">i</span> 拥有的房子为 <span class="math inline">h_i</span>，每个人都对全部 <span class="math inline">n</span> 个房子持有严格偏好。此问题的核分配会分给每个参与人一套房子，且不存在任何联盟可以通过内部置换初始持有房屋的方式让每一个成员都获得更大的收益<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。例如，假设一个分配分给参与人 1 <span class="math inline">h_1</span>，分给参与人 2 <span class="math inline">h_3</span>。二人如果交换初始持有的房屋，则参与人 1 会获得 <span class="math inline">h_2</span>，优于他分得的 <span class="math inline">h_1</span>；参与人 2 会获得 <span class="math inline">h_1</span>，也优于他分得的 <span class="math inline">h_3</span>。因此，这个分配方法不会出现在核分配中。</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;这里可以置换的只是初始拥有的房屋，而非执行该分配后获得的房屋。</p></div></div><p>考虑 <a href="#tbl-8.3" class="quarto-xref">Table&nbsp;<span>8.3</span></a> 中的例子。这个问题存在六种不同的分配。<a href="#tbl-8.4" class="quarto-xref">Table&nbsp;<span>8.4</span></a> 列出了这些分配，以及哪些联盟可以通过内部置换进行改善。</p>
+<div id="tbl-8.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-8.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.3: 一个三人房屋置换问题
+</figcaption>
+<div aria-describedby="tbl-8.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参与人</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>第一偏好</td>
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">h_2</span></td>
+</tr>
+<tr class="even">
+<td>第二偏好</td>
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">h_3</span></td>
+</tr>
+<tr class="odd">
+<td>第三偏好</td>
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">h_1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div id="tbl-8.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-8.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;8.4: 对 <a href="#tbl-8.3" class="quarto-xref">Table&nbsp;<span>8.3</span></a> 中问题的分析。这个问题共有两个核分配。
+</figcaption>
+<div aria-describedby="tbl-8.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>参与人 1</th>
+<th>参与人 2</th>
+<th>参与人 3</th>
+<th>可以进行改善的联盟</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">\{1,2\}, \{1,2,3\}</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">\{2\}, \{1,2\}</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">h_3</span></td>
+<td>无：这是核分配</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">\{2\}, \{3\}, \{2,3\}, \{1,2,3\}</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">h_2</span></td>
+<td>无：这是核分配</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">h_3</span></td>
+<td><span class="math inline">h_2</span></td>
+<td><span class="math inline">h_1</span></td>
+<td><span class="math inline">\{3\}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>对于大型问题（即参与人人数很多的问题），如 <a href="#tbl-8.4" class="quarto-xref">Table&nbsp;<span>8.4</span></a> 中的穷举法将会变得非常复杂。另一种更加方便的替代方法是 top trading cycle 算法（TTC 算法，根据其含义或可翻译为第一偏好交易环算法）。在房屋置换问题中，一个 top trading cycle 指的是一个参与人序列 <span class="math inline">i_1, i_2, \dots, i_k</span>，<span class="math inline">k \geq 1</span>，其中 <span class="math inline">i_1</span> 最偏好的房屋是 <span class="math inline">h_{i_2}</span>，<span class="math inline">i_2</span> 最偏好的房屋是 <span class="math inline">h_{i_3}</span>，依此类推，最后 <span class="math inline">i_k</span> 最偏好的房屋是 <span class="math inline">h_{i_1}</span>。如果 <span class="math inline">k=1</span>，这意味着参与人 <span class="math inline">i_1</span> 已经拥有自己最偏好的房屋。在 TTC 算法中，我们尝试寻找一个 top trading cycle，然后将其中每个参与人最偏好的房屋置换给他。随后将这些参与人和他们的房屋从问题中移除，寻找下一个 top trading cycle，然后再进行置换。重复这一过程直至将所有人移除。</p>
+<p>对于 <a href="#tbl-8.3" class="quarto-xref">Table&nbsp;<span>8.3</span></a> 中的问题来说，唯一的 top trading cycle 是 <span class="math inline">1, 3, 2</span>，对应分配 <span class="math inline">1: h_3, 3: h_2, 2: h_1</span>。这是一个核分配，因为每个都获得了他最偏好的房子。<strong>TTC 算法在严格偏好下总能得到核分配</strong>。</p>
+<p>那么 <a href="#tbl-8.4" class="quarto-xref">Table&nbsp;<span>8.4</span></a> 中的另一个核分配 <span class="math inline">1: h_2, 3: h_3, 2: h_1</span> 呢？在这个分配中，全体联盟可以进行“弱改进”，即通过 <span class="math inline">1: h_3, 3: h_2, 2: h_1</span> 使参与人 1 和 3 都获得更想得到的房子，参与人 2 也没有变得更差。我们称所有无法进行弱改进的分配集合为“强核”（strong core）。即在强核分配中，没有任何联盟可以让其成员不会变得更差，但能让至少一个成员变得更好。在这个例子里，<span class="math inline">1: h_3, 3: h_2, 2: h_1</span> 是唯一的强核分配。事实上，<strong>对于严格偏好房屋置换问题，TTC 算法给出的分配是唯一的强核分配</strong>。</p>
 
 
 
+</section>
 
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
 
-</div></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -268,18 +833,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -311,7 +865,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -319,7 +893,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -423,7 +997,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -668,13 +1241,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

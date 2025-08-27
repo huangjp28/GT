@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -72,6 +72,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -82,13 +125,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">课程信息</a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -124,9 +167,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -211,6 +254,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#基本信息" id="toc-基本信息" class="nav-link active" data-scroll-target="#基本信息">基本信息</a></li>
   <li><a href="#学习目标" id="toc-学习目标" class="nav-link" data-scroll-target="#学习目标">学习目标</a></li>
+  <li><a href="#成绩评定" id="toc-成绩评定" class="nav-link" data-scroll-target="#成绩评定">成绩评定</a></li>
+  <li><a href="#教学进度" id="toc-教学进度" class="nav-link" data-scroll-target="#教学进度">教学进度</a></li>
   </ul>
 </nav>
     </div>
@@ -242,24 +287,19 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>这里是<strong>深圳大学经济学院</strong>开设的本科课程《<strong>博弈论</strong>》的课程网站。本门课程面向经济学专业的本科高年级学生讲授博弈论的核心内容，包括<u>非合作博弈</u>中的零和博弈、二人非零和博弈、扩展式博弈、不完全信息博弈以及信息经济学中的经典应用问题，同时也兼顾<u>合作博弈</u>的基本理论及其应用。将合作博弈作为课程内容的一个主要部分是本门课程的特色。</p>
+<p>这里是<strong>深圳大学经济学院</strong>开设的本科课程《<strong>博弈论</strong>》的课程网站。本门课程面向经济学专业的本科高年级学生讲授博弈论的核心内容，包括<u>非合作博弈</u>中的零和博弈、二人非零和博弈、扩展式博弈、不完全信息博弈以及经济学中的经典应用问题，同时也兼顾<u>合作博弈</u>的基本理论及其应用。将合作博弈作为课程内容的一个主要部分是本门课程的特色。</p>
 <p>博弈论是微观经济学理论中不可或缺的重要内容，也是应用数学的一个研究领域，对学习者的数学基础要求较高。鉴于经济学专业本科生的平均数学能力有限，课程内容中不会涉及过多的数学推导和证明，因此大部分概念会以例子的形式进行介绍，但多数定义依然会保留数学上的严谨性。为了更好地理解博弈论的思维方式，建议数学基础较差的同学对集合论、线性代数和基本的最优化理论进行补充学习。</p>
 <section id="基本信息" class="level2 unnumbered page-columns page-full">
 <h2 class="unnumbered anchored" data-anchor-id="基本信息">基本信息</h2>
 <ul>
 <li><p><strong>课程代码</strong>：0202860001</p></li>
-<li><p><strong>开课学期</strong>：2024秋冬</p></li>
-<li><p><strong>上课时间与地点</strong>：星期一 7-8节，丽湖校区四方楼 南104</p></li>
+<li><p><strong>开课学期</strong>：2025秋冬</p></li>
+<li><p><strong>上课时间与地点</strong>：星期三 7-8节，丽湖校区四方楼 东306</p></li>
 <li><p><strong>任课教师</strong>：黄嘉平（中国经济特区研究中心）</p></li>
-<li><p><strong>联系方式</strong>：请发邮件至 huangjp #at# szu . edu . cn</p></li>
+<li><p><strong>联系方式</strong>：请发邮件至 <code>huangjp %at% szu %dot% edu %dot% cn</code></p></li>
 <li><p><strong>办公室</strong>：粤海校区汇文楼 1510，丽湖校区守正楼 A 栋三楼公共办公室</p></li>
-<li><p><strong>接访时间</strong>：</p>
-<ul>
-<li>粤海校区办公室：星期三 15:45-16:30</li>
-<li>丽湖校区临时办公室：需提前发邮件联系以确定接访时间和地点</li>
-</ul></li>
-<li><p><strong>成绩评价</strong>：出席情况 10% + 课堂表现 10% + 作业 20% + 期末考核 60%</p></li>
-<li><p><strong>教学辅助工具</strong>：微助教（主要用于签到和发布资料）</p></li>
+<li><p><strong>接访时间</strong>：为方便与选课学生交流，接访地点为丽湖校区，需事先邮件预约时间地点</p></li>
+<li><p><strong>教学辅助工具</strong>：深圳大学教学平台（可以从<a href="https://lms.szu.edu.cn">网页端</a>和企业微信端访问，主要用于签到、课堂互动和收作业）</p></li>
 <li><p><strong>主要参考书</strong>：<br>
 Peters, H. (2015). <em>Game Theory: A Multi-Leveled Approach</em>, 2nd Edition. Springer.<br>
 <a href="https://link.springer.com/book/10.1007/978-3-662-46950-7" class="uri">https://link.springer.com/book/10.1007/978-3-662-46950-7</a><br>
@@ -270,8 +310,8 @@ Peters, H. (2015). <em>Game Theory: A Multi-Leveled Approach</em>, 2nd Edition. 
 <p>参考书封面</p>
 <p><a href="assets/fig/book.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="assets/fig/book.jpg" class="light-box img-fluid" width="200"></a></p>
 </div></div></section>
-<section id="学习目标" class="level2">
-<h2 class="anchored" data-anchor-id="学习目标">学习目标</h2>
+<section id="学习目标" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="学习目标">学习目标</h2>
 <p>本门课程的学习目标分为以下三个层次：</p>
 <ul>
 <li><p>Level 1：理解博弈论的基本概念及思维方式</p></li>
@@ -279,7 +319,7 @@ Peters, H. (2015). <em>Game Theory: A Multi-Leveled Approach</em>, 2nd Edition. 
 <li><p>Level 3：会运用所学方法对实际问题进行建模分析</p></li>
 </ul>
 <p>三个层次依次对应听懂了、会做题、能举一反三。我们并不要求理解方法背后的复杂数学原理，也不要求对定理进行证明，但是要求学生具备通用的文献阅读和学术写作能力，并遵循基本的学术规范。学习目标和考核方式之间的大致关系见下表：</p>
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th style="text-align: center;">学习目标</th>
@@ -310,6 +350,114 @@ Peters, H. (2015). <em>Game Theory: A Multi-Leveled Approach</em>, 2nd Edition. 
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;">✅</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="成绩评定" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="成绩评定">成绩评定</h2>
+<p>本门课程采用期末考核为主的成绩评定方式，具体分数分配为</p>
+<p><span class="math display">
+\text{出席情况}\ 10\% + \text{课堂表现}\ 10\% + \text{作业}\ 20\% + \text{期末考核}\ 60\%
+</span></p>
+<p>其中课堂表现包括课堂参与度、随堂测验成绩等。</p>
+<p>根据<a href="https://jwb.szu.edu.cn/info/1357/2003.htm">《深圳大学本科课程考核办法（修订）》</a>，对缺课时数累计超过规定教学时数三分之一或缺交平时作业、实验报告量超过三分之一的学生，任课教师可取消其考试资格，成绩记载为F。请选课同学不要无故缺席课程。</p>
+<p>期末考核计划采用报告形式，需按要求独立完成报告内容。如果发生变更会提前告知。</p>
+</section>
+<section id="教学进度" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="教学进度">教学进度</h2>
+<p>下面是 2025-2026 学年第一学期的教学进度计划。由于课程进程和学校放假安排具有不确定性，下表中的内容可能发生变化。<a href="https://www.szu.edu.cn/xxgk/xl.htm">深圳大学校历</a></p>
+<table class="table-striped table-hover caption-top table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>周次</th>
+<th>学习内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>第一周（9月3日）</td>
+<td>课程介绍<br>
+博弈的例子（一）</td>
+</tr>
+<tr class="even">
+<td>第二周（9月10日）</td>
+<td>博弈的例子（二）<br>
+二人零和博弈（一）</td>
+</tr>
+<tr class="odd">
+<td>第三周（9月17日）</td>
+<td>二人零和博弈（二）<br>
+二人博弈（一）</td>
+</tr>
+<tr class="even">
+<td>第四周（9月24日）</td>
+<td>二人博弈（二）<br>
+课堂练习</td>
+</tr>
+<tr class="odd">
+<td>第五周（10月1日）</td>
+<td><em>十一放假</em></td>
+</tr>
+<tr class="even">
+<td>第六周（10月8日）</td>
+<td>扩展式博弈（一）</td>
+</tr>
+<tr class="odd">
+<td>第七周（10月15日）</td>
+<td>扩展式博弈（二）<br>
+课堂练习</td>
+</tr>
+<tr class="even">
+<td>第八周（10月22日）</td>
+<td>不完全信息博弈（一）</td>
+</tr>
+<tr class="odd">
+<td>第九周（10月29日）</td>
+<td>不完全信息博弈（二）</td>
+</tr>
+<tr class="even">
+<td>第十周（11月5日）</td>
+<td>课堂练习<br>
+非合作博弈的应用（一）</td>
+</tr>
+<tr class="odd">
+<td>第十一周（11月12日）</td>
+<td>非合作博弈的应用（二）</td>
+</tr>
+<tr class="even">
+<td>第十二周（11月19日）</td>
+<td>非合作博弈的应用（三）<br>
+课堂练习</td>
+</tr>
+<tr class="odd">
+<td>第十三周（11月26日）</td>
+<td>合作博弈（一）</td>
+</tr>
+<tr class="even">
+<td>第十四周（12月3日）</td>
+<td>合作博弈（二）</td>
+</tr>
+<tr class="odd">
+<td>第十五周（12月10日）</td>
+<td>合作博弈的应用（一）</td>
+</tr>
+<tr class="even">
+<td>第十六周（12月17日）</td>
+<td>合作博弈的应用（二）<br>
+课堂练习</td>
+</tr>
+<tr class="odd">
+<td>第十七周（12月24日）</td>
+<td>总结与答疑</td>
+</tr>
+<tr class="even">
+<td>第十八周（12月31日）</td>
+<td><em>提交期末报告</em></td>
 </tr>
 </tbody>
 </table>
@@ -353,18 +501,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -396,7 +533,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -404,7 +561,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -508,7 +665,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -750,37 +906,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"descPosition":"bottom","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

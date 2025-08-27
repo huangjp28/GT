@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>博弈论 - 3&nbsp; 二人博弈</title>
+<title>3&nbsp; 二人博弈 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script defer="" src="./assets/katex/0.16.11/katex.min.js"></script>
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <link rel="stylesheet" href="./assets/katex/0.16.11/katex.min.css">
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -125,13 +125,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">二人博弈</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -167,9 +167,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -414,7 +414,7 @@ window.Quarto = {
 </span></p>
 <p>由此可知，此博弈有三个纯策略纳什均衡：<span class="math inline">(T, W)</span>, <span class="math inline">(T, Z)</span> 和 <span class="math inline">(B, Y)</span>。如果用混合策略的方式表达，这三个纳什均衡分别为 <span class="math inline">(\boldsymbol{e}^1, \boldsymbol{e}^1)</span>, <span class="math inline">(\boldsymbol{e}^1, \boldsymbol{e}^4)</span> 和 <span class="math inline">(\boldsymbol{e}^3, \boldsymbol{e}^3)</span>，或者 <span class="math inline">((1,0,0), (1,0,0,0))</span>, <span class="math inline">((1,0,0), (0,0,0,1))</span> 和 <span class="math inline">((0,0,1), (0,0,1,0))</span>。</p>
 <p>严格的讲，我们在寻找一个纯策略的最佳响应时还应该考虑混合策略，以便判断最佳响应纯策略是否真的是“最佳”。然而，并不难发现最佳响应混合策略都是最佳响应纯策略的凸组合，因此无法带来比最佳响应纯策略更高的收益。例如在上面的例子中，针对参与人 1 的策略 <span class="math inline">T</span>，参与人 2 的任意策略 <span class="math inline">(q, 0, 0, 1-q)</span> 都是一个最佳响应，其对应的收益都是 <span class="math inline">2 = 2q + 2(1-q)</span>，而这并不比纯策略 <span class="math inline">W</span> 或 <span class="math inline">Z</span> 的收益更高。但是，<span class="math inline">\{(T, (q,0,0,1-q)) \mid 0 &lt; q &lt; 1\}</span> 中的每一个策略组合也都是该博弈的纳什均衡，你能说出为什么吗？</p>
-<p>从这个例子中我们还可以看到，纳什均衡策略并不一定会带来帕累托最优（Pareto optimal）收益。如果收益组合 <span class="math inline">(a, b)</span> 和 <span class="math inline">(a',b')</span> 满足 <span class="math inline">a' \geq a, b' &gt; b</span> 或者 <span class="math inline">a' &gt; a, b' \geq b</span>，则称 <span class="math inline">(a',b')</span> 是 <span class="math inline">(a,b)</span> 的帕累托改进。如果 <span class="math inline">(a,b)</span> 不存在帕累托改进，则称其为帕累托最优。策略组合 <span class="math inline">(M,Y)</span> 的收益 <span class="math inline">(4,4)</span> 是纳什均衡 <span class="math inline">(T,W)</span> 的收益 <span class="math inline">(2,2)</span> 的帕累托改进，因此 <span class="math inline">(2,2)</span> 不是帕累托最优。这个现象我们在 <a href="note_1.html#sec-1.3.2" class="quarto-xref"><span>Section 1.3.2</span></a> 的囚徒困境博弈中也曾观察到。</p>
+<p>从这个例子中我们还可以看到，纳什均衡策略并不一定会带来帕雷托最优（Pareto optimal）收益。如果收益组合 <span class="math inline">(a, b)</span> 和 <span class="math inline">(a',b')</span> 满足 <span class="math inline">a' \geq a, b' &gt; b</span> 或者 <span class="math inline">a' &gt; a, b' \geq b</span>，则称 <span class="math inline">(a',b')</span> 是 <span class="math inline">(a,b)</span> 的帕雷托改进。如果 <span class="math inline">(a,b)</span> 不存在帕雷托改进，则称其为帕雷托最优。策略组合 <span class="math inline">(M,Y)</span> 的收益 <span class="math inline">(4,4)</span> 是纳什均衡 <span class="math inline">(T,W)</span> 的收益 <span class="math inline">(2,2)</span> 的帕雷托改进，因此 <span class="math inline">(2,2)</span> 不是帕雷托最优。这个现象我们在 <a href="note_1.html#sec-1.3.2" class="quarto-xref"><span>Section 1.3.2</span></a> 的囚徒困境博弈中也曾观察到。</p>
 </section>
 <section id="sec-3.2.2" class="level3 page-columns page-full" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="sec-3.2.2"><span class="header-section-number">3.2.2</span> <span class="math inline">2 \times 2</span> 博弈</h3>
@@ -454,10 +454,10 @@ window.Quarto = {
 </span></p>
 <p>根据定义，纳什均衡 <span class="math inline">\boldsymbol{p}^*, \boldsymbol{q}^*</span> 应满足 <span class="math inline">\boldsymbol{p}^* \in \beta_1(\boldsymbol{q}^*)</span> 和 <span class="math inline">\boldsymbol{q}^* \in \beta_2(\boldsymbol{p}^*)</span>，即两个最佳响应函数的交点。画出两个函数 <span class="math inline">\beta_1(q, 1-q)</span> 和 <span class="math inline">\beta_2(p, 1-p)</span> 的图像即可轻松地找到这些交点。如果令横轴为 <span class="math inline">p</span>，纵轴为 <span class="math inline">q</span>，则函数图像如 <a href="#fig-3.1" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> 所示。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-3.1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-3.1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-3.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="assets/fig/fig-3.1.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-3.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;3.1: 最佳响应函数及其交点"><img src="assets/fig/fig-3.1.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.1: 最佳响应函数及其交点
@@ -529,10 +529,10 @@ Figure&nbsp;3.1: 最佳响应函数及其交点
 </span></p>
 <p>这个博弈可以用图形分析法求解，如 <a href="#fig-3.2" class="quarto-xref">Figure&nbsp;<span>3.2</span></a> 中所示。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-3.2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-3.2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-3.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-3.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="assets/fig/fig-3.2.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-3.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;3.2: 最佳响应函数及其交点"><img src="assets/fig/fig-3.2.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3.2: 最佳响应函数及其交点
@@ -547,10 +547,6 @@ Figure&nbsp;3.2: 最佳响应函数及其交点
 </span></p>
 
 
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;3.1: 最佳响应函数及其交点</span>
-<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;3.2: 最佳响应函数及其交点</span>
-</div>
 </section>
 </section>
 
@@ -591,18 +587,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -634,7 +619,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -642,7 +647,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -746,7 +751,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -991,37 +995,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

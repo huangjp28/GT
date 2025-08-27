@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>博弈论 - 4&nbsp; 扩展式博弈</title>
+<title>4&nbsp; 扩展式博弈 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script defer="" src="./assets/katex/0.16.11/katex.min.js"></script>
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <link rel="stylesheet" href="./assets/katex/0.16.11/katex.min.css">
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -125,13 +125,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">扩展式博弈</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -167,9 +167,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -290,10 +290,10 @@ window.Quarto = {
 <p>扩展式博弈由一个博弈树（game tree）表达。博弈树由节点（node）和边（edge）组成。节点可以表达下列内容之一：参与人的决策点（decision node），随机选择的决策点（chance node），博弈的终点（end node）。边可以代表参与人或随机选择的一个行动（action）。随机选择有时也被称作自然（Nature）的选择<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;自然（Nature）是一个假想的特殊参与人，它和普通参与人一样可以选择行动，但要服从给定的概率分布。</p></div></div><p><a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 展示了一个扩展式博弈的博弈树。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="assets/fig/fig-4.1.png" class="img-fluid figure-img" width="330"></a>
+<a href="assets/fig/fig-4.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;4.1: 一个扩展式博弈"><img src="assets/fig/fig-4.1.png" class="img-fluid figure-img" width="330"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.1: 一个扩展式博弈
@@ -303,10 +303,10 @@ Figure&nbsp;4.1: 一个扩展式博弈
 <p>如果参与人 1 选择了 <span class="math inline">C</span>，则接下来有一个随机选择：以 <span class="math inline">1/4</span> 的概率选择 <span class="math inline">U</span> 并让参与人 2 继续决策，或以 <span class="math inline">3/4</span> 的概率选择 <span class="math inline">D</span> 并让参与人 1 继续决策。在参与人 2 的决策节点上有两个行动 <span class="math inline">L</span> 和 <span class="math inline">R</span>，而在参与人 1 的决策节点上也有两个行动 <span class="math inline">a</span> 和 <span class="math inline">b</span>。所有剩余的节点都是终点，每个终点对应一组收益。</p>
 <p>需要注意的是，每一个单独的决策节点（不以虚线和其他节点连接）也是一个信息集。因此，这个博弈中有两种信息集，我们称含有至少两个节点的信息集为非平凡（nontrivial）的。含有非平凡信息集的博弈称为不完美信息博弈（games with imperfect information），反之只含有平凡信息集的博弈称为完美信息博弈（games with perfect information）。如果我们假设上面的例子中参与人 2 可以观察到参与人 1 究竟是选择了 <span class="math inline">A</span> 还是 <span class="math inline">B</span>，就可以得到一个完美信息博弈，见 <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a>。为了反映参与人 2 可以区分参与人 1 的行动 <span class="math inline">A</span> 和 <span class="math inline">B</span>，这里将 <span class="math inline">B</span> 之后的参与人 2 的行动改名为 <span class="math inline">\ell'</span> 和 <span class="math inline">r'</span>。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.2" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="assets/fig/fig-4.2.png" class="img-fluid figure-img" width="330"></a>
+<a href="assets/fig/fig-4.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;4.2: 将 Figure&nbsp;fig-4.1 中的博弈改为完美信息"><img src="assets/fig/fig-4.2.png" class="img-fluid figure-img" width="330"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.2: 将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈改为完美信息
@@ -314,10 +314,10 @@ Figure&nbsp;4.2: 将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.
 </figure>
 </div></div><p>这个博弈中的随机选择并不具有特殊意义，因为其他参与人可以知道随机选择的结果。如果至少一个参与人无法完全知晓随机选择的结果，且会因此影响到自己的决策，那么我们就拥有了一个不完全信息博弈，见 <a href="note_5.html" class="quarto-xref"><span>Chapter 5</span></a>。</p>
 <p><a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 和 <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 中的例子包含了扩展式博弈的主要要素，但并没有给出正式定义<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。这里最重要的一点是博弈树必须满足树（tree）的数学性质：仅存在一个根，并且不包含环（cycle）。<a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>4.3</span></a> 中给出了一个环的例子，而博弈树中不应该包含这样的部分。</p>
-<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;原书第十四章中正式定义了扩展式博弈。</p></div><div id="fig-4.3" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;原书第十四章中正式定义了扩展式博弈。</p></div><div id="fig-4.3" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="assets/fig/fig-4.3.png" class="img-fluid figure-img" width="200"></a>
+<a href="assets/fig/fig-4.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;4.3: 环（cycle）的例子"><img src="assets/fig/fig-4.3.png" class="img-fluid figure-img" width="200"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.3: 环（cycle）的例子
@@ -326,10 +326,10 @@ Figure&nbsp;4.3: 环（cycle）的例子
 </div><div id="fn5"><p><sup>5</sup>&nbsp;关于完美记忆的假设在区分混合策略和行为策略（behavioral strategy）时将变得十分重要，见原书第十四章。</p></div></div>
 <p>我们还要求扩展式博弈具有完美记忆（perfect recall）：每个参与人都记得自己曾经作出的所有决策。例如在 <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>4.4</span></a> 中，参与人 1 位于下方的信息集时就不记得之前的决策结果，他分不清自己究竟是在左边的节点还是在右边的节点，这样的博弈我们不予讨论<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.4" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.4" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="assets/fig/fig-4.4.png" class="img-fluid figure-img" width="200"></a>
+<a href="assets/fig/fig-4.4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;4.4: 不完美记忆博弈的例子"><img src="assets/fig/fig-4.4.png" class="img-fluid figure-img" width="200"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.4: 不完美记忆博弈的例子
@@ -473,10 +473,10 @@ Figure&nbsp;4.4: 不完美记忆博弈的例子
 <h2 data-number="4.3" class="anchored" data-anchor-id="sec-4.3"><span class="header-section-number">4.3</span> 逆向归纳法和子博弈完美性</h2>
 <p>我们首先考虑 <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 中的完美信息博弈。这个博弈可以用逆向归纳法分析。首先我们将每一个终点前的决策节点替换成终点，此时的收益为原来该节点上的最优行动带来的收益。例如参与人 2 在参与人 1 选择 <span class="math inline">A</span> 之后的决策节点上应当选择 <span class="math inline">r</span>，在 <span class="math inline">B</span> 之后应当选择 <span class="math inline">\ell'</span>，在 <span class="math inline">C</span> 和随机决策 <span class="math inline">U</span> 之后应当选择 <span class="math inline">R</span>。而参与人 1 在随机决策 <span class="math inline">D</span> 之后应当选择 <span class="math inline">a</span>。这样我们就得到了简化的博弈 <a href="#fig-4.5" class="quarto-xref">Figure&nbsp;<span>4.5</span></a>。在这一步之后，我们已经可以确定参与人 2 的策略为 <span class="math inline">r \ell' R</span>，而参与人 1 在自己的第二个信息集处选择 <span class="math inline">a</span>。注意在简化博弈中只剩下参与人 1 （和随机选择）。下一步就是在简化博弈中通过比较期望收益确定参与人 1 的最优行动。参与人 1 选择 <span class="math inline">A</span> 的收益是 <span class="math inline">7</span>，选择 <span class="math inline">B</span> 的收益是 <span class="math inline">6</span>，而选择 <span class="math inline">C</span> 的期望收益是 <span class="math inline">8</span>。因此参与人 1 此时的最优行动是 <span class="math inline">C</span>。综上所述，我们得到了策略组合 <span class="math inline">(Ca, r\ell' R)</span>，其对应的期望收益组合是 <span class="math inline">\tfrac{1}{4}(8,4) + \tfrac{3}{4}(8,8) = (8,7)</span>。从上一节可知，这是一个纯策略纳什均衡，这里称作逆向归纳均衡（backward induction equilibrium）。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.5" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.5" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="assets/fig/fig-4.5.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-4.5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;4.5: Figure&nbsp;fig-4.2 的简化博弈"><img src="assets/fig/fig-4.5.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.5: <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 的简化博弈
@@ -499,10 +499,10 @@ Figure&nbsp;4.5: <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</s
 </div>
 <div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;仅包含一个决策节点的信息集。</p></div></div><p><a href="#fig-4.6" class="quarto-xref">Figure&nbsp;<span>4.6</span></a> 很好的诠释了 <a href="#def-subgame" class="quarto-xref">Definition&nbsp;<span>4.2</span></a> 的后一半。虽然参与人 2 的决策节点是平凡信息集，但是从此处无法形成子博弈，因为它下面的（参与人 3）的决策节点所在的信息集包含了外部节点（即参与人 1 选择 <span class="math inline">B</span> 之后的决策节点）。更加直观的解释是，参与人 3 无法观察任何前面的决策结果，也就不知道自己是否在由参与人 2 的决策节点开始的子树上。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.6" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.6" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6"><img src="assets/fig/fig-4.6.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-4.6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;4.6: 在参与人 2 的决策节点无法形成子博弈"><img src="assets/fig/fig-4.6.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.6: 在参与人 2 的决策节点无法形成子博弈
@@ -536,10 +536,10 @@ Figure&nbsp;4.6: 在参与人 2 的决策节点无法形成子博弈
 \end{align*}
 </span></p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.7" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.7" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-glightbox="description: .lightbox-desc-7"><img src="assets/fig/fig-4.7.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-4.7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;4.7: 一个三人博弈"><img src="assets/fig/fig-4.7.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.7: 一个三人博弈
@@ -587,10 +587,10 @@ Figure&nbsp;4.7: 一个三人博弈
 <p>第一个条件说的是，只要可行，信念应当针对策略依照贝叶斯公式进行计算。第二个条件说的是，参与人应当根据自己的信念计算期望收益并进行最优化。如果你感觉看不懂，那是非常正常的。我们将通过几个例子展示这两个条件具体意味着什么，而更加正式的定义可以参考原书第十四章。</p>
 <p><a href="#fig-4.8" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> 针对 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈进行了一些补充。在参与人 2 的非平凡信息集中，信念 <span class="math inline">(\alpha, 1-\alpha)</span> 现在被明确标注出来了。这意味着如果博弈进行到了这个信息集，则参与人 2 认为参与人 1 选择了 <span class="math inline">A</span> 的概率为 <span class="math inline">\alpha</span>，而选择了 <span class="math inline">B</span> 的概率为 <span class="math inline">1-\alpha</span>。所有其他信息集都是平凡的，因此对应的信念都是概率 <span class="math inline">1</span>。条件 (2) 的序贯理性在这里意味着参与人 2 在 <span class="math inline">U</span> 下面的信息集应当选择 <span class="math inline">R</span>，参与人 1 在 <span class="math inline">D</span> 下面的信息集应当选择 <span class="math inline">a</span>。参与人 2 在他的非平凡信息集时应当基于信念最大化自身的期望收益：行动 <span class="math inline">\ell</span> 的期望收益为 <span class="math inline">\alpha \cdot 1 + (1-\alpha)\cdot 3 = 3-2\alpha</span>，行动 <span class="math inline">r</span> 的期望收益为 <span class="math inline">\alpha \cdot 2 + (1-\alpha)\cdot 0 = 2\alpha</span>，因此当 <span class="math inline">3-2\alpha \geq 2\alpha \Leftrightarrow 0 \leq \alpha \leq 3/4</span> 时应选择 <span class="math inline">\ell</span>，而在 <span class="math inline">3/4 \leq \alpha \leq 1</span> 时应选择 <span class="math inline">r</span>。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.8" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.8" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8"><img src="assets/fig/fig-4.8.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-4.8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;4.8: Figure&nbsp;fig-4.1 中的博弈"><img src="assets/fig/fig-4.8.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.8: <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈
@@ -642,10 +642,10 @@ Figure&nbsp;4.8: <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</s
 </div>
 <p>为了说明贝叶斯一致性可以在子博弈完美性的基础上进行更多限制，我们将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中 <span class="math inline">A</span> 和 <span class="math inline">\ell</span> 对应的收益修改为 <span class="math inline">(4,3)</span>，正如 <a href="#fig-4.9" class="quarto-xref">Figure&nbsp;<span>4.9</span></a> 中所示。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.9" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.9" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-glightbox="description: .lightbox-desc-9"><img src="assets/fig/fig-4.9.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-4.9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;4.9: 将 Figure&nbsp;fig-4.1 中的 A 和 \ell 对应的收益修改为 (4,3)"><img src="assets/fig/fig-4.9.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.9: 将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的 <span class="math inline">A</span> 和 <span class="math inline">\ell</span> 对应的收益修改为 <span class="math inline">(4,3)</span>
@@ -654,10 +654,10 @@ Figure&nbsp;4.9: 将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.
 </div></div><p>可以确认子博弈完美均衡依然是 <span class="math inline">(Ca, \ell R)</span> 和 <span class="math inline">(Ca, rR)</span>。此时，理性的参与人 2 在非平凡信息集上不会选择 <span class="math inline">r</span>，因为 <span class="math inline">\ell</span> 永远会带来更高的收益，但是子博弈完美均衡却没有排除 <span class="math inline">r</span> 的选项。而当我们考虑完美贝叶斯均衡时，所有的信念（即任意 <span class="math inline">\alpha</span>）都会支持 <span class="math inline">\ell</span> 而非 <span class="math inline">r</span>：选择 <span class="math inline">\ell</span> 的期望收益是 <span class="math inline">3\alpha + 3(1-\alpha) = 3</span>，选择 <span class="math inline">r</span> 的期望收益是 <span class="math inline">2\alpha + 0(1-\alpha) = 2\alpha</span>，而 <span class="math inline">3 &gt; 2\alpha</span>。因此，唯一一种完美贝叶斯均衡是 <span class="math inline">(Ca, \ell R)</span> 和任意 <span class="math inline">\alpha</span> 的组合。</p>
 <p>最后，让我们再考虑 <a href="#fig-4.7" class="quarto-xref">Figure&nbsp;<span>4.7</span></a>。在 <a href="#fig-4.10" class="quarto-xref">Figure&nbsp;<span>4.10</span></a> 中我们给参与人 3 的信息集标注了信念 <span class="math inline">(\alpha, 1-\alpha)</span>。这个例子中有两种方法可以帮助我们找到完美贝叶斯均衡。第一种是给子博弈完美均衡赋予合适的信念，第二种则是用逆向归纳的方式同时决定策略和信念。下面我们解释第二种方法。首先考虑参与人 3。如果他选择 <span class="math inline">\ell</span>，则期望收益为 <span class="math inline">1\alpha + 0(1-\alpha) = \alpha</span>；而如果选择 <span class="math inline">r</span>，则期望收益为 <span class="math inline">0\alpha + 3(1-\alpha) = 3 - 3\alpha</span>。因此当 <span class="math inline">3/4 \leq \alpha \leq 1</span> 时 <span class="math inline">\ell</span> 为最优选择，而当 <span class="math inline">0 \leq \alpha \leq 3/4</span> 时 <span class="math inline">r</span> 是最优选择。这是基于序贯理性条件的分析。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-4.10" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-4.10" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-4.10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10"><img src="assets/fig/fig-4.10.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-4.10.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;4.10: Figure&nbsp;fig-4.7 中博弈以及参与人 3 的信念"><img src="assets/fig/fig-4.10.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.10: <a href="#fig-4.7" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> 中博弈以及参与人 3 的信念
@@ -670,19 +670,7 @@ Figure&nbsp;4.10: <a href="#fig-4.7" class="quarto-xref">Figure&nbsp;<span>4.7</
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 <p>注：另一中更加严格的贝叶斯一致性定义了序贯均衡（sequential equilibrium），见原书第十四章。</p>
-</div></div><div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;4.1: 一个扩展式博弈</span>
-<span class="glightbox-desc lightbox-desc-2">Figure&nbsp;4.2: 将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈改为完美信息</span>
-<span class="glightbox-desc lightbox-desc-3">Figure&nbsp;4.3: 环（cycle）的例子</span>
-<span class="glightbox-desc lightbox-desc-4">Figure&nbsp;4.4: 不完美记忆博弈的例子</span>
-<span class="glightbox-desc lightbox-desc-5">Figure&nbsp;4.5: <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 的简化博弈</span>
-<span class="glightbox-desc lightbox-desc-6">Figure&nbsp;4.6: 在参与人 2 的决策节点无法形成子博弈</span>
-<span class="glightbox-desc lightbox-desc-7">Figure&nbsp;4.7: 一个三人博弈</span>
-<span class="glightbox-desc lightbox-desc-8">Figure&nbsp;4.8: <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈</span>
-<span class="glightbox-desc lightbox-desc-9">Figure&nbsp;4.9: 将 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的 <span class="math inline">A</span> 和 <span class="math inline">\ell</span> 对应的收益修改为 <span class="math inline">(4,3)</span></span>
-<span class="glightbox-desc lightbox-desc-10">Figure&nbsp;4.10: <a href="#fig-4.7" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> 中博弈以及参与人 3 的信念</span>
-</div>
-</section>
+</div></div></section>
 
 
 </main> <!-- /main -->
@@ -721,18 +709,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -764,7 +741,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -772,7 +769,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -876,7 +873,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -1121,37 +1117,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

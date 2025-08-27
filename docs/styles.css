@@ -10,5 +10,12 @@
 }
 
 .katex {
-  font-size: 1.1em !important;
+  font-size: 1em !important;
 }
+
+/* indentaion */
+/*
+p {
+  text-indent: 2em !important;
+}
+*/

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>博弈论 - 5&nbsp; 不完全信息博弈</title>
+<title>5&nbsp; 不完全信息博弈 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script defer="" src="./assets/katex/0.16.11/katex.min.js"></script>
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
   <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
@@ -87,7 +87,7 @@ ul.task-list li input[type="checkbox"] {
    });
 }}});
   </script>
-  <link rel="stylesheet" href="./assets/katex/0.16.11/katex.min.css">
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -125,13 +125,13 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">不完全信息博弈</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -167,9 +167,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -262,7 +262,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sec-5.3.1" id="toc-sec-5.3.1" class="nav-link" data-scroll-target="#sec-5.3.1"><span class="header-section-number">5.3.1</span> 一个例子</a></li>
   <li><a href="#sec-5.3.2" id="toc-sec-5.3.2" class="nav-link" data-scroll-target="#sec-5.3.2"><span class="header-section-number">5.3.2</span> 计算扩展式博弈中的完美贝叶斯均衡</a></li>
-  <li><a href="#sec-5.3.3" id="toc-sec-5.3.3" class="nav-link" data-scroll-target="#sec-5.3.3"><span class="header-section-number">5.3.3</span> 直觉标准</a></li>
+  <li><a href="#sec-5.3.3" id="toc-sec-5.3.3" class="nav-link" data-scroll-target="#sec-5.3.3"><span class="header-section-number">5.3.3</span> 直观准则</a></li>
   <li><a href="#sec-5.3.4" id="toc-sec-5.3.4" class="nav-link" data-scroll-target="#sec-5.3.4"><span class="header-section-number">5.3.4</span> 另一个例子</a></li>
   </ul></li>
   </ul>
@@ -336,10 +336,10 @@ n : \quad \begin{matrix} F \\ B \end{matrix} &amp;
 <p>这里 <span class="math inline">F</span> 为足球，<span class="math inline">B</span> 为芭蕾。假设参与人 1 认为博弈 <span class="math inline">y</span> 和 <span class="math inline">n</span> 发生的概率各为 <span class="math inline">1/2</span>，而参与人 2 也知道此信息。如果用类型来描述的话，这代表参与人 1 只有一个类型，可以单纯的记为 “<span class="math inline">1</span>”，而参与人 2 则有两个类型，即 <span class="math inline">y</span> 和 <span class="math inline">n</span>。因此一共有两个类型组合，即 <span class="math inline">(1,y)</span> 和 <span class="math inline">(1,n)</span>，每个发生的概率是 <span class="math inline">1/2</span>。 参与人 2 知道参与人 1 的类型，也知道自己的类型，也就是说她能够确定自己面对的是哪个博弈。参与人 1 则赋予参与人 2 的每个类型 <span class="math inline">1/2</span> 的概率。</p>
 <p>如何找到这个博弈的纳什均衡呢？我们可以用扩展式博弈的方式重新进行定义，此时的博弈树如 <a href="#fig-5.1" class="quarto-xref">Figure&nbsp;<span>5.1</span></a> 所示。</p>
 
-<div class="no-row-height column-margin column-container"><div id="fig-5.1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div class="no-row-height column-margin column-container"><div id="fig-5.1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="assets/fig/fig-5.1.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="assets/fig/fig-5.1.png" class="img-fluid figure-img" width="300"></a>
+<a href="assets/fig/fig-5.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;5.1: 不完全信息性别战博弈的博弈树"><img src="assets/fig/fig-5.1.png" class="img-fluid figure-img" width="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.1: 不完全信息性别战博弈的博弈树
@@ -368,7 +368,7 @@ Figure&nbsp;5.1: 不完全信息性别战博弈的博弈树
 \end{pmatrix}
 \end{align*}
 </span></p>
-<p>参与人 2 的策略中第一个字母代表类型 <span class="math inline">y</span> 对应的行动，第二子字母则是类型 <span class="math inline">n</span> 对应的行动。策略组合 <span class="math inline">(F, FF)</span> 对应的期望收益组合是 <span class="math inline">0.5 \cdot (2,1) + 0.5 \cdot (2,0) = (2,0.5)</span>，而 <span class="math inline">(B,FB)</span> 则对应 <span class="math inline">0.5 \cdot (0,0) + 0.5 \cdot (1,0) = (0.5,0)</span>，依此类推。最佳响应策略以下划线标出。</p>
+<p>参与人 2 的策略中第一个字母代表类型 <span class="math inline">y</span> 对应的行动，第二子字母则是类型 <span class="math inline">n</span> 对应的行动。策略组合 <span class="math inline">(F, FF)</span> 对应的期望收益组合是 <span class="math inline">0.5 \cdot (2,1) + 0.5 \cdot (2,0) = (2,0.5)</span>，而 <span class="math inline">(B,FB)</span> 则对应 <span class="math inline">0.5 \cdot (0,0) + 0.5 \cdot (1,0) = (0.5,0)</span>，依此类推。用下划线标出的是最佳响应策略。</p>
 <p>显然，此博弈唯一的纯策略纳什均衡是 <span class="math inline">(F,FB)</span>，在均衡中参与人 1 选择 <span class="math inline">F</span>，类型 <span class="math inline">y</span> 的参与人 2 选择 <span class="math inline">F</span>，类型 <span class="math inline">n</span> 的参与人 2 选择 <span class="math inline">B</span>。</p>
 <p>适用于不完全信息静态博弈的另一个均衡概念是<strong>贝叶斯均衡（Bayesian equilibrium）</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。在贝叶斯均衡中，每个参与人的每个类型都选择最佳响应。具体地说，就是每个参与人的每个类型都会选择令自身期望收益最大的行动，而该期望收益是针对所有其他参与人类型及其行动的组合计算的。在上面的博弈中，<span class="math inline">(F, FB)</span> 也是贝叶斯均衡：针对参与人 1 的策略 <span class="math inline">F</span>，类型 <span class="math inline">y</span> 的参与人 2 的最佳响应是 <span class="math inline">F</span>，而类型 <span class="math inline">n</span> 的参与人 2 的最佳响应则是 <span class="math inline">B</span>；而针对参与人 2 的策略 <span class="math inline">FB</span>，参与人 1 的最佳响应策略是 <span class="math inline">F</span>。事实上，如果每个参与人的每个类型实现的概率都为正，则策略式博弈的纳什均衡和贝叶斯均衡一致。</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;也称为贝叶斯纳什均衡（Bayesian Nash equilibrium）。</p></div></div><p>计算这个例子中的纯策略纳什均衡并不需要画出博弈树或者写出策略式表达。如果参与人 1 在均衡中选择策略 <span class="math inline">F</span>，则类型 <span class="math inline">y</span> 的参与人 2 应当选择 <span class="math inline">F</span>，而类型 <span class="math inline">n</span> 的参与人 2 则应该选择 <span class="math inline">B</span>。此时参与人 1 的期望收益是 <span class="math inline">1</span>，大于策略 <span class="math inline">B</span> 的期望收益 <span class="math inline">0.5</span>。因此可以确认 <span class="math inline">(F, FB)</span> 是纳什均衡。相反，如果参与人 1 选择 <span class="math inline">B</span>，则类型 <span class="math inline">y</span> 的参与人 2 应当选择 <span class="math inline">B</span>，而类型 <span class="math inline">n</span> 的参与人 2 则应该选择 <span class="math inline">F</span>。此时参与人 1 的期望收益是 <span class="math inline">0.5</span>，小于 <span class="math inline">(F, BF)</span> 的期望收益 <span class="math inline">1</span>。因此可知当参与人 1 选择 <span class="math inline">B</span> 时不存在纳什均衡。当然，以上分析在策略式表达的矩阵中是显而易见的，这里想说的是，对于这种简单的博弈，写出完整的策略式表达并不是必须的。</p>
@@ -403,13 +403,13 @@ n_1 n_2 : \quad \begin{matrix} F \\ B \end{matrix} &amp;
 \end{align*}
 </span></p>
 <p>每个参与人 <span class="math inline">i</span> 有 <span class="math inline">y_i</span> 和 <span class="math inline">n_i</span> 两个类型，每个双矩阵对应一组类型组合。每种组合实现的概率如 <a href="#tbl-5.1" class="quarto-xref">Table&nbsp;<span>5.1</span></a> 所示。</p>
-<div id="tbl-5.1" class="quarto-float anchored">
+<div id="tbl-5.1" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;5.1: 类型组合的实现概率
 </figcaption>
 <div aria-describedby="tbl-5.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<table class="table">
+<table class="caption-top table">
 <thead>
 <tr class="header">
 <th>类型 <span class="math inline">t</span></th>
@@ -505,26 +505,114 @@ p(y_1 \mid n_2) \cdot 2 + p(n_1 \mid n_2) \cdot 0 = \frac{2}{3} \cdot 2 + \frac{
 <p>这两个均衡也都是贝叶斯均衡。</p>
 </section>
 </section>
-<section id="sec-5.3" class="level2" data-number="5.3">
+<section id="sec-5.3" class="level2 page-columns page-full" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="sec-5.3"><span class="header-section-number">5.3</span> 信号传递博弈</h2>
 <p>在上一节中我们看到，不完全信息静态博弈可以表达为一个（不完美信息）扩展式博弈，其中首先以随机选择的方式确定参与人的类型。扩展式博弈也可以用来描述包含序贯行动的不完全信息博弈，一个重要的例子就是下面介绍的信号传递博弈。</p>
 <p>信号传递博弈首先以随机选择的方式确定参与人 1 的类型。参与人 1 能观察随机选择的结果，但参与人 2 不能。随后参与人 1 进行选择，而参与人 2 在观察到参与人 1 的选择结果后再进行选择，之后博弈结束。之所以称为<strong>信号传递博弈（signaling game）</strong>，是因为参与人 1 的行动有可能成为自身类型的信号，即参与人 2 或许可以以参与人 1 的行动为依据推测参与人 1 的类型。</p>
-<section id="sec-5.3.1" class="level3" data-number="5.3.1">
+<section id="sec-5.3.1" class="level3 page-columns page-full" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="sec-5.3.1"><span class="header-section-number">5.3.1</span> 一个例子</h3>
+<p><a href="#fig-5.2" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> 展示了一个信号传递博弈的例子。在这个博弈中，参与人 1 可以观察随机选择的结果，但是参与人 2 则不能。根据 <a href="#sec-5.1" class="quarto-xref"><span>Section 5.1</span></a> 的定义，这里共有两个类型组合，分别为 <span class="math inline">(t,2)</span> 和 <span class="math inline">(\ddot{t},2)</span>，即参与人 1 有两个类型 <span class="math inline">t</span> 和 <span class="math inline">\ddot{t}</span>，而参与人 2 只有一个类型。这两个组合发生的概率都是 <span class="math inline">1/2</span>。参与人 1 的每个类型都有两个行动 <span class="math inline">L</span> 或 <span class="math inline">R</span> 可以选择，而参与人 2 只能观察参与人 1 的行动，但不知道他的类型。因此，我们不必区分不同类型的参与人 1 的同一行动（例如 <span class="math inline">L</span> 在每个类型中都代表左侧的行动，<span class="math inline">R</span> 代表右侧的行动）。</p>
+
+<div class="no-row-height column-margin column-container"><div id="fig-5.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-5.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;5.2: 信号传递博弈的博弈树"><img src="assets/fig/fig-5.2.png" class="img-fluid figure-img" width="350"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: 信号传递博弈的博弈树
+</figcaption>
+</figure>
+</div></div><p>为了找到此博弈的（纯策略）纳什均衡，我们可以首先分析它的策略式表达。在策略式中每个参与人都有四个策略，参与人 1 的策略集为 <span class="math inline">(LL, LR, RL, RR)</span>，其中第一个和第二个字母分别对应类型 <span class="math inline">t</span> 和类型 <span class="math inline">\ddot{t}</span> 的行动。参与人 2 的策略集为 <span class="math inline">(uu', ud', du', dd')</span>，其中第一个字母为观察到 <span class="math inline">L</span> 时的行动，第二个字母为观察到 <span class="math inline">R</span> 时的行动。各策略组合的期望收益可以正常计算，例如 <span class="math inline">(LR, ud')</span> 的期望收益为 <span class="math inline">0.5 \cdot (2, 6) + 0.5 \cdot (2,4) = (2, 5)</span>。依此类推，可得策略式博弈的期望收益矩阵</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \ \ \ \ \,\begin{matrix} uu' &amp; ud' &amp; \ du' &amp; dd' \end{matrix} \\
+\begin{matrix} LL \\ LR \\ RL \\ RR \end{matrix}
+&amp;
+\begin{pmatrix}
+3, \underline{7} &amp; \underline{3}, \underline{7} &amp; 4, 1 &amp; 4, 1 \\
+2, 3 &amp; 2, \underline{5} &amp; \underline{5}, 0 &amp; \underline{5}, 2 \\
+\underline{4}, \underline{5} &amp; 2, 4 &amp; 2, 2 &amp; 0, 1 \\
+3, 1 &amp; 1, \underline{2} &amp; 3, 1 &amp; 1, \underline{2}
+\end{pmatrix}
+\end{align*}
+</span></p>
+<p>从期望收益矩阵可知此博弈有两个纯策略纳什均衡 <span class="math inline">(LL, ud')</span> 和 <span class="math inline">(RL, uu')</span>。此博弈的唯一子博弈就是其本身，因此两个纳什均衡都是子博弈完美均衡。那么它们都是完美贝叶斯均衡吗？也就是说它们满足贝叶斯一致性和序贯理性 （<a href="note_4.html#sec-4.4" class="quarto-xref"><span>Section 4.4</span></a>） 吗？</p>
+<p>首先考虑均衡 <span class="math inline">(RL, uu')</span>。贝叶斯一致性要求</p>
+<p><span class="math display">
+\begin{align*}
+\alpha &amp;= \mathrm{Prob}[\text{参与人 1 的类型为 } t \mid \text{参与人 1 选择 } L] \\
+&amp;= \frac{\mathrm{Prob}[\text{参与人 1 的类型为 } t \text{ 且选择 } L]}{\mathrm{Prob}[\text{参与人 1 选择 } L]} \\
+&amp;= \frac{1/2 \cdot 0}{1/2} \\
+&amp;= 0
+\end{align*}
+</span></p>
+<p>以及</p>
+<p><span class="math display">
+\begin{align*}
+\beta &amp;= \mathrm{Prob}[\text{参与人 1 的类型为 } t \mid \text{参与人 1 选择 } R] \\
+&amp;= \frac{\mathrm{Prob}[\text{参与人 1 的类型为 } t \text{ 且选择 } R]}{\mathrm{Prob}[\text{参与人 1 选择 } R]} \\
+&amp;= \frac{1/2 \cdot 1}{1/2} \\
+&amp;= 1
+\end{align*}
+</span></p>
+<p>给出以上信念时，参与人 2 若选择 <span class="math inline">u</span> 则会获得 8 收益（左侧信息集），选择 <span class="math inline">d</span> 会获得 2 收益，因此 <span class="math inline">u</span> 优于 <span class="math inline">d</span>。若选择 <span class="math inline">u'</span> 会获得 2 收益（右侧信息集），选择 <span class="math inline">d'</span> 会获得 0 收益，因此 <span class="math inline">u'</span> 优于 <span class="math inline">d'</span>。参与人 2 的最佳响应是 <span class="math inline">uu'</span>。因此，策略组合 <span class="math inline">(RL, uu')</span> 是完美贝叶斯均衡，其对应的信念为 <span class="math inline">\alpha = 0, \beta = 1</span>。</p>
+<p>值得强调的是，对于这种参与人 2 的每个信息集都会以正概率发生（换句话说，参与人 1 的每个行动都会被某个类型选择）的纳什均衡，完美贝叶斯均衡的条件不会带来真正有价值的附加约束：在给定纳什均衡的情况下，参与人 2 的信念完全由贝叶斯一致性决定，同时序贯理性在该信念下会自动被满足。</p>
+<p>完美贝叶斯均衡 <span class="math inline">(RL, uu')</span> 被称为<strong>分离（separating）均衡</strong>：它能将参与人 1 的两个类型分离，因为不同类型的参与人 1 选择不同的行动。在这个均衡中，参与人 1 的行动成为了他类型的信号，因此说这个均衡披露了信息（information revealing）。</p>
+<p>接下来让我们看看均衡 <span class="math inline">(LL, ud')</span>。此时由贝叶斯一致性可得</p>
+<p><span class="math display">
+\begin{align*}
+\alpha &amp;= \mathrm{Prob}[\text{参与人 1 的类型为 } t \mid \text{参与人 1 选择 } L] \\
+&amp;= \frac{\mathrm{Prob}[\text{参与人 1 的类型为 } t \text{ 且选择 } L]}{\mathrm{Prob}[\text{参与人 1 选择 } L]} \\
+&amp;= \frac{1/2 \cdot 1}{1} \\
+&amp;= 1/2
+\end{align*}
+</span></p>
+<p>也就是说，两个类型的参与人 1 都选择 <span class="math inline">L</span>，因此参与人 2 在左侧信息集中的两个决策节点都以 <span class="math inline">1/2</span> 的概率发生。给定 <span class="math inline">\alpha = 1/2</span> 时，参与人 2 在左侧信息集中的最优选择是 <span class="math inline">u</span>（实际上在此博弈中，<span class="math inline">u</span> 对于任何 <span class="math inline">\alpha</span> 都是最优的）。从策略式博弈中我们已经知道这一点了，因为 <span class="math inline">LL</span> 的最佳响应是 <span class="math inline">uu'</span> 和 <span class="math inline">ud'</span>。</p>
+<p>那么右侧信息集中的信念 <span class="math inline">(\beta, 1-\beta)</span> 呢？由于参与人 1 只会选择 <span class="math inline">L</span>，参与人 2 的右侧信息集是无法到达的（<span class="math inline">\mathrm{Prob}[\text{参与人 1 选择 } R] = 0</span>），因此我们无法用贝叶斯公式计算 <span class="math inline">\beta</span>。此时贝叶斯一致性失效，<span class="math inline">\beta</span> 是无法确定的。下面的式子可以帮助我们更加清楚地看到这一点，</p>
+<p><span class="math display">
+\begin{align*}
+\beta &amp;= \mathrm{Prob}[\text{参与人 1 的类型为 } t \mid \text{参与人 1 选择 } R] \\
+&amp;= \frac{\mathrm{Prob}[\text{参与人 1 的类型为 } t \text{ 且选择 } R]}{\mathrm{Prob}[\text{参与人 1 选择 } R]}
+\end{align*}
+</span></p>
+<p>如果参与人 1 选择 <span class="math inline">LL</span>，则上式的分母为零。虽然贝叶斯一致性失效了，但序贯理性还是有效的：为了使 <span class="math inline">(LL, ud')</span> 成为完美贝叶斯均衡，信念 <span class="math inline">(\beta, 1-\beta)</span> 需要让参与人 2 的最优选择为 <span class="math inline">d'</span>。也就是说 <span class="math inline">d'</span> 给参与人 2 带来的期望收益应该不小于 <span class="math inline">u'</span> 的期望收益，即 <span class="math inline">4(1-\beta) \geq 2\beta</span>，即 <span class="math inline">\beta \leq 2/3</span>。因此，<span class="math inline">(LL, ud')</span> 在 <span class="math inline">\alpha = 1/2, \beta \leq 2/3</span> 时是完美贝叶斯均衡。</p>
+<p>对于这种参与人 2 的每个信息集并不都会以正概率发生（换句话说，参与人 1 的某个行动永远不会被选择）的纳什均衡，完美贝叶斯均衡的条件会带来额外的约束。</p>
+<p>均衡 <span class="math inline">(LL, ud')</span> 称为<strong>混同（pooling）均衡</strong>：它将参与人 1 的类型混同在一起无法区分，因为所有类型都选择相同的行动 <span class="math inline">L</span>。在这个均衡中，参与人 1 的行动没有披露其类型的信息。</p>
 </section>
 <section id="sec-5.3.2" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="sec-5.3.2"><span class="header-section-number">5.3.2</span> 计算扩展式博弈中的完美贝叶斯均衡</h3>
+<p>计算完美贝叶斯均衡时也可以不事先解出策略式博弈的纳什均衡。我们继续以 <a href="#fig-5.2" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> 中的博弈为例进行分析。</p>
+<p>首先假设存在一个参与人 1 选择 <span class="math inline">LL</span> 的均衡。此时，根据贝叶斯一致性，可得 <span class="math inline">\alpha = 1/2</span>。而根据序贯理性，参与人 2 在左侧信息集中的最优行动是 <span class="math inline">u</span>。在右侧信息集中，当 <span class="math inline">\beta \geq 2/3</span> 时参与人 2 的最优行动是 <span class="math inline">u'</span>，而当 <span class="math inline">\beta \leq 2/3</span> 时则是 <span class="math inline">d'</span>。如果参与人 2 在观察到 <span class="math inline">R</span> 后选择 <span class="math inline">u'</span>，则类型 <span class="math inline">t</span> 的参与人 1 不应当选择 <span class="math inline">L</span>，因为选择 <span class="math inline">R</span> 的收益 <span class="math inline">4</span> 大于 <span class="math inline">L</span> 的收益 <span class="math inline">2</span>。因此，<span class="math inline">(LL, uu')</span> 不是均衡。如果参与人 2 在观察到 <span class="math inline">R</span> 后选择 <span class="math inline">d'</span>，则参与人 1 的每个类型都不会选择 <span class="math inline">R</span>，因为选择 <span class="math inline">L</span> 的收益都大于 <span class="math inline">R</span> 的收益。综上所述，<span class="math inline">(LL, ud')</span> 在信念为 <span class="math inline">\alpha = 1/2, \beta \leq 2/3</span> 时是（混同）完美贝叶斯均衡。</p>
+<p>然后假设参与人 1 在均衡中选择 <span class="math inline">LR</span>。此时参与人 2 的信念为 <span class="math inline">\alpha = 1, \beta = 0</span>，最佳响应策略为 <span class="math inline">ud'</span>。但是在这种情况下，类型 <span class="math inline">\ddot{t}</span> 的参与人 1 应当选择 <span class="math inline">L</span> 而不是 <span class="math inline">R</span>。因此 <span class="math inline">(LL, ud')</span> 无法成为均衡。</p>
+<p>第三种情况是假设参与人 1 在均衡中选择 <span class="math inline">RL</span>。根据前一节的计算结果可知 <span class="math inline">\alpha = 1, \beta = 0</span>，参与人 2 的最佳响应为 <span class="math inline">uu'</span>。针对 <span class="math inline">uu'</span>，参与人 1 的最佳响应就是 <span class="math inline">RL</span>，因此 <span class="math inline">(RL, uu')</span> 在 <span class="math inline">\alpha = 1, \beta = 0</span> 时是（分离）完美贝叶斯均衡。</p>
+<p>最后假设参与人 1 在均衡中选择 <span class="math inline">RR</span>。此时 <span class="math inline">\beta = 1/2</span>，参与人 2 对 <span class="math inline">R</span> 的最佳响应是 <span class="math inline">d'</span>。虽然无法确定 <span class="math inline">\alpha</span>，但参与人 2 对 <span class="math inline">L</span> 的最佳响应一定是 <span class="math inline">u</span>，因为选择 <span class="math inline">u</span> 的期望收益是 <span class="math inline">6 \alpha + 8(1-\alpha) = 8 - 2\alpha</span>，大于选择 <span class="math inline">d</span> 的期望收益 <span class="math inline">0\alpha + 2(1-\alpha) = 2 - 2\alpha</span>。针对策略 <span class="math inline">ud'</span>，参与人 1 的最佳响应却是 <span class="math inline">LR</span> 而非 <span class="math inline">RR</span>，因此 <span class="math inline">RR</span> 不是均衡策略。</p>
+<p>当然以上分析也可以在策略式下完成，但这里要说的是，为了找到完美贝叶斯均衡，完整的策略式表达并不是必须的。</p>
 </section>
-<section id="sec-5.3.3" class="level3" data-number="5.3.3">
-<h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-5.3.3"><span class="header-section-number">5.3.3</span> 直觉标准</h3>
+<section id="sec-5.3.3" class="level3 page-columns page-full" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="sec-5.3.3"><span class="header-section-number">5.3.3</span> 直观准则</h3>
+<p>在（本章里的）完美贝叶斯均衡中，如果参与人 2 的一个信息集的到达概率为零，则该信息集中的信念就是无法确定的——唯一的限制条件是序贯理性，即给定该信念时参与人 2 应该选择最优行动。问题是，这样的可以自由决定的信念是否合理？下面介绍的<strong>直观准则（intuitive criterion, IC）</strong>在这种情况下可以帮助我们确定更加合理的信念。</p>
+<p>考虑信息传递博弈中的一个完美贝叶斯均衡，并假设其中一个信息集的到达概率为零。这意味着，参与人 1 的一个行动，暂且称之为 <span class="math inline">A</span>，没有被任何一个类型选择。现在考虑参与人 1 的一个类型 <span class="math inline">t</span>。假设该类型的参与人 1 在均衡中的收益为 <span class="math inline">x</span>。然后假设类型 <span class="math inline">t</span> 在选择 <span class="math inline">A</span> 时可能获得的最大收益为 <span class="math inline">m</span>。如果 <span class="math inline">m &lt; x</span>，则参与人 2 在 <span class="math inline">A</span> 指向的信息集里赋予类型 <span class="math inline">t</span> 的信念应该为零。这里的逻辑非常直观：类型 <span class="math inline">t</span> 选择 <span class="math inline">A</span> 时的收益绝不可能大于他在均衡中选择的行动所带来的收益，因为前者的最大值为 <span class="math inline">m</span>，后者为 <span class="math inline">x</span>，而 <span class="math inline">m &lt; x</span>。因此，参与人 2 不应相信类型 <span class="math inline">t</span> 的参与人 1 在任何情况下会选择 <span class="math inline">A</span>。我们需要针对参与人 1 的每一个类型进行这样的比较。如此下来，我们可能在 <span class="math inline">A</span> 指向的信息集里给参与人 2 的信念增加一些限制。如果这个完美贝叶斯均衡所对应的信念满足这些约束条件，我们说该均衡满足直观准则<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。但是，在某些情况下，直观准则有可能让参与人 1 的所有类型被赋予的信念都为零，这时候直观准则不适用，因为信念是概率，其和应该等于 <span class="math inline">1</span>。</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;原文为 <em>survives</em> the IC。</p></div></div><p>下面我们对 <a href="#fig-5.2" class="quarto-xref">Figure&nbsp;<span>5.2</span></a> 博弈中的完美贝叶斯均衡 <span class="math inline">(LL, ud'), \beta \leq 2/3</span> 应用直观准则。类型 <span class="math inline">t</span> 的参与人 1 在均衡中获得的期望收益是 <span class="math inline">2</span>。如果类型 <span class="math inline">t</span> 不选择 <span class="math inline">L</span> 而选择 <span class="math inline">R</span>，则他可获得的最大收益为 <span class="math inline">4</span>（参与人 2 在观察到 <span class="math inline">R</span> 后选择 <span class="math inline">u'</span>）。注意这里我们讨论的是可获得的最大收益，而非偏离均衡所产生的收益。如果类型 <span class="math inline">t</span> 不选择 <span class="math inline">L</span> 而选择了 <span class="math inline">R</span>，依照均衡策略参与人 2 会选择 <span class="math inline">d'</span>，此时类型 <span class="math inline">t</span> 的收益为 <span class="math inline">0</span>。由于 <span class="math inline">4 \not&lt; 2</span>，类型 <span class="math inline">t</span> 有理由改变选择，直观准则在这里无法提供任何有效的约束。而对于类型 <span class="math inline">\ddot{t}</span>，其在均衡中的收益为 <span class="math inline">4</span>，但他在选择 <span class="math inline">R</span> 时可获得的最大收益仅为 <span class="math inline">2</span>。由于 <span class="math inline">2 &lt; 4</span>，直观准则认为参与人 2 没有理由相信类型 <span class="math inline">\ddot{t}</span> 会选择 <span class="math inline">R</span>。因此，<span class="math inline">1-\beta = 0</span>，即 <span class="math inline">\beta = 1</span>。但是这样的信念无法支持 <span class="math inline">(LL, ud')</span> 成为完美贝叶斯均衡，因为序贯理性要求 <span class="math inline">\beta \leq 2/3</span>。综上所属，这个完美贝叶斯均衡不满足直观准则。</p>
 </section>
-<section id="sec-5.3.4" class="level3" data-number="5.3.4">
+<section id="sec-5.3.4" class="level3 page-columns page-full" data-number="5.3.4">
 <h3 data-number="5.3.4" class="anchored" data-anchor-id="sec-5.3.4"><span class="header-section-number">5.3.4</span> 另一个例子</h3>
+<p>下面我们考虑 <a href="#fig-5.3" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> 中的博弈。我们尝试通过分析参与人 1 的每一个策略组合的方式寻找完美贝叶斯均衡。</p>
 
-
-<div class="hidden" aria-hidden="true">
-<span class="glightbox-desc lightbox-desc-1">Figure&nbsp;5.1: 不完全信息性别战博弈的博弈树</span>
+<div class="no-row-height column-margin column-container"><div id="fig-5.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-5.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;5.3: 另一个信号传递博弈"><img src="assets/fig/fig-5.3.png" class="img-fluid figure-img" width="350"></a>
 </div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: 另一个信号传递博弈
+</figcaption>
+</figure>
+</div></div><p>假设参与人 1 选择 <span class="math inline">LL</span>。由贝叶斯一致性可知 <span class="math inline">\alpha = 1/2</span>，因此对于参与人 2 来说 <span class="math inline">u</span> 和 <span class="math inline">d</span> 无差别。但是，如果参与人 2 选择了 <span class="math inline">u</span>，类型 <span class="math inline">\ddot{t}</span> 的参与人 1 将会选择 <span class="math inline">R</span> 而非 <span class="math inline">L</span>，并获得至少 <span class="math inline">1</span> 的收益。因此，为了使均衡成立，参与人 2 在观察到 <span class="math inline">L</span> 时应该选择 <span class="math inline">d</span>。同理，为了防止参与人 1 改变选择，在观察到 <span class="math inline">R</span> 时参与人 2 应当选 <span class="math inline">u'</span> 而非 <span class="math inline">d'</span>，这在 <span class="math inline">\beta \geq 1/2</span> 时是最优选择。类型 <span class="math inline">t</span> 不会改为选 <span class="math inline">R</span>，因此 <span class="math inline">(LL, du')</span> 在 <span class="math inline">\alpha = 1/2, \beta \geq 1/2</span> 时是（混同）完美贝叶斯均衡。在这个均衡中，类型 <span class="math inline">t</span> 获得的收益为 <span class="math inline">3</span>，如果改选 <span class="math inline">R</span> 则可获得的最大收益为 <span class="math inline">2</span>。类型 <span class="math inline">\ddot{t}</span> 获得的收益为 <span class="math inline">2</span>，如果改选 <span class="math inline">R</span> 则可获得的最大收益为 <span class="math inline">3</span>。因此，直觉准则建议 <span class="math inline">\beta = 0</span>，但是这样的信念无法支持 <span class="math inline">(LL, du')</span> 成为完美贝叶斯均衡，所以这个均衡不满足直观准则。</p>
+<p>如果参与人 1 选择 <span class="math inline">LR</span>，则参与人 2 的最佳响应为 <span class="math inline">ud'</span>，但此时类型 <span class="math inline">t</span> 会改选 <span class="math inline">R</span>。因此不存在包含 <span class="math inline">LR</span> 的完美贝叶斯均衡（以及纳什均衡）。</p>
+<p>与此类似，如果参与人 1 选择 <span class="math inline">RL</span>，则参与人 2 的最佳响应为 <span class="math inline">du'</span>，但此时类型 <span class="math inline">t</span> 会改选 <span class="math inline">L</span>。因此也不存在包含 <span class="math inline">RL</span> 的完美贝叶斯均衡（以及纳什均衡）。</p>
+<p>最后考虑参与人 1 选择 <span class="math inline">RR</span> 的情况。此时 <span class="math inline">\beta = 1/2</span>，对于参与人 2 来说 <span class="math inline">u'</span> 和 <span class="math inline">d'</span> 无差别。如果他选择 <span class="math inline">u'</span>，则类型 <span class="math inline">t</span> 的参与人 1 将改选 <span class="math inline">L</span> 并且获得正收益。因此在均衡中参与人 2 应该选择 <span class="math inline">d'</span>。同理，为了阻止类型 <span class="math inline">t</span> 改选 <span class="math inline">L</span>，参与人 2 在观察到 <span class="math inline">L</span> 时应该选择 <span class="math inline">u</span>，这在 <span class="math inline">\alpha \geq 1/2</span> 时是最优选择。因此，<span class="math inline">(RR, ud')</span> 在 <span class="math inline">\alpha \geq 1/2, \beta = 1/2</span> 时是（混同）完美贝叶斯均衡。类型 <span class="math inline">t</span> 在均衡中的收益为 <span class="math inline">2</span>，在改选 <span class="math inline">L</span> 时可获得的最大收益为 <span class="math inline">3</span>。类型 <span class="math inline">\ddot{t}</span> 在均衡中的收益为 <span class="math inline">3</span>，在改选 <span class="math inline">L</span> 时可获得的最大收益为 <span class="math inline">2</span>。因此，根据直觉准则，<span class="math inline">1-\alpha = 0</span>，即 <span class="math inline">\alpha = 1</span>，满足 <span class="math inline">\alpha \geq 1/2</span>，所以这个均衡在 <span class="math inline">\alpha = 1</span> 时满足直观准则。</p>
+
+
 </section>
 </section>
 
@@ -565,18 +653,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -608,7 +685,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -616,7 +713,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -720,7 +817,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -965,37 +1061,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>博弈论 - 7&nbsp; 合作博弈</title>
+<title>7&nbsp; 合作博弈 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -37,10 +37,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,6 +72,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -79,13 +125,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_7.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">合作博弈</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -121,9 +167,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -202,7 +248,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-7.1" id="toc-sec-7.1" class="nav-link active" data-scroll-target="#sec-7.1"><span class="header-section-number">7.1</span> 例子和基本概念</a></li>
+  <li><a href="#sec-7.2" id="toc-sec-7.2" class="nav-link" data-scroll-target="#sec-7.2"><span class="header-section-number">7.2</span> 核</a></li>
+  <li><a href="#sec-7.3" id="toc-sec-7.3" class="nav-link" data-scroll-target="#sec-7.3"><span class="header-section-number">7.3</span> Shapley 值</a></li>
+  <li><a href="#sec-7.4" id="toc-sec-7.4" class="nav-link" data-scroll-target="#sec-7.4"><span class="header-section-number">7.4</span> Nucleolus</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -226,13 +281,761 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>本章内容基于原书第九章。</p>
+<p>合作博弈的隐藏假设是参与人们可以结成联盟（coalition）并针对如何分配联盟带来的总收益达成具有约束力的协议。在合作博弈中，策略并不是模型的一部份，在这一点上它比非合作博弈更加抽象。合作博弈模型只描述了每个可能的联盟能够达成的收益。效用可转移合作博弈（TU-game）假设联盟的收益可以用一个数字表达。可以将其理解为货币价值，并且在联盟真正形成时可以通过任何可以想到的方式分配给联盟成员（也包括支付值为负的情况）。更具一般性的解释是可以在参与人之间相互转移的效用，例如假设效用可以通过某种交换媒介来衡量，而最常见的媒介就是货币。</p>
+<p>这一章的内容是对效用可转移合作博弈理论的初步介绍。在 <a href="#sec-7.2" class="quarto-xref">Sections&nbsp;<span>7.2</span></a>-<a href="#sec-7.4" class="quarto-xref"><span>7.4</span></a> 中我们将会讨论几个常见的解，包括核（core）、Shapley 值、以及 nucleolus<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。首先在 <a href="#sec-7.1" class="quarto-xref"><span>Section 7.1</span></a> 中介绍例子和基本概念。</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;核（core）也可以翻译成“核心”。Shapley 通常翻译为夏普利，也有人写成沙普利。对 nucleolus 的常见翻译是沿用生物学中使用的“核仁”，注意英语发音时重音在 o 上。</p></div></div><section id="sec-7.1" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="sec-7.1"><span class="header-section-number">7.1</span> 例子和基本概念</h2>
+<p>在 <a href="note_1.html" class="quarto-xref"><span>Chapter 1</span></a> 中我们介绍了几个效用可转移合作博弈的例子，包括三城博弈、手套博弈、排列博弈、以及投票博弈，这些博弈问题背后的故事可以参考 <a href="note_1.html#sec-1.3.4" class="quarto-xref"><span>Section 1.3.4</span></a>。这里我们只讨论博弈本身。</p>
+<p>在三城博弈中，城市通过合作可以节省开支，具体的金额见 <a href="#tbl-7.1" class="quarto-xref">Table&nbsp;<span>7.1</span></a>。此表中的第一行列出了所有可能出现的联盟。我们用“联盟”一词表达参与人集合的任意子集，因此联盟并不一定会真正结成。空集是任何集合的子集，因此空联盟也被加入到表中。这只是习惯问题，我们按照惯例为其赋值为零。表中第二行的数字是联盟的价值（worth）。例如，联盟 <span class="math inline">S = \{1,2\}</span> 的价值是 <span class="math inline">90</span>。在这个例子中，<span class="math inline">90</span> 代表城市 1 和城市 2 通过合作能够节省的成本。如果这个联盟真正结成了，两个城市可以分配联盟的价值。具体的说就是当 <span class="math inline">x_1 \geq 0</span> 和 <span class="math inline">x_2 \geq 0</span> 满足 <span class="math inline">x_1 + x_2 \leq 90</span> 时，参与人 1 可以获得 <span class="math inline">x_1</span>，参与人 2 可以获得 <span class="math inline">x_2</span>。</p>
+<div id="tbl-7.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.1: 三城博弈
+</figcaption>
+<div aria-describedby="tbl-7.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\emptyset</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">90</span></td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">220</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>在手套博弈中，联盟的意义是组成一对手套。这个博弈的价值整理在 <a href="#tbl-7.2" class="quarto-xref">Table&nbsp;<span>7.2</span></a> 中。例如全体联盟（grand coalition）<span class="math inline">\{1,2,3\}</span> 的价值 <span class="math inline">1</span> 代表其能够组成的一对手套的货币价值或效用值。在这里联盟成员也可以自由分配联盟的价值，因此全体联盟的分配可以是满足 <span class="math inline">x_1 + x_2 + x_3 \leq 1</span> 的任意向量 <span class="math inline">(x_1, x_2, x_3) \in \mathbb{R}^3</span>。在这里 <span class="math inline">x_i</span> 既可以代表参与人 1 分到的金额，也可以解释成他戴手套的时间占比（仅限 <span class="math inline">x_i</span> 为非负时）。</p>
+<div id="tbl-7.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.2: 手套博弈
+</figcaption>
+<div aria-describedby="tbl-7.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\emptyset</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">1</span></td>
+<td><span class="math inline">1</span></td>
+<td><span class="math inline">1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p><a href="#tbl-7.3" class="quarto-xref">Table&nbsp;<span>7.3</span></a> 重新描述了排列博弈（牙医博弈）。此博弈中联盟的价值可以解释为成员在牙医排期上节省的机会成本。而这当然也是可以在联盟成员间自由分配的。</p>
+<div id="tbl-7.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.3: 排列博弈
+</figcaption>
+<div aria-describedby="tbl-7.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\emptyset</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">2</span></td>
+<td><span class="math inline">5</span></td>
+<td><span class="math inline">4</span></td>
+<td><span class="math inline">14</span></td>
+<td><span class="math inline">18</span></td>
+<td><span class="math inline">9</span></td>
+<td><span class="math inline">24</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>至于联合国安理会的投票博弈，虽然也能用表格的形式记下所有联盟的价值，但是那将会是一个包含 <span class="math inline">2^{15} = 32768</span> 个联盟的巨大表格。因此，对这个博弈来说更方便的表达方式是利用函数。令常任理事国为参与人 1, 2, 3, 4, 5，非常任理事国为参与人 6 - 15。令 <span class="math inline">N = \{1, \dots, 15\}</span> 为全体联盟，<span class="math inline">v(S)</span> 为联盟 <span class="math inline">S\subseteq N</span> 的价值。则有</p>
+<p><span class="math display">
+v(S) =
+\begin{cases}
+1 &amp; \text{if } \ \{1,\dots,5\} \subseteq S \text{ and } |S| \geq 9 \\
+0 &amp; \text{otherwise}
+\end{cases}
+</span></p>
+<p>其中 <span class="math inline">|S|</span> 为联盟 <span class="math inline">S</span> 的成员数。这里的数字 <span class="math inline">1</span> 代表该联盟是胜利联盟（winning coalition），而数字 <span class="math inline">0</span> 代表失败联盟（losing coalition）。在分析这类博弈时，最终分配中的 <span class="math inline">x_i</span> 通常被解释为影响力指数（power index）。</p>
+<p>下面的定义正式描述了例子中出现的基本概念。</p>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-7.1" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.1</strong></span> 效用可转移合作博弈（或 TU-game）表达为二元组 <span class="math inline">(N, v)</span>，其中 <span class="math inline">N = \{1, \dots, n\}, n \in \mathbb{N}</span> 是参与人集合，<span class="math inline">v</span> 是赋予每个联盟 <span class="math inline">S \subseteq N</span> 以实数值 <span class="math inline">v(S)</span> 的函数，并假设 <span class="math inline">v(\emptyset) = 0</span>。函数 <span class="math inline">v</span> 称为特征函数（characteristic function），函数值 <span class="math inline">v(S)</span> 称为联盟 <span class="math inline">S</span> 的价值。联盟 <span class="math inline">N</span> 称为全体联盟。给联盟 <span class="math inline">S</span> 成员的收益分配（payoff distribution）或收益向量（payoff vector）是实数向量 <span class="math inline">(x_i)_{i \in S}</span>。</p>
+</div>
+</div>
+</div>
+</div>
+<p>在分析 TU-game 时，我们主要回答两个重要问题：哪个联盟会真正结成；如何在成员间分配联盟的价值。在本章中，我们只假设全体联盟会结成，然后集中精力讨论价值分配。这个设定并没有它的第一印象那么具有局限性，因为联盟能否结成自然地依赖于其利益分配方式。因此，即使更小的联盟可以结成，对于价值分配的讨论也是必要的。</p>
+</section>
+<section id="sec-7.2" class="level2 page-columns page-full" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="sec-7.2"><span class="header-section-number">7.2</span> 核</h2>
+<p>考虑 <a href="#tbl-7.1" class="quarto-xref">Table&nbsp;<span>7.1</span></a> 中的三城博弈。假设全体联盟成立，成员需要针对分配总价值 <span class="math inline">v(N) = 220</span> 的方案 <span class="math inline">x_1=40, x_2=40, x_3=140</span> 进行商议。或许我们可以猜测这个方案是参与人 3 提出的。针对此方案，参与人 1 和参与人 2 可以成功拒绝，因为在没有参与人 3 的情况下，他们两人可以共同获得 <span class="math inline">v(\{1,2\}) = 90 &gt; 80 = x_1 + x_2</span> 的价值。我们说这时 <span class="math inline">\boldsymbol{x} = (x_1,x_2,x_3)</span> 不在博弈的核中。三城博弈的核是全体联盟 <span class="math inline">N=\{1,2,3\}</span> 的收益分配中，各成员所得之和等于联盟价值 <span class="math inline">v(N) = 220</span>，且任意非空联盟都获得不少于自身价值的收益分配的集合。该集合的数学表达式是</p>
+<p><span class="math display">
+\begin{align*}
+C = \big\{ (x_1, x_2, x_3 \in \mathbb{R}^3 \  \mid \ &amp; x_1, x_2, x_3 \geq 0 , \\
+&amp; x_1 + x_2 \geq 90, x_1 + x_3 \geq 100, x_2 + x_3 \geq 120 \\
+&amp; x_1 + x_2 + x_3 = 220) \big\}
+\end{align*}
+</span></p>
+<p>我们可以将它绘图以加深理解。虽然 <span class="math inline">C</span> 是 <span class="math inline">\mathbb{R}^3</span> 的子集，但约束条件 <span class="math inline">x_1 + x_2 + x_3 = 220</span> 使它成为 <span class="math inline">\mathbb{R}^3</span> 中一个二维平面的子集，即通过三点 <span class="math inline">(220,0,0), (0,220,0), (0,0,220)</span> 的平面。<a href="#fig-7.1" class="quarto-xref">Figure&nbsp;<span>7.1</span></a> 绘制了以此三点为顶点的三角形。根据约束条件 <span class="math inline">x_1, x_2, x_3 \geq 0</span>，集合 <span class="math inline">C</span> 包含在这个三角形的内部。三个二人联盟的约束条件进一步将 <span class="math inline">C</span> 限制在图中的阴影部份。</p>
 
-
-
+<div class="no-row-height column-margin column-container"><div id="fig-7.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-7.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-7.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;7.1: 集合 C（阴影部份）是三城博弈的核。线段 a 对应约束条件 x_1 + x_2 \geq 90，它包含三角形内部所有 x_1 + x_2 = 90 \Leftrightarrow x_3 = 130 的点；线段 b 对应约束条件 x_1 + x_3 \geq 100；线段 c 对应约束条件 x_2 + x_3 \geq 120。"><img src="assets/fig/fig-7.1.png" class="img-fluid figure-img" width="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-7.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7.1: 集合 <span class="math inline">C</span>（阴影部份）是三城博弈的核。线段 <span class="math inline">a</span> 对应约束条件 <span class="math inline">x_1 + x_2 \geq 90</span>，它包含三角形内部所有 <span class="math inline">x_1 + x_2 = 90 \Leftrightarrow x_3 = 130</span> 的点；线段 <span class="math inline">b</span> 对应约束条件 <span class="math inline">x_1 + x_3 \geq 100</span>；线段 <span class="math inline">c</span> 对应约束条件 <span class="math inline">x_2 + x_3 \geq 120</span>。
+</figcaption>
+</figure>
+</div></div><p>因此，三城博弈的核是由 <span class="math inline">(100, 120, 0), (0, 120, 100), (0, 90, 130), (90, 0, 130)</span> 和 <span class="math inline">(100, 0, 120)</span> 为顶点组成的多边形的边和内部的所有点的集合。</p>
+<p>下面我们给出核的正式定义。对于收益分配 <span class="math inline">\boldsymbol{x} = (x_1, \dots, x_n) \in \mathbb{R}^n</span> 和非空联盟 <span class="math inline">S \subseteq N</span>，令 <span class="math inline">x(S) := \sum_{i \in S} x_i</span> 为联盟 <span class="math inline">S</span> 的成员在收益分配 <span class="math inline">\boldsymbol{x}</span> 中可以获得的总收益。</p>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-7.2" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.2</strong></span> 对于 TU-game <span class="math inline">(N,v)</span>，收益分配 <span class="math inline">\boldsymbol{x} = (x_1, \dots, x_n) \in \mathbb{R}^n</span> 可能有下列性质：</p>
+<ul>
+<li>有效（efficient）：<span class="math inline">x(N) = v(N)</span>，</li>
+<li>个体理性（individually rational）：<span class="math inline">x_i \geq v(\{i\}), i \in N</span>，</li>
+<li>联盟理性（coalitionally rational）：<span class="math inline">x(S) \geq v(S), \emptyset \neq S \subseteq N</span>。</li>
+</ul>
+<p><span class="math inline">(N,v)</span> 的核是集合</p>
+<p><span class="math display">
+C(N,v) = \big\{ \boldsymbol{x} \in \mathbb{R}^3 \mid x(N) = v(N) \text{ and } x(S) \geq v(S) \text{ for } \emptyset \neq S \subseteq N \big\}
+</span></p>
+<p>也就是说，<span class="math inline">(N,v)</span> 的核是所有有效的具有联盟理性的收益分配的集合。</p>
+</div>
+</div>
+</div>
+</div>
+<p>博弈的核可能是很大的集合（如三城博弈），可能是很小的集合（如手套博弈的核仅包含一个收益分配 <span class="math inline">(0,0,1)</span>），也可能是空集。一般情况下，核可以通过线性规划法计算。二人或三人博弈的核可以通过绘图法计算（例如上面的三城问题）。而有时，通过一些博弈的特殊性质也可以推导出该博弈的核。</p>
+<p>在本节的最后，我们计算下面的广义手套博弈的核。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-7.1" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.1 (广义手套博弈)</strong></span> 假设有 <span class="math inline">\ell &gt; 0</span> 个参与人拥有一只左手的手套，其集合记为 <span class="math inline">L</span>。有 <span class="math inline">r &gt; 0</span> 个参与人拥有一只右手的手套，其集合记为 <span class="math inline">R</span>。参与人的总数为 <span class="math inline">n</span>，即 <span class="math inline">n = \ell + r</span>。全体联盟 <span class="math inline">N</span> 包含所有参与人。联盟 <span class="math inline">S</span> 的价值取决于其成员可以组成多少副手套。因此，<span class="math inline">v(S)</span> 等于 <span class="math inline">S</span> 中拥有左手手套的人数和拥有右手手套的人数的最小值，即</p>
+<p><span class="math display">
+v(S) = \min \{ |S \cap L|, |S \cap R| \}.
+</span></p>
+<p>即使我们给 <span class="math inline">\ell</span> 和 <span class="math inline">r</span> 赋予具体的值，我们也无法针对 <span class="math inline">\ell + r &gt; 3</span> 的情形应用前面介绍的绘图法计算此博弈的核（其实四人博弈是可以绘图的，但是得到的是复杂的三维图像）。因此我们需要用另一种方法进行分析。</p>
+<p>首先，假设 <span class="math inline">\ell &gt; r</span>。此时 <span class="math inline">v(N) = r</span>，因为全体联盟一共可以组成 <span class="math inline">r</span> 副手套，这提供了核的一个约束条件 <span class="math inline">x_1 + \dots + x_n = r</span>。每个参与人自己无法组成一幅手套，因此 <span class="math inline">v(\{i\}) = 0, i \in N</span>，这提供了第二个约束条件 <span class="math inline">x_i \geq 0, i \in N</span>。现在选择 <span class="math inline">L</span> 中的一个参与人 <span class="math inline">j</span>，即一个拥有左手手套的参与人。考虑包含所有拥有右手手套的参与人和 <span class="math inline">j</span> 以外的 <span class="math inline">r</span> 个拥有左手手套的参与人组成的联盟 <span class="math inline">S</span>。我们知道 <span class="math inline">v(S) = r</span>，因为 <span class="math inline">S</span> 的成员可以组成 <span class="math inline">r</span> 副手套，但是这也意味着他们获得的分配总额至少为 <span class="math inline">r</span>，即 <span class="math inline">x(S) \geq r</span>。由 <span class="math inline">x(N) = r</span> 可得 <span class="math inline">x(S) = r</span>，因此 <span class="math inline">x_j = 0</span>。这个推导适用于任意一个拥有左手手套的参与人，因此他们的分配都为零。到此为止的结论是所有拥有右手手套的参与人获得的分配总额为 <span class="math inline">r</span>，而每个拥有左手手套的参与人获得的分配为零。</p>
+<p>现在假设 <span class="math inline">i</span> 拥有一只右手手套，<span class="math inline">j</span> 拥有一只左手手套。此时 <span class="math inline">v(\{i,j\}) = 1</span>，因此 <span class="math inline">x_i + x_j \geq 1</span>。我们已经知道 <span class="math inline">x_j = 0</span>，因此 <span class="math inline">x_i \geq 1</span>。此逻辑适用于任何拥有右手手套的参与人，且一共有 <span class="math inline">r</span> 人，因此每个拥有右手手套的参与人获得的分配都是 <span class="math inline">1</span>。至此，我们发现了唯一满足条件的收益分配：给每个拥有右手手套的参与人分配 <span class="math inline">1</span>，给每个拥有左手手套的参与人分配 <span class="math inline">0</span>。换句话说，如果 <span class="math inline">\boldsymbol{x}</span> 在核中，那么它就是这个收益分配。</p>
+<p>另一方面，这个收益分配确实在核中。所有参与人的分配额之和是 <span class="math inline">r</span>，确实等于 <span class="math inline">v(N)</span>。任意联盟 <span class="math inline">S</span> 获得的分配额之和等于其中拥有右手手套参与人的人数，这也不小于 <span class="math inline">S</span> 的价值。</p>
+<p>总结以上分析可以得到在 <span class="math inline">\ell &gt; r</span> 时核的表达式</p>
+<p><span class="math display">
+C(v) = \{\boldsymbol{x} \in \mathbb{R}^n \mid x_i = 1 \text{ for } i \in R, x_i = 0 \text{ for } i \in L \}.
+</span></p>
+<p>同理，在 <span class="math inline">r &gt; \ell</span> 时核的表达式为</p>
+<p><span class="math display">
+C(v) = \{\boldsymbol{x} \in \mathbb{R}^n \mid x_i = 1 \text{ for } i \in L, x_i = 0 \text{ for } i \in R \}.
+</span></p>
+<p>你能自己计算 <span class="math inline">\ell = r</span> 时的核吗？</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-7.3" class="level2 page-columns page-full" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="sec-7.3"><span class="header-section-number">7.3</span> Shapley 值</h2>
+<p>Shapley 值是一种完全不同于核的 TU-game 解。核是有可能为空的一个集合，但 Shapley 值会赋予每个 TU-game 的全体联盟一个唯一的收益分配。Shapley 值的定义并不是基于策略上的考量，而是给每个参与人分配其在博弈中的“平均边际贡献”（average marginal contribution）。在 <a href="note_1.html" class="quarto-xref"><span>Chapter 1</span></a> 中我们已经给三城博弈定义了 Shapley 值，下面我们首先复习一下这个定义，并在此基础上进行扩展。</p>
+<p>考虑 <a href="#tbl-7.1" class="quarto-xref">Table&nbsp;<span>7.1</span></a> 中的三城博弈。我们可以想象让参与人们依次进入一间房间，每个参与人在进入该房间时会得到自己对房间中形成的联盟价值的贡献值。例如，令参与人 1 首先进入房间，然后依次是参与人 2 和 3。参与人 1 进入房间时房中没有其他人，因此他可以获得他的边际贡献 <span class="math inline">v(\{1\}) - v(\emptyset) = 0 - 0 = 0</span>。当参与人 2 进入房间时，参与人 1 已经在房间中了，因此参与人 2 获得的边际贡献是 <span class="math inline">v(\{1,2\}) - v(\{1\}) = 90 - 0 = 90</span>。到了参与人 3 进入房间时，房间中已经有联盟 <span class="math inline">\{1,2\}</span>，因此参与人 3 可以获得他的边际贡献 <span class="math inline">v(\{1,2,3\}) - v(\{1,2\}) = 220 - 90 = 130</span>。通过这个过程得出了一个收益分配 <span class="math inline">(0,90,130)</span>，我们称之为边际向量（marginal vector）。当然了，这个分配并不能说是公正的，因为它依赖进入房间的顺序，并且这个顺序是我们随意决定的。事实上还有另外五种进入顺序可以考虑。Shapley 值是所有六种进入顺序对应的边际向量的平均值，见 <a href="#tbl-7.4" class="quarto-xref">Table&nbsp;<span>7.4</span></a>。</p>
+<div id="tbl-7.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.4: 三城博弈的 Shapley 值的计算过程
+</figcaption>
+<div aria-describedby="tbl-7.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>进入顺序</th>
+<th>参与人 1</th>
+<th>参与人 2</th>
+<th>参与人 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1, 2, 3</td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">90</span></td>
+<td><span class="math inline">130</span></td>
+</tr>
+<tr class="even">
+<td>1, 3, 2</td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">100</span></td>
+</tr>
+<tr class="odd">
+<td>2, 1, 3</td>
+<td><span class="math inline">90</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">130</span></td>
+</tr>
+<tr class="even">
+<td>2, 3, 1</td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">120</span></td>
+</tr>
+<tr class="odd">
+<td>3, 1, 2</td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">0</span></td>
+</tr>
+<tr class="even">
+<td>3, 2, 1</td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">0</span></td>
+</tr>
+<tr class="odd">
+<td><strong>总和</strong></td>
+<td><span class="math inline">390</span></td>
+<td><span class="math inline">450</span></td>
+<td><span class="math inline">480</span></td>
+</tr>
+<tr class="even">
+<td><strong>Shapley 值</strong></td>
+<td><span class="math inline">65</span></td>
+<td><span class="math inline">75</span></td>
+<td><span class="math inline">80</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>对于任意 TU-game <span class="math inline">(N,v)</span>，Shapley 值都可以用相同的方式计算。参与人集合为 <span class="math inline">N = \{1,\dots,n\}</span> 时，共有 <span class="math inline">n\cdot (n-1) \cdot \dots \cdot 2\cdot 1 = n!</span> 种排列方式。首先计算每种排列方式对应的边际向量，然后在计算它们的均值即可。但是如果参与人的数量太多，就过导致计算量过大。以联合国安理会的投票博弈为例，我们需要计算 <span class="math inline">15! &gt; 13 \times 10^{11}</span> 个边际向量，这显然是不现实的。当然，我们还有其他更加聪明的方法计算参与人的总边际贡献。</p>
+<p>我们以一个十人 TU-game 为例进行说明。考虑参与人 7 和联盟 <span class="math inline">\{3, 5, 9\}</span>。这时的边际贡献 <span class="math inline">v(\{3,5,7,9\} - v(\{3,5,9\})</span> 可以由多个不同的边际向量产生。那么具体有多少个呢？首先，参与人 3、5、9 需要率先进入房间，这对应 <span class="math inline">3!</span> 种不同的进入顺序。此后参与人 7 进入房间。最后，剩下的六个参与人进入房间，而这对应 <span class="math inline">6!</span> 种不同的进入顺序。因此，能让参与人 7 获得边际贡献 <span class="math inline">v(\{3,5,7,9\} - v(\{3,5,9\})</span> 的边际向量一共有 <span class="math inline">3! \times 6!</span> 种。这种计算方法可以大幅降低计算量。</p>
+<p>现在我们将这种方法应用在任意的 TU-game <span class="math inline">(N,v)</span> 的任意参与人 <span class="math inline">i</span> 和任意不包含 <span class="math inline">i</span> 的联盟 <span class="math inline">S</span> 上。能让参与人 <span class="math inline">i</span> 获得边际贡献 <span class="math inline">v(S \cup \{i\}) - v(S)</span> 的边际向量的总数等于 <span class="math inline">S</span> 中参与人的排列数 <span class="math inline">|S|!</span> 与在参与人 <span class="math inline">i</span> 之后进入房间的参与人的排列数 <span class="math inline">(n - |S| - 1)!</span> 的乘积。因此，参与人 <span class="math inline">i</span> 在联盟 <span class="math inline">S</span> 成员之后进入房间时获得的总边际贡献为</p>
+<p><span class="math display">
+|S|! (n - |S| - 1)! \big[ v(S \cup \{i\}) - v(S) \big].
+</span></p>
+<p>参与人 <span class="math inline">i</span> 的 Shapley 值就是通过对所有不包含 <span class="math inline">i</span> 的联盟 <span class="math inline">S</span> 对应的总边际贡献进行加总，然后除以联盟总排列数 <span class="math inline">n!</span> 获得。实际上，我们也习惯用这种方式定义 Shapley 值。</p>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="def-7.3" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.3</strong></span> TU-game <span class="math inline">(N,v)</span> 的 Shapley 值记作 <span class="math inline">\Phi(N,v)</span>。它的第 <span class="math inline">i</span> 个要素，也就是参与人 <span class="math inline">i</span> 的 Shapley 值是</p>
+<p><span class="math display">
+\Phi_i(N,v) = \sum_{S\subseteq N: i\notin S} \frac{|S|! (n - |S| - 1)!}{n!}\big[ v(S \cup \{i\}) - v(S) \big].
+</span></p>
+</div>
+</div>
+</div>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>在文献中你可能看到 Shapley 值的另一种表达方式</p>
+<p><span class="math display">
+\Phi_i(N,v) = \sum_{S\subseteq N: i\in S} \frac{(|S|-1)! (n - |S|)!}{n!}\big[ v(S) - v(S \setminus \{i\}) \big]
+</span></p>
+</div></div><p>在人数较多的 TU-game 中，用 <a href="#def-7.3" class="quarto-xref">Definition&nbsp;<span>7.3</span></a> 中的公式计算 Shapley 值会更简单。但在证明一些性质的时候，基于边际向量的定义可能更好用。</p>
+<p>三城博弈的 Shapley 值包含在核中（你需要确认一下）。但这并不是可推广的结论，在有些具有非空核的博弈中，Shapley 值也可能落在核的外侧。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-7.2" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.2 (广义手套博弈-续)</strong></span> 我们继续考虑 <a href="#exm-7.1" class="quarto-xref">Example&nbsp;<span>7.1</span></a> 中的广义手套博弈。这里假设 <span class="math inline">\ell = 4, r = 2</span>。此时全体联盟的价值为 <span class="math inline">v(N) = 2</span>。首先根据对称性，所有拥有左手手套的参与人都有相同的 Shapley 值，拥有右手手套者亦然（你可以尝试证明这个性质）。如果设每个拥有左手手套的参与人的 Shapley 值都是 <span class="math inline">\alpha</span>，则每个拥有右手手套的参与人的 Shapley 值应为 <span class="math inline">(2-4\alpha)/2</span>。下面我们来计算 <span class="math inline">\alpha</span>。</p>
+<p>假设 <span class="math inline">i</span> 拥有一只左手手套。则 <span class="math inline">i</span> 对成员中拥有左手手套者少于拥有右手手套者的任意联盟的边际贡献都是 <span class="math inline">1</span>，对任意其他联盟的边际贡献都是 <span class="math inline">0</span>，因此我们只需考虑前者。选取一个成员中拥有右手手套者人数为 <span class="math inline">k</span>，拥有左手手套者人数为 <span class="math inline">j</span> ，满足 <span class="math inline">j &lt; k</span> 且不包含 <span class="math inline">i</span> 的联盟 <span class="math inline">S</span>。此时 <span class="math inline">v(S) = j</span>，<span class="math inline">v(S \cup \{i\}) = j+1</span>，因此 <span class="math inline">v(S \cup \{i\}) - v(S) = 1</span>。这样的联盟 <span class="math inline">S</span> 共有 <span class="math inline">\binom{2}{k} \cdot \binom{3}{j}</span> 个<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。因为 <span class="math inline">|S| = k + j</span>，<a href="#def-7.3" class="quarto-xref">Definition&nbsp;<span>7.3</span></a> 中的权重等于 <span class="math inline">(k+j)!(5-k-j)!</span>。因此，<span class="math inline">i</span> 的 Shapley 值是</p>
+<p><span class="math display">
+\Phi_i(N,v) = \alpha = \sum_{k=1}^2 \sum_{j = 0}^{k-1} \frac{(k+j)!(5-k-j)!}{6!} \binom{2}{k} \cdot \binom{3}{j}
+</span></p>
+<p>经过简单计算可得 <span class="math inline">\alpha = 2/15</span>。因此，</p>
+<p><span class="math display">
+\Phi_i(N,v) =
+\begin{cases}
+2/15 &amp; \text{（如果 $i$ 拥有左手手套）}\\
+11/15 &amp; \text{（如果 $i$ 拥有右手手套）}
+\end{cases}
+</span></p>
+<p>注意此博弈的 Shapley 值不包含在核中。</p>
+<p>以上分析方法可以用于任意的 <span class="math inline">\ell</span> 和 <span class="math inline">r</span>。如果 <span class="math inline">\ell = r</span>，则根据对称性，每个参与人的 Shapley 值都是 <span class="math inline">1/2</span>。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;<span class="math inline">\binom{p}{q} = \frac{p!}{q! (p-q)!}</span> 是从 <span class="math inline">p</span> 个对象中挑选 <span class="math inline">q</span> 个对象的组合数。</p></div></div><p>Shapley 值的定义中给每个参与人赋予他平均边际贡献的含义本身可以看作是对这个解的正当性提供的支持。在文献中，有更多关于 Shapley 值的公理化分析。公理化的过程如下。考虑任意一个能给每个定义在 <span class="math inline">N</span> 上的博弈赋予一个收益向量的函数（Shapley 值就是一个函数）。然后为函数定义一些性质或公理（axiom）。这些公理的作用是限制函数的可能性。如果公理越强，则满足公理的函数越少。如果公理足够强，就能将满足它们的函数减少为一个。这时就可以理解成用这些公理“定义”了一个函数。公理化方法是合作博弈研究领域的标准方法。</p>
+</section>
+<section id="sec-7.4" class="level2 page-columns page-full" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="sec-7.4"><span class="header-section-number">7.4</span> Nucleolus</h2>
+<p>本章中介绍的最后一个概念是 nucleolus。它和 Shapley 值一样都是单值解，即赋予每个 TU-game 一个收益分配。它比 Shapley 值更具吸引力的地方是当博弈的核为非空时，nucleolus 永远会得到一个核内部的收益分配<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。Nucleolus 仅能定义在具有下列性质的博弈中。当一个 TU-game <span class="math inline">(N,v)</span> 满足 <span class="math inline">v(N) \geq \sum_{i\in N} v(\{i\})</span> 时，我们说这个博弈是必要的（essential）。必要博弈存在有效且具有个人理性的全体联盟收益分配，我们将这样的收益分配称为 imputation<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>。TU-game <span class="math inline">(N,v)</span> 的 imputation 集定义为</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;或许这就是这个名字的来源，在生物学中，细胞的核仁（nucleolus）是细胞核（nucleus）内部的一种结构。</p></div><div id="fn4"><p><sup>4</sup>&nbsp;Impute 一词的常见含义是归咎、归责、归因或归属。在统计学中，imputation 是通过推测对缺失数据进行填补的方法。在经济和金融领域，imputation 可以指通过最终价格推测要素价格（theory of imputation），也可以指在计税时将纳税人的非现金所得换算为收入的方法（imputed income，推算收入）。这里我们不对博弈论中的 imputation 进行翻译。</p></div></div><p><span class="math display">
+I(N,v) = \big\{ \boldsymbol{x}\in \mathbb{R}^n \mid x(N) = v(N), x_i \geq v(\{i\}) \text{ for all } i \in N \big\}.
+</span></p>
+<p>因此，当且仅当 <span class="math inline">I(N,v) \neq \emptyset</span> 时，博弈 <span class="math inline">(N,v)</span> 是必要博弈。</p>
 
-</div></div></main> <!-- /main -->
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p><span class="math inline">I(N,v) \neq \emptyset</span> 时，<span class="math inline">(N,v)</span> 为必要博弈是显而易见的。反之，你需要找出任意必要博弈 <span class="math inline">(N,v)</span> 中的至少一个 imputation。</p>
+</div></div><p>现在假设 <span class="math inline">(N,v)</span> 是必要的 TU-game，令 <span class="math inline">\boldsymbol{x} \in I(N,v)</span>，令 <span class="math inline">S \neq N</span> 为一个非空联盟。定义 <span class="math inline">e(S, \boldsymbol{x})</span> 为联盟 <span class="math inline">S</span> 在分配 <span class="math inline">\boldsymbol{x}</span> 的超额值（excess），即 <span class="math inline">S</span> 能够产生的价值与 <span class="math inline">\boldsymbol{x}</span> 赋予 <span class="math inline">S</span> 成员的总收益之差。具体表达为</p>
+<p><span class="math display">
+e(S,\boldsymbol{x}) = v(S) - x(S).
+</span></p>
+<p>超额值可以看作是联盟 <span class="math inline">S</span> 对 imputation <span class="math inline">\boldsymbol{x}</span> 的不满意度，因为当 <span class="math inline">\boldsymbol{x}</span> 分配给 <span class="math inline">S</span> 的总收益越小时，<span class="math inline">e(S, \boldsymbol{x})</span> 越大。如果超额值为正，则说明 <span class="math inline">S</span> 获得的总收益小于它产生的价值。</p>
+<p>如果用语言描述的话，一个必要的 TU-game 的 nucleolus 的定义如下。</p>
+<ol type="1">
+<li><p>首先，每一个收益分配 <span class="math inline">\boldsymbol{x}</span> 都能对除了 <span class="math inline">N</span> 和 <span class="math inline">\emptyset</span> 以外的所有联盟计算超额值。找出令最大超额值最小的 imputation 的集合。如果该集合为单点集，则该点即为 nucleolus。</p></li>
+<li><p>如果上面找出的 imputation 集不是单点集，则针对 (1) 中产生最大超额值的联盟以外的其他联盟，在 (1) 中确定的 imputation 集里找出令这些最大超额值最小的子集。如果这个子集是单点集，则该点为 nucleolus。</p></li>
+<li><p>如果上一步没有确定 nucleolus，则重复 (2) 中的方法继续缩小 imputation 集。如果这次获得了一个单点集，则该点为 nucleolus。</p></li>
+<li><p>如果还没有确定 nucleolus，则重复上面的过程，直至剩下的集合变成单点集为止。</p></li>
+</ol>
+<p>因此，nucleolus 的出发点是让最大的不满意度尽可能的小。如果有两种以上不同的方法能够达到这一目的，则继续让第二大的不满意度尽可能的小。依此类推，直至获得唯一的收益分配。</p>
+<p>原书第十九章给出了 nucleolus 的正式定义。这里我们仅通过例子展示 nucleolus 的计算过程。</p>
+<div id="tbl-7.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.5: 三城博弈的 nucleolus 的计算过程示意
+</figcaption>
+<div aria-describedby="tbl-7.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">90</span></td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">220</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">e(S, (70,70,80))</span></td>
+<td><span class="math inline">-70</span></td>
+<td><span class="math inline">-70</span></td>
+<td><span class="math inline">-80</span></td>
+<td><span class="math inline">-50</span></td>
+<td><span class="math inline">-50</span></td>
+<td><span class="math inline">-30</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">e(S, (56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3}))</span></td>
+<td><span class="math inline">-56\frac{2}{3}</span></td>
+<td><span class="math inline">-76\frac{2}{3}</span></td>
+<td><span class="math inline">-86\frac{2}{3}</span></td>
+<td><span class="math inline">-43\frac{1}{3}</span></td>
+<td><span class="math inline">-43\frac{1}{3}</span></td>
+<td><span class="math inline">-43\frac{1}{3}</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>第一个例子是三城博弈，见 <a href="#tbl-7.5" class="quarto-xref">Table&nbsp;<span>7.5</span></a>。表格的第三行给出了每个联盟在 <span class="math inline">(70,70,80)</span> 的超额值。选取这个 imputation 没有特殊的考量，仅仅是作为一个计算 nucleolus 的起点。在这个 imputation 上，最大的超额值为联盟 <span class="math inline">\{2,3\}</span> 的 <span class="math inline">-30</span>。这个值可以通过削减参与人 1 的分配并补贴给参与人 2 和 3 来降低，这同时也会令联盟 <span class="math inline">\{1,2\}</span> 或 <span class="math inline">\{1,3\}</span> 或两者的超额值上升。这两个联盟在 <span class="math inline">(70,70,80)</span> 的超额值都是 <span class="math inline">-50</span>。通过给参与人 2 和 3 各自增加 <span class="math inline">6\frac{2}{3}</span> 的收益，同时降低参与人 1 的收益 <span class="math inline">2\cdot 6\frac{2}{3} = 13\frac{1}{3}</span> 可以获得收益分配 <span class="math inline">(56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3})</span>，使三个二人联盟的超额值都等于 <span class="math inline">-43\frac{1}{3}</span>，也是新的最大超额值。注意，此时的最大超额值已经不能再小了，这是因为三个二人联盟在任意 imputation 的超额值之和都应该等于 <span class="math inline">-130</span>，即</p>
+<p><span class="math display">
+\begin{align*}
+e(\{1,2\}, \boldsymbol{x}) + e(\{1,3\}, \boldsymbol{x}) + e(\{2,2\}, \boldsymbol{x}) &amp;= v(\{1,2\}) + v(\{1,3\}) + v(\{2,3\}) \\
+&amp; \phantom{= \ } - 2 (x_1 + x_2 + x_3) \\
+&amp;= 90 + 100 + 120 - 2 \cdot 220 \\
+&amp;= -130 .
+\end{align*}
+</span></p>
+<p>这意味着若想继续降低某个二人联盟的超额值，势必要增加另一个二人联盟的超额值，使得最大超额值也随之增加。另外，能够使三个二人联盟的超额值达到一致的 imputation 只有一个，因为下面的方程组</p>
+<p><span class="math display">
+\begin{align*}
+90 - x_1 - x_2 &amp;= 100 - x_1 - x_3 \\
+90 - x_1 - x_2 &amp;= 120 - x_2 - x_3 \\
+x_1 + x_2 + x_3 &amp;= 220 \\
+x_1, x_2, x_3 &amp;\geq 0
+\end{align*}
+</span></p>
+<p>只有一个解，即 <span class="math inline">(56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3})</span>。因此，这个收益分配就是三城博弈的 nucleolus。</p>
+<p>这个例子好像在说，至少对三人 TU-game，nucleolus 可以简单地通过让三个二人联盟的超额值相等来计算。事实上这是不正确的。只有当二人联盟的价值远大于单人联盟的价值时，用这个方法才能够得到 nucleolus，否则就可能失败。让我们考虑 <a href="#tbl-7.6" class="quarto-xref">Table&nbsp;<span>7.6</span></a> 中的三城博弈的变体，即将 <span class="math inline">v(\{1\})</span> 改为 <span class="math inline">20</span>。在这个博弈中，<span class="math inline">(56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3})</span> 依然是 imputation，各联盟在它的超额值记载在表格的第三行。现在，最大超额值变成了参与人 1 的单人联盟的 <span class="math inline">-36\frac{2}{3}</span>。<span class="math inline">(56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3})</span> 不再是 nucleolus 了，因为通过增加参与人 1 的分配同时减少参与人 2 或 3 的分配可以降低 <span class="math inline">\{1\}</span> 的超额值。例如令 <span class="math inline">\{1\}</span> 和 <span class="math inline">\{2,3\}</span> 的超额值相等，即方程 <span class="math inline">20 - x_1 = 120 - x_2 - x_3</span>。这和方程 <span class="math inline">x_1 + x_2 + x_3 = 220</span> 一起可得 <span class="math inline">x_1 = 60, x_2 + x_3 = 160</span>。如果将参与人 1 的分配从 <span class="math inline">56\frac{2}{3}</span> 增至 <span class="math inline">60</span>，同时减少参与人 2 和 3 的分配各 <span class="math inline">1\frac{2}{3}</span>，可得收益分配 <span class="math inline">(60, 75, 85)</span>。在这个新的 imputation 上的超额值记载在 <a href="#tbl-7.6" class="quarto-xref">Table&nbsp;<span>7.6</span></a> 的第四行。现在我们来确认它就是这个博弈的 nucleolus。最大超额值是产生于联盟 <span class="math inline">\{1\}</span> 和 <span class="math inline">\{2,3\}</span> 的 <span class="math inline">-40</span>，且不可继续降低，因为降低其中一个联盟的超额值必将同时增加另一个联盟的超额值。因此，在 nucleolus 中 <span class="math inline">x_1</span> 的收益等于 <span class="math inline">60</span>。第二大的超额值是产生于联盟 <span class="math inline">\{1,2\}</span> 和 <span class="math inline">\{1,3\}</span> 的 <span class="math inline">-45</span>。因为 <span class="math inline">x_1</span> 的收益已经固定了，现在降低这两个联盟其中一个的超额值意味着另一个联盟的超额值会随之增加。因此，<span class="math inline">x_2</span> 和 <span class="math inline">x_3</span> 的收益分别为 <span class="math inline">75</span> 和 <span class="math inline">85</span>。</p>
+<div id="tbl-7.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.6: 三城博弈变体（<span class="math inline">v(\{1\}) = 20</span>）的 nucleolus 的计算过程示意
+</figcaption>
+<div aria-describedby="tbl-7.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">20</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">90</span></td>
+<td><span class="math inline">100</span></td>
+<td><span class="math inline">120</span></td>
+<td><span class="math inline">220</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">e(S, (56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3}))</span></td>
+<td><span class="math inline">-36\frac{2}{3}</span></td>
+<td><span class="math inline">-76\frac{2}{3}</span></td>
+<td><span class="math inline">-86\frac{2}{3}</span></td>
+<td><span class="math inline">-43\frac{1}{3}</span></td>
+<td><span class="math inline">-43\frac{1}{3}</span></td>
+<td><span class="math inline">-43\frac{1}{3}</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">e(S, (60, 75, 80))</span></td>
+<td><span class="math inline">-40</span></td>
+<td><span class="math inline">-75</span></td>
+<td><span class="math inline">-85</span></td>
+<td><span class="math inline">-45</span></td>
+<td><span class="math inline">-45</span></td>
+<td><span class="math inline">-40</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>通过以上两个例子可以看出，计算 nucleolus 并不总是一件简单的事。对于三人博弈，上面展示的方法通常情况下是好用的。而更加通用的解法是解一系列由博弈导出的线性规划问题。下面我们以三城博弈为例进行讲解。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-7.3" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.3</strong></span> 针对 <a href="#tbl-7.5" class="quarto-xref">Table&nbsp;<span>7.5</span></a> 中的三城博弈，其 nucleolus 中的最大超越值可以通过下面的线性最小化问题解出。</p>
+<p><span class="math display">
+\begin{align*}
+\mathrm{minimize}\ \ \alpha \ \text{ subject to } \quad \quad
+x_1 + x_2 + x_3 &amp;= 220 \\
+x_1, x_2, x_3 &amp;\geq 0 \\
+0 - x_1 &amp; \leq \alpha \\
+0 - x_2 &amp; \leq \alpha \\
+0 - x_3 &amp; \leq \alpha \\
+90 - x_1 - x_2 &amp; \leq \alpha \\
+100 - x_1 - x_3 &amp; \leq \alpha \\
+120 - x_2 - x_3 &amp; \leq \alpha
+\end{align*}
+</span></p>
+<p>因此，<span class="math inline">\alpha</span> 是最小化后的最大超越值。前两个约束条件确保 <span class="math inline">\alpha</span> 的取值范围满足收益分配是 imputation。第三至第五个约束条件对单人联盟的超越值进行了限制，最后三个约束条件则对二人联盟的超越值进行了限制，即它们的超越值不会大于 <span class="math inline">\alpha</span>。在这个问题中，利用 <span class="math inline">x_1 + x_2 + x_3 = 220</span> 可以将变量数由四个减少为三个，例如 <span class="math inline">\alpha, x_1, x_2</span>，然后通过绘图法找到最优解。而一般情况下，我们可以利用数值计算软件提供的诸如 simplex 法等通用方法进行求解。从前文的分析中我们已经知道最优解是 <span class="math inline">\alpha = -43\frac{1}{3}</span>，对应的收入分配是 <span class="math inline">(x_1, x_2, x_3) = (56\frac{2}{3}, 76\frac{2}{3}, 86\frac{2}{3})</span>。</p>
+<p>而针对 <a href="#tbl-7.6" class="quarto-xref">Table&nbsp;<span>7.6</span></a> 中的三城博弈变体，最小化问题则变为</p>
+<p><span class="math display">
+\begin{align*}
+\mathrm{minimize}\ \ \alpha \ \text{ subject to } \quad \quad
+x_1 + x_2 + x_3 &amp;= 220 \\
+x_1, x_2, x_3 &amp;\geq 0 \\
+20 - x_1 &amp; \leq \alpha \\
+0 - x_2 &amp; \leq \alpha \\
+0 - x_3 &amp; \leq \alpha \\
+90 - x_1 - x_2 &amp; \leq \alpha \\
+100 - x_1 - x_3 &amp; \leq \alpha \\
+120 - x_2 - x_3 &amp; \leq \alpha
+\end{align*}
+</span></p>
+<p>从前文分析中可知此问题的解是 <span class="math inline">\alpha = -40</span>，且所有能够达成此 <span class="math inline">\alpha</span> 的收益分配都满足 <span class="math inline">x_1 = 60</span> 和 <span class="math inline">x_2 + x_3 = 160</span>。由此可以获得最小化第二大超越值所需的线性规划问题</p>
+<p><span class="math display">
+\begin{align*}
+\mathrm{minimize}\ \ \alpha \ \text{ subject to } \quad \quad
+x_2 + x_3 &amp;= 160 \\
+x_2, x_3 &amp;\geq 0 \\
+- x_2 &amp; \leq \alpha \\
+- x_3 &amp; \leq \alpha \\
+30 - x_2 &amp; \leq \alpha \\
+40 - x_3 &amp; \leq \alpha
+\end{align*}
+</span></p>
+<p>最优解为 <span class="math inline">\alpha = -45</span>，对应的收益分配为 <span class="math inline">(x_2, x_3) = (75, 85)</span>。你可以尝试用绘图法进行确认。至此可知这个博弈的 nucleolus 是 <span class="math inline">(60, 75, 85)</span>。</p>
+</div>
+</div>
+</div>
+</div>
+<p>虽然 nucleolus 计算起来比较复杂，但是它能给每个必要博弈赋予一个 imputation 集合中的收益分配作为唯一解，而且当该博弈的核为非空时，nucleolus 永远在核的内部。这是 nucleolus 最吸引人的性质。</p>
+<div class="callout callout-style-simple callout-caution no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="prp-nucleolus" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 7.1</strong></span> 令 <span class="math inline">(N,v)</span> 为具有非空核的 TU-game。此时 <span class="math inline">(N,v)</span> 的 nucleolus 在核的内部。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>考虑 <span class="math inline">(N,v)</span> 的核内部的任意收益分配 <span class="math inline">\boldsymbol{x}</span>。对每一个非空联盟 <span class="math inline">S \neq N</span> 都有 <span class="math inline">x(S) \geq v(S)</span>，因此 <span class="math inline">e(S,\boldsymbol{x}) = v(S) - x(S) \leq 0</span>。假设 <span class="math inline">\boldsymbol{z}</span> 是 <span class="math inline">(N,v)</span> 的 nucleolus。已知 nucleolus 在 imputation 集合的范围内最小化最大超越值，<span class="math inline">\boldsymbol{x}</span> 是一个 imputation 并且其所有超越值都为非正，因此可知 <span class="math inline">\boldsymbol{z}</span> 中的最大超越值应为非正，因此 <span class="math inline">\boldsymbol{z}</span> 的所有超越值都为非正。也就是说，对每一个非空联盟 <span class="math inline">S \neq N</span> 都有 <span class="math inline">e(S, \boldsymbol{z}) = v(S) - z(S) \leq 0</span>，因此 <span class="math inline">z(S) \geq v(S)</span>。最后一个不等式意味着 <span class="math inline">\boldsymbol{z}</span> 在 <span class="math inline">(N,v)</span> 的核的内部。</p>
+</div>
+</div>
+</div>
+</div>
+<p>根据 <a href="#prp-nucleolus" class="quarto-xref">Proposition&nbsp;<span>7.1</span></a>，如果已知一个博弈的核，则可以利用这一信息帮助我们计算 nucleolus。这里通过下面两个例子进行展示。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-7.4" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.4</strong></span> 考虑 <a href="#tbl-7.7" class="quarto-xref">Table&nbsp;<span>7.7</span></a> 中的三人博弈。这个博弈的核为非空，且核中的任意收益分配都会赋予参与人 1 以零收益（你能确认这个结论吗）。我们以核中的一个分配 <span class="math inline">(0,10,10)</span>开始计算。此分配的最大超越值为 <span class="math inline">0</span>，由联盟 <span class="math inline">\{1\}</span>，<span class="math inline">\{1,2\}</span> 和 <span class="math inline">\{2,3\}</span> 产生。这个最大超越值明显无法继续降低，因为降低 <span class="math inline">\{1\}</span> 的超越值会增加 <span class="math inline">\{2,3\}</span> 的超越值，反之亦然。因此，如果 <span class="math inline">\boldsymbol{z}</span> 是 nucleolus，则 <span class="math inline">z_1 = 0</span>，<span class="math inline">z_2 + z_3 = 20</span>。接下来我们看另一个收益分配 <span class="math inline">(0,15,5)</span>。这个分配的最大超越值也是 <span class="math inline">0</span>，第二大超越值是 <span class="math inline">-5</span>，由联盟 <span class="math inline">\{1,2\}</span>，<span class="math inline">\{1,3\}</span> 和 <span class="math inline">\{3\}</span> 产生。因为 <span class="math inline">z_1 = 0</span> 已经被固定了，如果要降低 <span class="math inline">\{1,2\}</span> 的超越值则必须要增加 <span class="math inline">\{1,3\}</span> 和 <span class="math inline">\{3\}</span> 的超越值。因此可得 <span class="math inline">0 - z_3 = -5</span>，即 <span class="math inline">z_3 = 5</span>。因此，此博弈的 nucleolus 为 <span class="math inline">(0,15,5)</span>。</p>
+</div>
+</div>
+</div>
+</div>
+<div id="tbl-7.7" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-7.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;7.7: <a href="#exm-7.4" class="quarto-xref">Example&nbsp;<span>7.4</span></a> 中的博弈
+</figcaption>
+<div aria-describedby="tbl-7.7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span class="math inline">S</span></th>
+<th><span class="math inline">\{1\}</span></th>
+<th><span class="math inline">\{2\}</span></th>
+<th><span class="math inline">\{3\}</span></th>
+<th><span class="math inline">\{1,2\}</span></th>
+<th><span class="math inline">\{1,3\}</span></th>
+<th><span class="math inline">\{2,3\}</span></th>
+<th><span class="math inline">\{1,2,3\}</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">v(S)</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">10</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">20</span></td>
+<td><span class="math inline">20</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">e(S, (0,10,10))</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">-10</span></td>
+<td><span class="math inline">-10</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">-10</span></td>
+<td><span class="math inline">0</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">e(S, (0, 15, 5))</span></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">-15</span></td>
+<td><span class="math inline">-5</span></td>
+<td><span class="math inline">-5</span></td>
+<td><span class="math inline">-5</span></td>
+<td><span class="math inline">0</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-7.5" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.5</strong></span> 考虑 <a href="#sec-7.2" class="quarto-xref"><span>Section 7.2</span></a> 中的广义手套博弈。当 <span class="math inline">\ell &gt; r</span> 时，核中仅包含一个收益分配，即拥有右手手套的参与人的收益为 <span class="math inline">1</span>，拥有左手手套的参与人的收益为 <span class="math inline">0</span>。根据 <a href="#prp-nucleolus" class="quarto-xref">Proposition&nbsp;<span>7.1</span></a>，这也是该博弈的 nucleolus。</p>
+</div>
+</div>
+</div>
+</div>
+<p>作为本章的总结，我们计算下面例子中博弈的核、Shapley 值和 nucleolus。</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-7.6" class="theorem example">
+<p><span class="theorem-title"><strong>Example 7.6</strong></span> 这里我们定义一个六人合作博弈。参与人集合为 <span class="math inline">N = \{1,\dots, 6\}</span>。联盟 <span class="math inline">S</span> 仅在下列情形之一时产生价值 <span class="math inline">1</span>：要么 <span class="math inline">S</span> 由参与人 1 和至少另一个参与人组成，要么 <span class="math inline">S = \{2,\dots,6\}</span>。所有其他联盟的价值都为 <span class="math inline">0</span>。（此博弈被称为 apex game，参与人 1 是 apex player，其他参与人是 minor player）</p>
+<p>首先我们来确认此博弈的核为空集。假设 <span class="math inline">\boldsymbol{x}</span> 是一个核分配，则有 <span class="math inline">x_1 + \dots + x_5 \geq v(\{1,\dots, 5\}) = 1</span>。由于 <span class="math inline">x_6 \geq v(\{6\}) = 0</span>，且 <span class="math inline">x_1 + \dots + x_6 = v(N) = 1</span>，可得 <span class="math inline">x_1 + \dots + x_5 = 1</span>，<span class="math inline">x_6 = 0</span>。同理也可以推出 <span class="math inline">x_2 = \dots = x_5 = 0</span>。因此 <span class="math inline">x_2 + \dots + x_6 = 0</span>。但是这意味着 <span class="math inline">1 = v(\{2,\dots,6\}) &gt; x_2 + \dots + x_6</span>，不满足核的条件。由此可知核为空集。</p>
+<p>对于 nucleolus，根据博弈的对称结构，我们可以假设它表达为 <span class="math inline">(1-5\alpha,\alpha, \dots, \alpha)</span>。为了使其成为 imputation，我们还需要求 <span class="math inline">0 \leq \alpha \leq 1/5</span>。对于每个 <span class="math inline">i \in \{2,\dots,6\}</span>，联盟 <span class="math inline">\{1,i\}</span> 的超越值都是 <span class="math inline">1 - (1-5\alpha) - \alpha = 4\alpha</span>。联盟 <span class="math inline">\{2,\dots,6\}</span> 的超越值为 <span class="math inline">1-5\alpha</span>。显然只有这两个超越值可能成为最大超越值（你需要检验这一点）。如果我们增加 <span class="math inline">\alpha</span>，则联盟 <span class="math inline">\{1,i\}</span> 的超越值会增加，<span class="math inline">\{2,\dots,6\}</span> 的超越值则会降低；而降低 <span class="math inline">\alpha</span> 会带来相反的效果。因此，令最大超越值最小的条件是 <span class="math inline">4\alpha = 1-5\alpha</span>，可得 <span class="math inline">\alpha = 1/9</span>。因此 nucleolus 为 <span class="math inline">(4/9, 1/9, \dots, 1/9)</span>。</p>
+<p>Shapley 值可以通过 <a href="#def-7.3" class="quarto-xref">Definition&nbsp;<span>7.3</span></a> 的表达式计算。首先计算参与人 2 的 Shapley 值。注意参与人 2 仅在加入联盟 <span class="math inline">\{1\}</span> 和联盟 <span class="math inline">\{3,\dots,6\}</span> 时会产生边际贡献 <span class="math inline">1</span>，其他情况下的边际贡献都是 <span class="math inline">0</span>，因此，</p>
+<p><span class="math display">
+\Phi_2(N,v) = \frac{1!(6-1-1)!}{6!} \cdot 1 + \frac{4!(6-4-1)!}{6!} \cdot 1 = \frac{1}{15}
+</span> 从博弈的对称结构可知其 Shapley 值为</p>
+<p><span class="math display">
+\Phi(N,v) = \Big(1-5\cdot \frac{1}{15}, \frac{1}{15}, \dots, \frac{1}{15} \Big) = \Big( \frac{2}{3}, \frac{1}{15}, \dots, \frac{1}{15} \Big).
+</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -268,18 +1071,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -311,7 +1103,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -319,7 +1131,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -423,7 +1235,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -668,13 +1479,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

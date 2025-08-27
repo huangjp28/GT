@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>博弈论 - 6&nbsp; 非合作博弈的应用</title>
+<title>6&nbsp; 非合作博弈的应用 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -37,10 +57,13 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-ff930808ce9e974325f36f270bbb9f05.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -69,6 +92,49 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script defer="" src="./assets/katex/0.16.22/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="./assets/katex/0.16.22/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -79,13 +145,13 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./note_0.html">讲义</a></li><li class="breadcrumb-item"><a href="./note_6.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">非合作博弈的应用</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -121,9 +187,9 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">讲义</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -202,7 +268,32 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-6.1" id="toc-sec-6.1" class="nav-link active" data-scroll-target="#sec-6.1"><span class="header-section-number">6.1</span> 策略式博弈的通用分析框架</a></li>
+  <li><a href="#sec-6.2" id="toc-sec-6.2" class="nav-link" data-scroll-target="#sec-6.2"><span class="header-section-number">6.2</span> 古诺产量竞争模型</a>
+  <ul class="collapse">
+  <li><a href="#sec-6.2.1" id="toc-sec-6.2.1" class="nav-link" data-scroll-target="#sec-6.2.1"><span class="header-section-number">6.2.1</span> 完全信息下的简化版模型</a></li>
+  <li><a href="#sec-6.2.2" id="toc-sec-6.2.2" class="nav-link" data-scroll-target="#sec-6.2.2"><span class="header-section-number">6.2.2</span> 不完全信息下的简化版模型</a></li>
+  </ul></li>
+  <li><a href="#sec-6.3" id="toc-sec-6.3" class="nav-link" data-scroll-target="#sec-6.3"><span class="header-section-number">6.3</span> 伯特兰价格竞争模型</a></li>
+  <li><a href="#sec-6.4" id="toc-sec-6.4" class="nav-link" data-scroll-target="#sec-6.4"><span class="header-section-number">6.4</span> 斯塔克尔伯格均衡</a></li>
+  <li><a href="#sec-6.5" id="toc-sec-6.5" class="nav-link" data-scroll-target="#sec-6.5"><span class="header-section-number">6.5</span> 拍卖</a>
+  <ul class="collapse">
+  <li><a href="#sec-6.5.1" id="toc-sec-6.5.1" class="nav-link" data-scroll-target="#sec-6.5.1"><span class="header-section-number">6.5.1</span> 完全信息</a></li>
+  <li><a href="#sec-6.5.2" id="toc-sec-6.5.2" class="nav-link" data-scroll-target="#sec-6.5.2"><span class="header-section-number">6.5.2</span> 不完全信息</a></li>
+  <li><a href="#sec-6.5.3" id="toc-sec-6.5.3" class="nav-link" data-scroll-target="#sec-6.5.3"><span class="header-section-number">6.5.3</span> 不完全信息下的双向拍卖</a></li>
+  </ul></li>
+  <li><a href="#sec-6.6" id="toc-sec-6.6" class="nav-link" data-scroll-target="#sec-6.6"><span class="header-section-number">6.6</span> 混合策略与不完全信息</a></li>
+  <li><a href="#sec-6.7" id="toc-sec-6.7" class="nav-link" data-scroll-target="#sec-6.7"><span class="header-section-number">6.7</span> 序贯议价</a>
+  <ul class="collapse">
+  <li><a href="#sec-6.7.1" id="toc-sec-6.7.1" class="nav-link" data-scroll-target="#sec-6.7.1"><span class="header-section-number">6.7.1</span> 有限回合的讨价还价</a></li>
+  <li><a href="#sec-6.7.2" id="toc-sec-6.7.2" class="nav-link" data-scroll-target="#sec-6.7.2"><span class="header-section-number">6.7.2</span> 无限回合的讨价还价</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
@@ -226,13 +317,619 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>在 <a href="note_2.html" class="quarto-xref">Chapters&nbsp;<span>2</span></a>-<a href="note_5.html" class="quarto-xref"><span>5</span></a> 中，我们学习了有限策略非合作博弈。将策略的数量限制在有限范围内的原因是这类博弈有一些特殊的性质，例如二人零和博弈存在博弈值和最优策略，而有限非零和博弈存在混合策略纳什均衡。</p>
+<p>在以上章节中讨论过的这些博弈论的基本概念也可以应用到更具一般性的博弈中。只要在一个博弈场景中能够定义参与人、他们的备选策略以及对应的收益，那么最佳响应和纳什均衡的概念就适用。逆向归纳法、子博弈完美性、完美贝叶斯均衡等概念和方法也能扩展至更具一般性的扩展式博弈中。对于不完全信息博弈，参与人类型的概念以及贝叶斯纳什均衡在无限策略的情况下也适用。</p>
+<p>本章的目的是将通过不同的例子展示如何将博弈论的基本概念应用到各种包含冲突的情境中。当然，这些情境本身也是非常值得作为应用问题讨论的。</p>
+<p>在 <a href="#sec-6.1" class="quarto-xref"><span>Section 6.1</span></a> 中，我们将对 <a href="note_2.html" class="quarto-xref"><span>Chapter 2</span></a> 和 <a href="note_3.html" class="quarto-xref"><span>Chapter 3</span></a> 中的一些概念进行一般化。这一节只是为后续展示的例子提供基础分析框架，但是即使没有这一节的内容，大多数例子也是可以理解的。扩展式博弈和不完全信息博弈中的特有概念的一般化将在需要时给出。在 <a href="#sec-6.2" class="quarto-xref">Sections&nbsp;<span>6.2</span></a>-<a href="#sec-6.7" class="quarto-xref"><span>6.7</span></a> 中我们将讨论以下内容：完全信息和不完全信息下的古诺竞争、伯特兰竞争、斯塔克尔伯格均衡、完全信息和不完全信息拍卖、客观概率混合策略、以及序贯议价。这些问题的更多变体可以在书中的第八节找到。</p>
+<section id="sec-6.1" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="sec-6.1"><span class="header-section-number">6.1</span> 策略式博弈的通用分析框架</h2>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>一个 <span class="math inline">n</span> <strong>人策略式博弈</strong>是一个满足下面所列条件的 <span class="math inline">2n+1</span> 维元组</p>
+<p><span class="math display">
+G = (N, S_1, \dots, S_n, u_1, \dots, u_n) ,
+</span></p>
+<p>其中，</p>
+<ul>
+<li><p><span class="math inline">N = \{1, \dots, n\}, n \geq 1,</span> 是参与人集合；</p></li>
+<li><p>对每个 <span class="math inline">i \in N</span>，<span class="math inline">S_i</span> 是参与人 <span class="math inline">i</span> 的策略集合；</p></li>
+<li><p>对每个 <span class="math inline">i \in N</span>，<span class="math inline">u_i : S = S_1 \times \dots \times S_n \to \mathbb{R}</span> 是参与人 <span class="math inline">i</span> 的收益函数，即对于任意策略组合 <span class="math inline">(s_1, \dots, s_n) \in S</span>，<span class="math inline">s_1 \in S_1, \dots, s_n \in S_n</span>，参与人 <span class="math inline">i</span> 的收益由 <span class="math inline">u_i(s_1, \dots, s_n) \in \mathbb{R}</span> 定义。</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>如果策略 <span class="math inline">s_i \in S_i</span> 对所有 <span class="math inline">s_i' \in S_i</span> 都满足</p>
+<p><span class="math display">
+u_i(s_1, \dots, s_{i-1}, s_i, s_{i+1}, \dots, s_n) \geq u_i(s_1, \dots, s_{i-1}, s_i', s_{i+1}, \dots, s_n),
+</span></p>
+<p>则 <span class="math inline">s_i</span> 是参与人 <span class="math inline">i</span> 对其他参与人的策略组合 <span class="math inline">(s_1, \dots, s_{i-1}, s_{i+1}, \dots, s_n)</span> 的<strong>最佳响应</strong>策略。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>如果策略组合 <span class="math inline">(s_1^*, \dots, s_n^*) \in S</span> 中的每个策略 <span class="math inline">s_i^*</span> 都是参与人 <span class="math inline">i</span> 对 <span class="math inline">(s_1^*, \dots, s_{i-1}^*, s_{i+1}^*, \dots, s_n^*)</span> 的最佳响应，则该策略组合是博弈 <span class="math inline">G</span> 的<strong>纳什均衡</strong>。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>如果策略 <span class="math inline">s_i' \in S_i</span> 和 <span class="math inline">s_i \in S_i</span> 对其他参与人的任意策略组合 <span class="math inline">(s_1, \dots, s_{i-1}, s_{i+1}, \dots, s_n) \in S_1 \times \dots \times S_{i-1} \times S_{i+1} \times \dots \times S_n</span> 都满足</p>
+<p><span class="math display">
+u_i(s_1, \dots, s_{i-1}, s_i, s_{i+1}, \dots, s_n) &gt; u_i(s_1, \dots, s_{i-1}, s_i', s_{i+1}, \dots, s_n),
+</span></p>
+<p>则称 <span class="math inline">s_i'</span> <strong>严格劣于</strong> <span class="math inline">s_i</span>。显然，严格劣势策略永远也不会成为纳什均衡中的策略。</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-important no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>如果策略 <span class="math inline">s_i' \in S_i</span> 和 <span class="math inline">s_i \in S_i</span> 对其他参与人的任意策略组合 <span class="math inline">(s_1, \dots, s_{i-1}, s_{i+1}, \dots, s_n) \in S_1 \times \dots \times S_{i-1} \times S_{i+1} \times \dots \times S_n</span> 都满足</p>
+<p><span class="math display">
+u_i(s_1, \dots, s_{i-1}, s_i, s_{i+1}, \dots, s_n) \geq u_i(s_1, \dots, s_{i-1}, s_i', s_{i+1}, \dots, s_n),
+</span></p>
+<p>但至少对一组策略组合这个不等式是严格成立（即 <span class="math inline">&gt;</span> 成立）的时候，则称 <span class="math inline">s_i'</span> <strong>弱劣于</strong> <span class="math inline">s_i</span>。</p>
+</div>
+</div>
+</div>
+<p><a href="note_2.html" class="quarto-xref"><span>Chapter 2</span></a> 中的矩阵博弈和 <a href="note_3.html" class="quarto-xref"><span>Chapter 3</span></a> 中的双矩阵博弈都是以上框架中的特例，其中 <span class="math inline">S_i</span> 是参与人 <span class="math inline">i</span> 的所有混合策略的集合。这两章中关于纳什均衡和优势（劣势）策略的讨论也可以此设定下完成。</p>
+</section>
+<section id="sec-6.2" class="level2 page-columns page-full" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="sec-6.2"><span class="header-section-number">6.2</span> 古诺产量竞争模型</h2>
+<section id="sec-6.2.1" class="level3 page-columns page-full" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="sec-6.2.1"><span class="header-section-number">6.2.1</span> 完全信息下的简化版模型</h3>
+<p>这里我们从著名的古诺模型的简化版开始。假设两个企业生产同一种产品，并在产量上进行竞争。每个企业都决定为市场提供一定量的产品。市场价格通过总产量决定：总产量越高，则价格越低。每个企业的利润是其总收入（即价格与自身产量的积）与总成本之差。我们可以将这个情境描述为一个二人博弈，其中参与人是企业，策略是各自的产量，收益函数是各自的利润函数。为进一步简化分析，假设价格是总产量的线性函数，边际成本为正且恒定，固定成本为零。博弈的具体定义如下：</p>
+<ol type="a">
+<li><p>参与人集合为 <span class="math inline">N = \{1,2\}</span>。</p></li>
+<li><p>参与人 <span class="math inline">i</span> 的策略集合为 <span class="math inline">S_i = [0,\infty)</span>，并用 <span class="math inline">q_i</span> 代表具体的策略。</p></li>
+<li><p>参与人 <span class="math inline">i</span> 的收益函数为</p>
+<p><span class="math display">
+\Pi_i(q_1, q_2) = q_i P(q_1, q_2) - c q_i .
+</span></p>
+<p>这里 <span class="math inline">P(q_1, q_2)</span> 是市场价格，其定义为</p>
+<p><span class="math display">
+P(q_1, q_2) =
+\begin{cases}
+a - q_1 - q_2 &amp; \text{if } \ q_1 + q_2 \leq a \\
+0 &amp; \text{if } \ q_1 + q_2 &gt; a
+\end{cases}
+</span></p>
+<p>其中 <span class="math inline">a</span> 为常数，<span class="math inline">c</span> 为边际成本，且 <span class="math inline">a &gt; c &gt; 0</span>。</p></li>
+</ol>
+<p>此博弈的纳什均衡是互为最佳响应的策略组合 <span class="math inline">(q_1^C, q_2^C)</span>，即对所有的 <span class="math inline">q_1^C \geq 0, q_2^C \geq 0</span>，</p>
+<p><span class="math display">
+\Pi_1(q_1^C, q_2^C) \geq \Pi_1(q_1, q_2^C), \quad \Pi_1(q_1^C, q_2^C) \geq \Pi_1(q_1^C, q_2) .
+</span></p>
+<p>此均衡也称为<strong>古诺均衡（Cournot equilibrium）</strong>。在具体计算时，可以首先计算最佳响应函数，也称为<strong>反应函数（reaction function）</strong>。参与人 1 的反应函数 <span class="math inline">\beta_1(q_2)</span> 是通过在固定 <span class="math inline">q_2</span> 的情况下解最大化问题</p>
+<p><span class="math display">
+\max_{q_1 \geq 0} \Pi_1(q_1, q_2)
+</span></p>
+<p>得到的。由于解对任意 <span class="math inline">q_2</span> 都成立，所以是 <span class="math inline">q_2</span> 的函数。如果 <span class="math inline">q_2 &gt; a</span>，则无论 <span class="math inline">q_1</span> 取什么值，<span class="math inline">P(q_1, q_2) = 0</span>，企业 1 的利润为 <span class="math inline">-cq_1</span>。因此此时令收益最大的产量应为 <span class="math inline">q_1 = 0</span>。如果 <span class="math inline">q_2 \leq a</span>，则有</p>
+<p><span class="math display">
+\Pi_1(q_1, q_2) =
+\begin{cases}
+q_1(a - q_1 - q_2) - c q_1 &amp; \text{if } \ q_1 \leq a - q_2 \\
+-c q_1 &amp; \text{if } \ q_1 &gt; a - q_2
+\end{cases}
+</span></p>
+<p>所以最大值点处于 <span class="math inline">0 \leq q_1 \leq a - q_2</span> 的区间内，此时目标函数可以整理为</p>
+<p><span class="math display">
+q_1(a - q_1 - q_2) - c q_1 = q_1(a - c - q_1 - q_2)
+</span></p>
+<p>如果 <span class="math inline">q_2 &gt; a - c</span> 则二次函数的顶点的横坐标为负，最大值出现在 <span class="math inline">q_1 = 0</span> 处。如果 <span class="math inline">q_2 \leq a - c</span>，则最大值出现在顶点处，即 <span class="math inline">q_1 = (a - c - q_2) / 2</span>。总结下来就是参与人 1 的反应函数为</p>
+<p><span class="math display">
+\beta_1(q_2) =
+\begin{cases}
+(a - c - q_2) / 2 &amp; \text{if } \ q_2 \leq a - c \\
+0 &amp; \text{if } \ q_2 &gt; a - c
+\end{cases}
+</span></p>
+<p>参与人 2 的反应函数也可以用相同方法计算，结果为</p>
+<p><span class="math display">
+\beta_2(q_1) =
+\begin{cases}
+(a - c - q_1) / 2 &amp; \text{if } \ q_1 \leq a - c \\
+0 &amp; \text{if } \ q_1 &gt; a - c
+\end{cases}
+</span></p>
+<p>我们将这两个反应函数绘制在 <a href="#fig-6.1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> 中。纳什均衡是反应函数的交点，可以通过解方程组 <span class="math inline">q_1 = (a - c - q_2) / 2</span> 和 <span class="math inline">q_2 = (a - c - q_1) / 2</span> 获得，结果为</p>
+<p><span class="math display">
+(q_1^C, q_2^C) = \Big( \frac{a-c}{3}, \frac{a-c}{3} \Big) .
+</span></p>
 
+<div class="no-row-height column-margin column-container"><div id="fig-6.1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-6.1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;6.1: 古诺模型：图中浅蓝色折线是参与人 1 的反应函数，红色折线是参与人 2 的反应函数。点 q^C 是纳什-古诺均衡。图中还画出了两条通过纳什均衡点的等利润曲线。其中与 q_1 轴相交的是参与人 1 的等利润曲线，当曲线向下移动时利润会随之增加。与 q_2 轴相交的是参与人 2 的等利润曲线，当曲线向左移动时利润会随之增加。阴影部份包含了所有帕雷托优于纳什均衡的产量组合。"><img src="assets/fig/fig-6.1.png" class="img-fluid figure-img" width="330"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: 古诺模型：图中浅蓝色折线是参与人 1 的反应函数，红色折线是参与人 2 的反应函数。点 <span class="math inline">q^C</span> 是纳什-古诺均衡。图中还画出了两条通过纳什均衡点的等利润曲线。其中与 <span class="math inline">q_1</span> 轴相交的是参与人 1 的等利润曲线，当曲线向下移动时利润会随之增加。与 <span class="math inline">q_2</span> 轴相交的是参与人 2 的等利润曲线，当曲线向左移动时利润会随之增加。阴影部份包含了所有帕雷托优于纳什均衡的产量组合。
+</figcaption>
+</figure>
+</div></div><section id="sec-6.2.1.1" class="level4" data-number="6.2.1.1">
+<h4 data-number="6.2.1.1" class="anchored" data-anchor-id="sec-6.2.1.1"><span class="header-section-number">6.2.1.1</span> 帕雷托最优解</h4>
+<p>如果对于策略组合 <span class="math inline">(q_1, q_2)</span> 来说，找不到能保证两个参与人的收益都不减少，同时至少能使一人的收益增加的其他策略组合 <span class="math inline">(q_1', q_2')</span>，则 <span class="math inline">(q_1, q_2)</span> 是帕雷托最优策略。你无需感到惊讶，均衡策略 <span class="math inline">(q_1^C, q_2^C)</span> 不是帕雷托最优。例如，两个参与人通过解下面的联合利润最大化问题都能获取更高的利润：</p>
+<p><span class="math display">
+\max_{q_1, q_2 \geq 0} \Pi_1(q_1, q_2) + \Pi_2(q_1, q_2).
+</span></p>
+<p>此问题可以转化为</p>
+<p><span class="math display">
+\max_{q_1, q_2 \geq 0} (q_1 + q_2)(a - c - q_1 - q_2)
+</span></p>
+<p>或者通过令 <span class="math inline">Q = q_1 + q_2</span> 改写为</p>
+<p><span class="math display">
+\max_{q_1, q_2 \geq 0} Q(a - c - Q)
+</span></p>
+<p>最优解为 <span class="math inline">Q = (a - c) / 2</span>。这恰好是垄断时的总产量。因此，联合利润最大化可以通过任何满足 <span class="math inline">q_1 + q_2 = (a - c) / 2</span> 的组合 <span class="math inline">(q_1, q_2) \geq \boldsymbol{0}</span> 达成。例如当 <span class="math inline">q_1 = q_2 = (a-c) / 4</span> 时，每个参与人的利润为 <span class="math inline">(a - c)^2 / 8</span>，而纳什均衡中每人的利润为 <span class="math inline">(a-c)^2 / 9</span>。在 <a href="#fig-6.1" class="quarto-xref">Figure&nbsp;<span>6.1</span></a> 中用阴影画出了所有帕雷托优于纳什均衡的策略组合，即保证两个参与人的收益都不少于纳什均衡，同时至少能使一人的收益增加。</p>
+</section>
+</section>
+<section id="sec-6.2.2" class="level3 page-columns page-full" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="sec-6.2.2"><span class="header-section-number">6.2.2</span> 不完全信息下的简化版模型</h3>
+<p>以 <a href="#sec-6.2.1" class="quarto-xref"><span>Section 6.2.1</span></a> 中古诺模型为基础，现在假设企业 2 的边际成本或为高成本 <span class="math inline">c_H</span>，或为低成本 <span class="math inline">c_L</span>，<span class="math inline">c_H &gt; c_L &gt; 0</span>。企业 2 知道自身的边际成本，但是企业 1 只知道高成本 <span class="math inline">c_H</span> 的概率为 <span class="math inline">\vartheta</span>，低成本 <span class="math inline">c_L</span> 的概率为 <span class="math inline">1 - \vartheta</span>。企业 1 的边际成本 <span class="math inline">c &gt; 0</span> 为共同知识。根据 <a href="note_5.html#sec-5.1" class="quarto-xref"><span>Section 5.1</span></a> 的方法论，此设定相当于参与人 1 仅有一个类型，但参与人 2 有两个类型 <span class="math inline">c_H</span> 和 <span class="math inline">c_L</span>。此博弈的定义如下：</p>
+<ol type="a">
+<li><p>参与人集合为 <span class="math inline">N = \{1,2\}</span>。</p></li>
+<li><p>参与人 1 的策略集合为 <span class="math inline">S_1 = [0,\infty)</span>，并用 <span class="math inline">q_1</span> 代表具体的策略。参与人 2 的策略集合是 <span class="math inline">S_2 = [0, \infty) \times [0, \infty)</span>，并用 <span class="math inline">(q_H, q_L)</span> 代表具体的策略。顾名思义，<span class="math inline">q_H</span> 是类型为 <span class="math inline">c_H</span> 时参与人 2 选择的产量，而 <span class="math inline">q_L</span> 是类型为 <span class="math inline">c_L</span> 时他选择的产量。</p></li>
+<li><p>收益函数为期望收益函数，即</p>
+<p><span class="math display">
+\Pi_i(q_1, q_H, q_L) = \vartheta \Pi_i(q_1, q_H) + (1 - \vartheta) \Pi_i(q_1, q_L) , \quad i = 1, 2,
+</span></p>
+<p>其中 <span class="math inline">\Pi_i(\cdot, \cdot)</span> 是 <a href="#sec-6.2.1" class="quarto-xref"><span>Section 6.2.1</span></a> 中的期望函数。</p></li>
+</ol>
+<p>为了找到贝叶斯纳什均衡，我们首先计算参与人 1 的最佳响应（反应）函数。这可以通过在固定 <span class="math inline">q_H</span> 和 <span class="math inline">q_L</span> 的情况下在 <span class="math inline">q_1 \geq 0</span> 的范围内最大化 <span class="math inline">\Pi_1(q_1, q_H, q_L)</span> 完成。具体的最大化问题是</p>
+<p><span class="math display">
+\max_{p_1 \geq 0} \vartheta \big[q_1 (a - c - q_1 - q_H)\big] + (1 - \vartheta) \big[q_1 (a - c - q_1 - q_L)\big] .
+</span></p>
+<p>假设 <span class="math inline">q_H, q_L \leq a - c</span>（在解出均衡后需要验证此假设是否成立），通过解一阶条件可得</p>
+<p><span class="math display">
+q_1 = q_1(q_H, q_L) = \frac{a - c - \vartheta q_H - (1-\vartheta) q_L}{2} .
+</span></p>
+<p>对比上一节的结果 <span class="math inline">q_1 = (a - c - q_2) / 2</span>，此处用期望产量 <span class="math inline">\vartheta q_H + (1 - \vartheta) q_L</span> 替代了 <span class="math inline">q_2</span>，这源自模型的线性设定。</p>
+<p>而对于参与人 2，我们需要在固定 <span class="math inline">q_1</span> 的情况下解下面的最大化问题</p>
+<p><span class="math display">
+\max_{q_H, q_L \geq 0} \vartheta \big[q_H (a - c_H - q_1 - q_H)\big] + (1 - \vartheta) \big[q_L (a - c_L - q_1 - q_L)\big] .
+</span></p>
+<p>由于目标函数中的第一项仅依赖 <span class="math inline">q_H</span> 而第二项仅依赖 <span class="math inline">q_L</span>，我们可以将两项分别当作一个目标函数进行最大化，也就是针对类型 <span class="math inline">c_H</span> 和 <span class="math inline">c_L</span> 分别计算反应函数<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 。假设 <span class="math inline">q_1 \leq a - c_H</span>（自然满足 <span class="math inline">q_1 \leq a - c_L</span>，注意后面需要验证是否成立），可得</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;这在不完全信息贝叶斯博弈中是普遍成立的，即对一个参与人的所有类型的期望收益进行最大化等价于对每个类型的收益分别进行最大化。</p></div></div><p><span class="math display">
+\begin{align*}
+q_H &amp;= q_H(q_1) = \frac{a - c_H - q_1}{2}, \\
+q_L &amp;= q_L(q_1) = \frac{a - c_L - q_1}{2}.
+\end{align*}
+</span></p>
+<p>通过解三个反应函数的联立方程可得纳</p>
+<p><span class="math display">
+\begin{align*}
+q_1^C &amp;= \frac{a - 2c + \vartheta c_H + (1 - \vartheta) c_L}{3}, \\
+q_H^C &amp;= \frac{a - 2c_H + c}{3} + \frac{1 - \vartheta}{6}(c_H - c_L), \\
+q_L^C &amp;= \frac{a - 2c_L + c}{3} - \frac{\vartheta}{6}(c_H - c_L).
+\end{align*}
+</span></p>
+<p>当参数值满足 <span class="math inline">q_1^C, q_H^C, q_L^C \geq 0, q_1 \leq a - c_H</span> 以及 <span class="math inline">q_H, q_L \leq a - c</span> 时，<span class="math inline">(q_1^C, q_H^C, q_L^C)</span> 即是此博弈的贝叶斯纳什均衡。</p>
+</section>
+</section>
+<section id="sec-6.3" class="level2 page-columns page-full" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sec-6.3"><span class="header-section-number">6.3</span> 伯特兰价格竞争模型</h2>
+<p>继续假设两个企业生产同一种产品。在这一节中我们假设此产品的需求函数在价格为 <span class="math inline">p \geq 0</span> 时为 <span class="math inline">q(p) = \max \{a-p, 0\}</span>，其中常数 <span class="math inline">a &gt;0</span> 是价格为零时的需求量。能够提供更低价格的企业将垄断整个市场，但如果双方的价格相同则平分市场。每个企业的边际成本都是 <span class="math inline">0 \leq c &lt; a</span>，且没有固定成本。如果企业 1 将价格定为 <span class="math inline">p_1</span>，企业 2 将价格定为 <span class="math inline">p_2</span>，则企业 1 的利润函数为</p>
+<p><span class="math display">
+\Pi_1(p_1, p_2) =
+\begin{cases}
+(p_1 - c)(a - p_1) &amp; \text{if } \ p_1 &lt; p_2 \text{ and } p_1 \leq a \\
+\frac{1}{2} (p_1 - c)(a - p_1) &amp; \text{if } \ p_1 = p_2 \text{ and } p_1 \leq a \\
+0 &amp; \text{otherwise}
+\end{cases}
+</span></p>
+<p>企业 2 的利润函数为</p>
+<p><span class="math display">
+\Pi_2(p_1, p_2) =
+\begin{cases}
+(p_2 - c)(a - p_2) &amp; \text{if } \ p_2 &lt; p_1 \text{ and } p_2 \leq a \\
+\frac{1}{2} (p_2 - c)(a - p_2) &amp; \text{if } \ p_1 = p_2 \text{ and } p_2 \leq a \\
+0 &amp; \text{otherwise}
+\end{cases}
+</span></p>
+<p>和上一节一样，两个企业为博弈的参与人，其利润函数为收益函数，每个参与人的策略集合为 <span class="math inline">[0, \infty)</span>，用 <span class="math inline">p_1, p_2</span> 代表二人的策略。为找到纳什均衡（伯特兰均衡），我们依然从计算反应函数开始。在这个模型中，垄断时令利润最大化的价格 <span class="math inline">p^m = (a+c) / 2</span> 将发挥重要作用，这是通过解最大化问题</p>
+<p><span class="math display">
+\max_{p \geq 0} (p-c)(a-p)
+</span></p>
+<p>得到的。注意垄断时的利润函数是二次函数（见 <a href="#fig-6.2" class="quarto-xref">Figure&nbsp;<span>6.2</span></a>）。</p>
 
-
+<div class="no-row-height column-margin column-container"><div id="fig-6.2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-6.2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;6.2: 垄断时的利润函数"><img src="assets/fig/fig-6.2.png" class="img-fluid figure-img" width="330"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: 垄断时的利润函数
+</figcaption>
+</figure>
+</div></div><p>下面计算参与人 1 的反应函数 <span class="math inline">\beta_1(p_2)</span>。这包含以下几种情形：</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">p_2 &lt; c</span>，则任何 <span class="math inline">p_1 \leq p_2</span> 都会给参与人 1 带来负收益，任何 <span class="math inline">p_1 &gt; p_2</span> 的收益都为零。因此此时的最佳响应策略集合为 <span class="math inline">(p_2, \infty)</span>。</p></li>
+<li><p>如果 <span class="math inline">p_2 = c</span>，则任何 <span class="math inline">p_1 &lt; p_2</span> 都会给参与人 1 带来负收益，任何 <span class="math inline">p_1 \geq p_2</span> 的收益都为零。因此此时的最佳响应策略集合为 <span class="math inline">[c, \infty)</span>。</p></li>
+<li><p>如果 <span class="math inline">c &lt; p_2 \leq p^m</span>，则最佳响应应 <span class="math inline">p_2</span>（为了取得垄断地位）且尽可能地靠近 <span class="math inline">p^m</span>（为了获得更多收益），但不存在这样的价格，因为对于任何 <span class="math inline">p_1 &lt; p_2</span>，介于 <span class="math inline">p_1</span> 和 <span class="math inline">p_2</span> 之间的价格都会带来更多收益。因此，此时的最佳响应策略集合为空集<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p></li>
+<li><p>如果 <span class="math inline">p_2 &gt; p^m</span>，则唯一的最佳响应策略是 <span class="math inline">p^m</span>。</p></li>
+</ol>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;如果价格不是连续变量而是存在最小单位，那么就可以避免此结果。</p></div></div><p>综上所述，参与人 1 的反应函数为</p>
+<p><span class="math display">
+\beta_1(p_2) =
+\begin{cases}
+\{p_1 \mid p_1 &gt; p_2\} &amp; \text{if } \ p_2 &lt; c \\
+\{p_1 \mid p_1 \geq c\} &amp; \text{if } \ p_2 = c \\
+\emptyset &amp; \text{if } \ c &lt; p_2 \leq p^m \\
+\{p^m\} &amp; \text{if } \ p_2 &gt; p^m
+\end{cases}
+</span></p>
+<p>类似分析同样适用于参与人 2，因此可得</p>
+<p><span class="math display">
+\beta_2(p_1) =
+\begin{cases}
+\{p_2 \mid p_2 &gt; p_1\} &amp; \text{if } \ p_1 &lt; c \\
+\{p_2 \mid p_2 \geq c\} &amp; \text{if } \ p_1 = c \\
+\emptyset &amp; \text{if } \ c &lt; p_1 \leq p^m \\
+\{p^m\} &amp; \text{if } \ p_1 &gt; p^m
+\end{cases}
+</span></p>
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>严格意义上讲，这里的 <span class="math inline">\beta_1(\cdot)</span> 和 <span class="math inline">\beta_2(\cdot)</span> 不是函数（function），因为我们允许它的值是集合。像这样可以给变量赋予集合值的映射关系在数学上称为对应（correspondence）。</p>
+</div></div><p>两个函数的交集可以通过绘图或者直接验证的方式获得，下面我们进行验证，而你可以自己尝试绘图的方法。</p>
+<ol type="1">
+<li><p>如果 <span class="math inline">p_2 &lt; c</span>，则由 <span class="math inline">\beta_1(p_2)</span> 可得 <span class="math inline">p_1 &gt; p_2</span>。此时根据 <span class="math inline">\beta_2(p_1)</span> 可知 <span class="math inline">p_2 = p^m</span>，但是和 <span class="math inline">p^m &gt; c</span> 矛盾。因此在均衡中 <span class="math inline">p_2 \geq c</span>。</p></li>
+<li><p>如果 <span class="math inline">p_2 = c</span>，则根据 <span class="math inline">\beta_1(p_2)</span> 可得 <span class="math inline">p_1 \geq c</span>。此时如果 <span class="math inline">p_1 &gt; c</span>，则根据 <span class="math inline">\beta_2(p_1)</span>，唯一的可能性是 <span class="math inline">p_2 = p^m</span>，依然和 <span class="math inline">p^m &gt; c</span> 矛盾。因此只有 <span class="math inline">p_1 = c</span> 成立。<span class="math inline">p_1 = p_2 = c</span> 是纳什均衡。</p></li>
+<li><p>如果 <span class="math inline">p_2 &gt; c</span>，则根据 <span class="math inline">\beta_1(p_2)</span> 可得 <span class="math inline">p_1 = p^m</span>。但此时参与人 2 没有最佳响应。</p></li>
+</ol>
+<p>因此，<span class="math inline">(c, c)</span> 是此博弈唯一的纳什（伯特兰）均衡。</p>
+<p>我们也可以在不计算反应函数的情况下求得此均衡。假设在均衡中 <span class="math inline">p_1 \neq p_2</span>。根据问题的对称性，我们只需分析 <span class="math inline">p_1 &lt; p_2</span> 的情况。如果 <span class="math inline">p_1 &lt; p^m</span>，则参与人 1 可以通过提高价格（但不高过 <span class="math inline">p_2</span>）的方式提升收益。如果 <span class="math inline">p_1 = p^m</span>，则参与人 2 可以通过设定 <span class="math inline">p_2 = p^m</span> 的方式提升收益。如果 <span class="math inline">p_1 &gt; p^m</span>，则参与人 2 课题通过设定一个略小于 <span class="math inline">p_1</span> 的价格以提升收益。因此均衡需满足 <span class="math inline">p_1 = p_2</span>。如果这个统一价格低于 <span class="math inline">c</span>，则双方都获得负收益，此时每个参与人都可以通过涨价而获得零收益。如果统一价格高于 <span class="math inline">c</span>，每个参与人也可以通过略微降价占领市场而提升收益。因此唯一的可能性是 <span class="math inline">p_1 = p_2 = c</span>，此时双方的收益都为零，任意一方如果涨价则失去市场份额（收益依然为零），如果降价则形成垄断但收益为负。因此 <span class="math inline">p_1 = p_2 = c</span> 是均衡价格。</p>
+<p>关于这个均衡有几点补充。首先，它也是帕雷托劣势策略。例如双方都将价格设为 <span class="math inline">p^m</span> 就都能获得正收益。第二，每个参与人的策略都是弱劣势策略：任意价格 <span class="math inline">c &lt; p_i &lt; a</span> 都弱优于 <span class="math inline">p_i = c</span>，因为此时的收益为正或者零，但 <span class="math inline">p_i = c</span> 的收益永远为零。第三，伯特兰均衡对于消费者来说是最好的，因为它将消费者剩余最大化。</p>
+</section>
+<section id="sec-6.4" class="level2 page-columns page-full" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="sec-6.4"><span class="header-section-number">6.4</span> 斯塔克尔伯格均衡</h2>
+<p>在 <a href="#sec-6.2.1" class="quarto-xref"><span>Section 6.2.1</span></a> 的古诺模型中，两个企业需要同时决定产量。现在我们假设企业 1 首先进行决策，企业 2 在观察到企业 1 的行动后再进行决策。此设定已经在 <a href="note_1.html" class="quarto-xref"><span>Chapter 1</span></a> 中讨论过。<a href="#fig-6.3" class="quarto-xref">Figure&nbsp;<span>6.3</span></a> 给出了它对应的扩展式博弈。</p>
 
-</div></div></main> <!-- /main -->
+<div class="no-row-height column-margin column-container"><div id="fig-6.3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-6.3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;6.3: 斯塔克尔伯格博弈的扩展式表达（参与人 1 为先行者）"><img src="assets/fig/fig-6.3.png" class="img-fluid figure-img" width="200"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.3: 斯塔克尔伯格博弈的扩展式表达（参与人 1 为先行者）
+</figcaption>
+</figure>
+</div><div id="fn3"><p><sup>3</sup>&nbsp;参与人 2 的策略集表达为 <span class="math inline">[0,\infty)^{[0,\infty)}</span>。</p></div></div><p>在此博弈中，参与人 1 拥有无限行动/策略集 <span class="math inline">[0, \infty)</span>，以 <span class="math inline">q_1</span> 代表具体策略。在图中我们用锯齿线代表无限行动集。参与人 2 的行动集也是 <span class="math inline">[0,\infty)</span>，以 <span class="math inline">q_2</span> 代表具体策略，在图中的表达方式相同。参与人 2 的策略是给他的每个信息集赋予一个对应的行动。而参与人 1 的每一种选择 <span class="math inline">q_1</span> 都伴随着参与人 2 的一个信息集，因此参与人 2 的策略是一个函数 <span class="math inline">s_2 : [0, \infty) \to [0, \infty)</span>。如果参与人 1 选择产量 <span class="math inline">q_1</span>，则参与人 2 的策略表达为 <span class="math inline">q_2 = s_2(q_1)</span>。显然，参与人 2 的策略集也是无限的<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。适合此博弈的解是利用逆向归纳法的子博弈完美均衡。子博弈包括博弈本身以及以参与人 2 的决策节点为起点的每个单人博弈。根据逆向归纳法，在参与人 1 选择 <span class="math inline">q_1</span> 后，参与人 2 在随后的单人博弈中都应作出最优选择，这意味着他需要根据 <a href="#sec-6.1" class="quarto-xref"><span>Section 6.1</span></a> 中得出的反应函数 <span class="math inline">\beta_2(q_1)</span> 进行决策。然后回到整个博弈的起点，参与人 1 需要考虑参与人 2 的最佳响应，因此选择令 <span class="math inline">\Pi_1(q_1, \beta_2(q_1))</span> 最大化的 <span class="math inline">q_1 \geq 0</span>。我们可以轻松确认 <span class="math inline">q_1 &gt; a-c</span> 时不存在最优解，而当 <span class="math inline">q_1 \leq a - c</span> 时，参与人 1 的目标函数表达为</p>
+<p><span class="math display">
+q_1\Big(a - c - q_1 -\frac{a - c - q_1}{2} \Big) .
+</span></p>
+<p>最优解为 <span class="math inline">q_1 = (a - c) / 2</span>，对应的 <span class="math inline">q_2 = \beta_2\big((a-c) / 2\big) = (a-c) / 4</span>。因此，子博弈完美均衡（注意这是一个策略组合）为</p>
+<p><span class="math display">
+q_1 = \frac{a-c}{2}, \quad q_2 = \beta_2(q_1) .
+</span> 而均衡的结果（outcome）是执行均衡策略时参与人们选择的行动路径，在这里均衡结果为</p>
+<p><span class="math display">
+q_1^S = \frac{a-c}{2}, \quad q_2^S = \frac{a-c}{4} .
+</span></p>
+<p>上角标的 S 对应斯塔克尔伯格 Stackelberg 的首字母。这个子博弈完美均衡也被称为斯塔克尔伯格均衡。这里因为我们假设参与人 1 为先行者（leader），可以确认他的收益要大于古诺均衡带来的收益，而参与人 2 作为追随者（follower），其收益则小于古诺均衡时的收益。</p>
+
+<div class="no-row-height column-margin column-container"><div id="fig-6.4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-6.4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;6.4: 图中浅蓝色折线是参与人 1 的反应函数，红色折线是参与人 2 的反应函数。点 q^S = (\tfrac{a-c}{2}, \tfrac{a-c}{4}) 是斯塔克尔伯格均衡的结果：参与人 2 的反应函数上令参与人 1 利润最大化的点，即参与人 1 的等利润曲线的切点。"><img src="assets/fig/fig-6.4.png" class="img-fluid figure-img" width="330"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.4: 图中浅蓝色折线是参与人 1 的反应函数，红色折线是参与人 2 的反应函数。点 <span class="math inline">q^S = (\tfrac{a-c}{2}, \tfrac{a-c}{4})</span> 是斯塔克尔伯格均衡的结果：参与人 2 的反应函数上令参与人 1 利润最大化的点，即参与人 1 的等利润曲线的切点。
+</figcaption>
+</figure>
+</div></div><p><a href="#fig-6.4" class="quarto-xref">Figure&nbsp;<span>6.4</span></a> 绘制了斯塔克尔伯格均衡的位置。参与人 1 （先行者）在参与人 2 的（追随者）的反应函数上选择令自己收益最大的点，因此参与人 2 在自己的反应函数上，而参与人 1 不在。</p>
+</section>
+<section id="sec-6.5" class="level2 page-columns page-full" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="sec-6.5"><span class="header-section-number">6.5</span> 拍卖</h2>
+<p>拍卖（auction）是利用规定好的流程将商品卖给感兴趣的买家的交易方式，而商品的价格就由拍卖的方法决定。拍卖的例子包括艺术品交易（通常为增价拍卖，也叫英格兰式拍卖<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>），鲜花交易（通常为减价拍卖，也叫荷兰式拍卖），公共事业招投标，以及移动通信的频谱拍卖等。</p>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;拍卖相关术语的中文译文参考了中华人民共和国商务部发布的中华人民共和国国内贸易行业标准 SB/T 10641-2018《拍卖术语》。不包含在此标准中的学术术语采用通用译法。</p></div></div><p>在本节中我们将讨论几个简单的古典交易模型。首先介绍的是完全信息下的第一价格和第二价格投标式（sealed bid，即密封出价）拍卖，随后是不完全信息下的第一价格投标式拍卖，最后是买家和卖家间的双向拍卖（double auction）。</p>
+<section id="sec-6.5.1" class="level3 page-columns page-full" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="sec-6.5.1"><span class="header-section-number">6.5.1</span> 完全信息</h3>
+<p>假设有 <span class="math inline">n</span> 个人都想获得一个不可分割的物品。每个人 <span class="math inline">i</span> 都对该物品进行了估值，记为 <span class="math inline">v_i &gt; 0</span>。这里不失一般性地假设 <span class="math inline">v_1 \geq v_2 \geq \dots \geq v_n</span>。在第一价格投标式拍卖（first-price sealed-bid auction）中，每个竞买人（bidder）都需提出一个报价（bid）<span class="math inline">b_i \geq 0</span>，而所有报价都需要同时且独立地提出（因此称为密封出价，sealed-bid）。给出最高报价的竞标人将以自身的报价价格购得该物品，因此称为第一价格（first-price）拍卖。如果出现最高报价者多于一人的情况，则规定其中序号最小的赢得拍卖。注意这只是一种打破平局的方法，也可以在不影响基本结论的情况下替换为其他方法。</p>
+<p>从以上设定我们可以定义博弈：参与人集合为 <span class="math inline">N=\{1, \dots, n\}</span>，每个参与人 <span class="math inline">i</span> 的策略集为 <span class="math inline">S_i = [0,\infty)</span>，具体策略记作 <span class="math inline">b_i</span>。参与人 <span class="math inline">i</span> 的收益函数<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>为</p>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;这里也假设了每个参与人都了解整个博弈，意味着他们知道其他参与人对该物品的估值。</p></div></div><p><span class="math display">
+u_i(b_1, \dots, b_i, \dots, b_n) =
+\begin{cases}
+v_i - b_i &amp; \text{if } \ i = \min \{k \in N \mid b_k \geq b_j \text{ for all } j \in N\} \\
+0 &amp; \text{otherwise} .
+\end{cases}
+</span></p>
+<p>此博弈的一个纳什均衡是 <span class="math inline">(b_1, \dots, b_n) = (v_2, v_2, v_3, \dots, v_n)</span>。根据博弈的定义，在此策略组合下参与人 <span class="math inline">i \neq 1</span> 无法赢得拍卖，因此且收益为零。降低报价依然无法获胜，而通过提高报价获胜最终只能获得负收益，因此没有更好的策略。参与人 1 在此策略组合下会赢得拍卖并获得收益 <span class="math inline">v_1 - v_2 \geq 0</span>，而如果降低报价则无法赢得拍卖（收益降为零），提高报价虽然依旧会获胜但收益将小于 <span class="math inline">v_1 - v_2</span>，因此参与人 1 也没有更好的策略。在此均衡中，参与人 1 的报价是参与人 2 的估价，也就是第二高的估价。这也会发生在英式拍卖和荷式拍卖中。</p>
+<p>除此之外，这个博弈还存在很多纳什均衡，但是在任意均衡中胜者都是对拍卖品估值最高的参与人（之一）。将报价设在自身估值或高于自身估值的策略是弱劣势策略，但设在低于自身估值的策略不是弱劣势策略。你能证明这些性质吗？</p>
+<p>第二价格投标式拍卖与第一价格投标式拍卖的唯一不同之处是胜者需要支付第二高的报价。如果最高报价者多于一人，则其中序号最小的获胜且支付自身的报价。这种拍卖的主要性质是，对于每个参与人 <span class="math inline">i</span>，将报价设为自身估值的策略，即 <span class="math inline">(b_1, \dots, b_n) = (v_1, \dots, v_n)</span>，是弱优势策略，也是一个纳什均衡。</p>
+</section>
+<section id="sec-6.5.2" class="level3 page-columns page-full" data-number="6.5.2">
+<h3 data-number="6.5.2" class="anchored" data-anchor-id="sec-6.5.2"><span class="header-section-number">6.5.2</span> 不完全信息</h3>
+<p>这里我们对 <a href="#sec-6.5.1" class="quarto-xref"><span>Section 6.5.1</span></a> 的设定做少许修正，假设每个竞买人知道自身的估值，但对其他人的估值仅有分布意义上的知识。如果将竞买人的估值视作类型，这意味着每个竞买人会对其他竞买人的类型组合赋予一个概率分布。为了简化设定，我们假设每个竞买人的类型都从区间 <span class="math inline">[0,1]</span> 上的均匀分布独立产生，且这是共同知识，且每个竞买人都了解自身的真实类型。拍卖的种类依然是第一价格投标式拍卖。虽然我们无法给出固定的估值排序，我们依然可以假设与上一节相同的打破平局的规则。</p>
+<p>这里我们只讨论两个竞买人的情形，而你可以自己尝试探索 <span class="math inline">n &gt; 2</span> 时的性质。在这个拍卖对应的二人博弈中，参与人 <span class="math inline">i \in \{1,2\}</span> 的策略需要对自身的每一个可能的类型赋予一个报价。由于可能的类型集合为 <span class="math inline">[0,1]</span>，同时没有理由报高于 <span class="math inline">1</span> 的价格，因此策略是函数 <span class="math inline">s_i: [0,1] \to [0,1]</span>。也就是说如果参与人 <span class="math inline">i</span> 的类型是 <span class="math inline">v_i</span>，则其在采用策略 <span class="math inline">s_i</span> 时的报价是 <span class="math inline">b_i = s_i(v_i)</span>。参与人 <span class="math inline">i</span> 的收益函数给每个策略组合 <span class="math inline">(s_i, s_j)</span> 赋予 <span class="math inline">i</span> 在此策略下的期望收益。在纳什均衡中，每个参与人都在固定对方策略的前提下选择令自身期望收益最大化的策略。而每个参与人的每个类型都在固定对方策略的前提下最大化自身期望收益是纳什均衡的充分条件。用 <a href="note_5.html" class="quarto-xref"><span>Chapter 5</span></a> 中的话说，就是贝叶斯均衡一定是纳什均衡<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>。</p>
+<div class="no-row-height column-margin column-container"><div id="fn6"><p><sup>6</sup>&nbsp;纳什均衡不一定是贝叶斯均衡。两者的区别在于，在纳什均衡中，概率为零的类型可以不选择最佳响应策略，因为这并不会改变期望收益。</p></div></div><p>此博弈的一个纳什均衡是 <span class="math inline">s_1^* (v_1) = v_1 / 2, s_2^* (v_2) = v_2 / 2</span>。为了证明此结论，我们首先在固定参与人 2 的策略 <span class="math inline">s_2^*</span> 的情况下考虑参与人 1 的类型 <span class="math inline">v_1</span>。如果参与人 1 的报价为 <span class="math inline">b_1</span>，则参与人 1 获胜的概率等于参与人 2 的报价不高于 <span class="math inline">b_1</span> 的概率。这个概率等于 <span class="math inline">\mathrm{Prob} [v_2 / 2 \leq b_1] = \mathrm{Prob}[v_2 \leq 2b_1]</span>。根据 <span class="math inline">s_2^*</span> 的定义可知参与人 2 的报价不会高于 <span class="math inline">1/2</span>，因此可以进一步假设 <span class="math inline">b_1 \leq 1/2</span>。由于 <span class="math inline">v_2</span> 服从 <span class="math inline">[0,1]</span> 上的均匀分布，且 <span class="math inline">2b_1 \leq 1</span>，可知 <span class="math inline">\mathrm{Prob}[v_2 \leq 2b_1] = 2b_1</span>。也就是说，当参与人 2 的策略是 <span class="math inline">s_2^*</span> 时，参与人 1 以报价 <span class="math inline">b_1</span> 获胜的概率等于 <span class="math inline">2b_1</span>，因此期望收益是 <span class="math inline">2b_1 (v_1 - b_1)</span>。当 <span class="math inline">b_1 = v_1 / 2</span> 期望收益最大，因此 <span class="math inline">s_1^* (v_1) = v_1 / 2</span> 是 <span class="math inline">s_2^*</span> 的最佳响应。相反情况下的分析也非常类似，唯一的区别是参与人 2 获胜需要参与人 1 的报价严格低于参与人 2 的报价，但这在均匀分布下不会改变概率值。</p>
+<p>在均衡 <span class="math inline">s_1^* (v_1) = v_1 / 2, s_2^* (v_2) = v_2 / 2</span> 中每个竞买人的报价仅是各自估值的一半。估值更高者赢得拍卖。</p>
+<p>那么不完全信息第二价格投标式拍卖呢？此时的结论更加简单，将报价设为各自的估值对每个参与人来说都是弱优势策略，因此 <span class="math inline">s_i^* (v_i)= v_i, i \in N</span> 是贝叶斯纳什均衡。</p>
+</section>
+<section id="sec-6.5.3" class="level3" data-number="6.5.3">
+<h3 data-number="6.5.3" class="anchored" data-anchor-id="sec-6.5.3"><span class="header-section-number">6.5.3</span> 不完全信息下的双向拍卖</h3>
+<p>假设有买家和卖家两个参与人。卖家拥有拍卖品，并对其估值为 <span class="math inline">v_s</span>。买家对拍卖品的估值为 <span class="math inline">v_b</span>。假设这两个估值都从区间 <span class="math inline">[0,1]</span> 上的均匀分布独立产生。买家和卖家都知道各自自身的估值，但并不知道对方的估值，只知道对方的估值服从 <span class="math inline">[0,1]</span> 上的均匀分布。</p>
+<p>拍卖程序如下：买家和卖家同时独立给出价格 <span class="math inline">p_b</span> 和 <span class="math inline">p_s</span>。如果 <span class="math inline">p_b \geq p_s</span> 则成交，成交价为平均报价 <span class="math inline">p = (p_b + p_s) / 2</span>。买家获得收益 <span class="math inline">v_b - p</span>，卖家获得收益 <span class="math inline">p - v_s</span>。如果 <span class="math inline">p_b &lt; p_s</span> 则交易失败，买卖双方的收益均为零。</p>
+<p>这是一个不完全信息博弈。买家有无穷多个类型 <span class="math inline">v_b \in [0,1]</span>，卖家亦然 <span class="math inline">v_s \in [0,1]</span>。策略是给每个类型赋予一个报价的函数。买家的策略为 <span class="math inline">p_b: [0,1] \to [0.1]</span>，即 <span class="math inline">p_b(v_b)</span> 是当其类型为 <span class="math inline">v_b</span> 时的报价。同样，卖家的策略为 <span class="math inline">p_s: [0,1] \to [0,1]</span>，即 <span class="math inline">p_s(v_s)</span> 是当其类型为 <span class="math inline">v_s</span> 时的报价。</p>
+<p>假设卖家选择的策略是 <span class="math inline">p_s(\cdot)</span>。此时买家的期望收益是其估值 <span class="math inline">v_b</span> 和报价 <span class="math inline">p_b</span> 的函数</p>
+<p><span class="math display">
+\Bigg[ v_b - \frac{p_b + E[p_s(v_s) \mid p_b \geq p_s(v_s)]}{2} \Bigg] \mathrm{Prob}[p_b \geq p_s(v_s)]
+</span></p>
+<p>其中 <span class="math inline">E[p_s(v_s) \mid p_b \geq p_s(v_s)]</span> 是在卖家的报价不高于买家报价的条件下，买家基于策略 <span class="math inline">p_s(\cdot)</span> 得出的卖家报价的期望值。</p>
+<p>同理，假设买家选择的策略是 <span class="math inline">p_d(\cdot)</span>。此时卖家的期望收益是其估值 <span class="math inline">v_s</span> 和报价 <span class="math inline">p_s</span> 的函数</p>
+<p><span class="math display">
+\Bigg[ \frac{p_s + E[p_b(v_b) \mid p_s \leq p_b(v_b)]}{2} - v_s \Bigg] \mathrm{Prob}[p_s \leq p_b(v_b)]
+</span></p>
+<p>其中 <span class="math inline">E[p_b(v_b) \mid p_s \leq p_b(v_b)]</span> 是在买家的报价不低于卖家报价的条件下，卖家基于策略 <span class="math inline">p_b(\cdot)</span> 得出的买家报价的期望值。</p>
+<p>此时，策略组合 <span class="math inline">\big(p_b(\cdot), p_s(\cdot)\big)</span> 成为（贝叶斯）纳什均衡的条件是，对任意 <span class="math inline">v_b \in [0,1]</span>，<span class="math inline">p_b(v_b)</span> 是最大化问题</p>
+<p><span class="math display">
+\max_{p_b \in [0,1]} \Bigg[ v_b - \frac{p_b + E[p_s(v_s) \mid p_b \geq p_s(v_s)]}{2} \Bigg] \mathrm{Prob}[p_b \geq p_s(v_s)]
+</span></p>
+<p>的解，同时对任意 <span class="math inline">v_s \in [0,1]</span>，<span class="math inline">p_s(v_s)</span> 是最大化问题</p>
+<p><span class="math display">
+\max_{p_s \in [0,1]} \Bigg[ \frac{p_s + E[p_b(v_b) \mid p_s \leq p_b(v_b)]}{2} - v_s \Bigg] \mathrm{Prob}[p_s \leq p_b(v_b)]
+</span></p>
+<p>的解。</p>
+<p>此博弈拥有很多纳什均衡。在理想状态下，只要交易是有效的，即 <span class="math inline">v_b \geq v_s</span>，就都应该成交。但事实上在满足 <span class="math inline">v_b \geq v_s</span> 时，不同策略组合的成交概率不同。并不是所有的纳什均衡都同样有效，有的均衡策略的成交概率高于其他均衡策略。</p>
+<p>你能证明下面的策略组合是纳什均衡吗？</p>
+<p><span class="math display">
+x \in [0,1], \quad
+p_b(v_b) =
+\begin{cases}
+x &amp; \text{if } \ v_b \geq x \\
+0 &amp; \text{if } \ v_b &lt; x
+\end{cases}, \quad
+p_s(v_s) =
+\begin{cases}
+x &amp; \text{if } \ v_s \leq x \\
+0 &amp; \text{if } \ v_s &gt; x
+\end{cases}
+</span></p>
+</section>
+</section>
+<section id="sec-6.6" class="level2 page-columns page-full" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="sec-6.6"><span class="header-section-number">6.6</span> 混合策略与不完全信息</h2>
+<p>在这一节中，我们将探讨双矩阵博弈的混合策略纳什均衡和由该博弈引申出的一系列不完全信息博弈的贝叶斯纳什均衡的极限间的等价关系。</p>
+<p>考虑下面的双矩阵博弈</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \ \ \ \ \, \begin{matrix} L &amp; \ \ \, R \end{matrix} \\
+\begin{matrix} T \\ B\end{matrix}
+&amp;
+\begin{pmatrix}
+2,1 &amp; 2,0 \\
+3,0 &amp; 1,3
+\end{pmatrix}
+\end{align*}
+</span></p>
+<p>此博弈的唯一纳什均衡是 <span class="math inline">\big( (p^*, 1-p^*), (q^*, 1-q^*) \big), p^* = 3/4, q^* = 1/2</span>。如何解释混合策略以及混合策略纳什均衡的现实含义是博弈论领域的一个古典问题。一种解释是参与人真的按照均衡策略给出的概率分布进行选择。虽然有一些实证研究认为这能够在现实中发生<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>，这种解释也并没有很强的说服力，特别是在混合策略纳什均衡中，所有发生概率为正的纯策略给参与人带来的收益都想等。另一个解释（在 <a href="note_3.html#sec-3.1" class="quarto-xref"><span>Section 3.1</span></a> 中曾经提到过）是混合策略代表其他参与人对自己选择纯策略行为的信念。例如在上面的均衡中，参与人 2 相信参与人 1 以 <span class="math inline">3/4</span> 的概率选择策略 <span class="math inline">T</span>。这中解释的缺点是这些信念是主观的，而且并没有说明它们如何形成。在这一节中，我们探讨一种获得混合策略纳什均衡的方法，即给博弈添加一些客观的不确定性，计算计算贝叶斯纳什均衡的极限。也就是将表达为信念的主观不确定性替换成随机选择的客观不确定性。</p>
+<div class="no-row-height column-margin column-container"><div id="fn7"><p><sup>7</sup>&nbsp;例如 <span class="citation" data-cites="walker_minimax_2001">Walker and Wooders (<a href="#ref-walker_minimax_2001" role="doc-biblioref">2001</a>)</span>。</p><div id="ref-walker_minimax_2001" class="csl-entry" role="listitem">
+Walker, Mark, and John Wooders. 2001. <span>“Minimax Play at Wimbledon.”</span> <em>American Economic Review</em> 91 (5): 1521–38. <a href="https://doi.org/10.1257/aer.91.5.1521">https://doi.org/10.1257/aer.91.5.1521</a>.
+</div></div></div><p>在上面的例子里，假设参与人 1 从 <span class="math inline">(T,L)</span> 获得的收益变成不确定的 <span class="math inline">2 + \alpha</span>，而参与人 2 从 <span class="math inline">(B,R)</span> 获得的收益也变成不确定的 <span class="math inline">3 + \beta</span>。假设 <span class="math inline">\alpha</span> 和 <span class="math inline">\beta</span> 都服从 <span class="math inline">[0,x]</span> 上的独立均匀分布，<span class="math inline">x &gt; 0</span>。在随机选择后，参与人 1 知道 <span class="math inline">\alpha</span> 的取值，参与人 2 知道 <span class="math inline">\beta</span> 的取值，而且这是共同知识。换句话说，参与人 1 知道自己的类型 <span class="math inline">\alpha</span>，参与人 2 知道自己的类型 <span class="math inline">\beta</span>。新的收益矩阵是</p>
+<p><span class="math display">
+\begin{align*}
+&amp; \ \ \ \ \ \ \ \, \begin{matrix} L &amp; \ \ \ \ \ \ \ \ \ \ \, R \end{matrix} \\
+\begin{matrix} T \\ B\end{matrix}
+&amp;
+\begin{pmatrix}
+2+\alpha,1 &amp; 2,0 \\
+3,0 &amp; 1,3+\beta
+\end{pmatrix}
+\end{align*}
+</span></p>
+<p>参与人 1 的策略是函数 <span class="math inline">s_1: [0,x] \to \{T, B\}</span>，参与人 2 的策略是函数 <span class="math inline">s_2: [0,x] \to \{L,R\}</span>。</p>
+<p>下面我们尝试找出此博弈的均衡。假设参与人 2 的策略是当 <span class="math inline">\beta</span> 很小时选择 <span class="math inline">L</span>，很大时选择 <span class="math inline">R</span>。具体的说就是假设存在一个 <span class="math inline">b \in [0,x]</span> 满足 <span class="math inline">\beta \leq b</span> 时参与人 2 选择 <span class="math inline">L</span>，而 <span class="math inline">\beta &gt; b</span> 时选择 <span class="math inline">R</span>。将此策略记作 <span class="math inline">s_2^b</span>。此时参与人 1 的最佳响应是什么？假设参与人 1 的类型是 <span class="math inline">\alpha</span>，那么当他选择 <span class="math inline">T</span> 时，期望收益为</p>
+<p><span class="math display">
+(2+\alpha) \cdot \frac{b}{x} + 2 \cdot (1 - \frac{b}{x}) = 2 + \alpha \cdot \frac{b}{x},
+</span></p>
+<p>而当他选择 <span class="math inline">B</span> 时，期望收益为</p>
+<p><span class="math display">
+3 \cdot \frac{b}{x} + 1 \cdot (1 - \frac{b}{x}) = 1 + 2 \cdot \frac{b}{x} .
+</span></p>
+<p>因此，<span class="math inline">T</span> 不比 <span class="math inline">B</span> 差的条件是 <span class="math inline">\alpha \geq (2b - x) / b</span>。参与人 1 对 <span class="math inline">s_2^b</span> 的最佳响应是：当 <span class="math inline">\alpha \geq a</span> 是选择 <span class="math inline">T</span>，而 <span class="math inline">\alpha &lt; a</span> 时选择 <span class="math inline">B</span>，<span class="math inline">a = (2b-x) / b</span>。将此策略记作 <span class="math inline">s_1^a</span>。</p>
+<p>反之，假设参与人 1 选择策略 <span class="math inline">s_1^a</span>。参与人 2 的最佳响应可以由相同方式计算。如果类型 <span class="math inline">\beta</span> 的参与人 2 选择 <span class="math inline">L</span>，则期望收益为</p>
+<p><span class="math display">
+1 \cdot (1-\frac{a}{x}) + 0 \cdot \frac{a}{x} = 1 - \frac{a}{x} ,
+</span></p>
+<p>而当他选择 <span class="math inline">R</span> 时，期望收益为</p>
+<p><span class="math display">
+0 \cdot (1 - \frac{a}{x}) + (3+\beta) \cdot \frac{a}{x} = (3+\beta) \cdot \frac{a}{x} .
+</span></p>
+<p>因此，<span class="math inline">L</span> 不比 <span class="math inline">R</span> 差的条件是 <span class="math inline">\beta \leq (x - 4a) / a</span>。因此参与人 2 对 <span class="math inline">s_1^a</span> 的最佳响应是 <span class="math inline">s_2^b</span>，<span class="math inline">b = (x-4a)/a</span>。</p>
+<p>综上所述，当 <span class="math inline">a = (2b-x)/b, b = (x-4a)/a</span> 时，策略组合 <span class="math inline">(s_1^a, s_2^b)</span> 是纳什均衡。在 <span class="math inline">[0,x]</span> 范围内解方程组可得</p>
+<p><span class="math display">
+a = \frac{1}{4} (x + 4 - \sqrt{x^2 + 16}), \quad b = \frac{1}{2} (x - 4 + \sqrt{x^2 + 16}).
+</span></p>
+<p>在这个均衡中，参与人 1 选择 <span class="math inline">T</span> 的先验概率（即在他了解自己的类型之前的概率）是 <span class="math inline">1-a/x = (\sqrt{x^2 + 16} + 3x - 4)/(4x)</span>，而参与人 2 选择 <span class="math inline">L</span> 的先验概率是 <span class="math inline">b/x = (x - 4 + \sqrt{x^2 + 16}) / (2x)</span>。当不确定性越来越小，即 <span class="math inline">x \to 0</span> 时，这两个概率的极限值是多少呢？对于参与人 1，</p>
+<p><span class="math display">
+\lim_{x\to 0} \frac{\sqrt{x^2 + 16} + 3x - 4}{4x} = \lim_{x\to 0} \frac{x/\sqrt{x^2 + 16} + 3}{4} = \frac{3}{4},
+</span></p>
+<p>注意第一个等式应用了洛必达法则。而对于参与人 2，</p>
+<p><span class="math display">
+\lim_{x\to 0} \frac{x - 4 + \sqrt{x^2 + 16}}{2x} = \lim_{x\to 0} \frac{1 + x / \sqrt{x^2 + 16}}{2} = \frac{1}{2} .
+</span></p>
+<p>可见，这两个概率收敛于原博弈的混合策略纳什均衡。</p>
+</section>
+<section id="sec-6.7" class="level2 page-columns page-full" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="sec-6.7"><span class="header-section-number">6.7</span> 序贯议价</h2>
+<p>最简化的讨价还价问题（bargaining problem）包含两个当事人，他们需要从一组备选方案中就选择哪个方案达成共识。如果他们不能达成共识，则将执行一个特殊的分歧（disagreement）方案。博弈论中对讨价还价问题由两种主流方法，一种是基于合作博弈的方法（也称为纳什谈判问题），另一种是基于非合作博弈的方法（以鲁宾斯坦 Rubinstein 提出的交替报价博弈为代表）。这一节中我们讨论非合作博弈的方法，但也会言及它和纳什谈判问题的关系。</p>
+<section id="sec-6.7.1" class="level3 page-columns page-full" data-number="6.7.1">
+<h3 data-number="6.7.1" class="anchored" data-anchor-id="sec-6.7.1"><span class="header-section-number">6.7.1</span> 有限回合的讨价还价</h3>
+<p>这里我们继续 <a href="note_1.html#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a> 中的讨价还价问题。该问题中，两个参与人针对如何分配一个单位的完美可分割物品（例如一升葡萄酒）进行讨价还价。如果无法达成共识，则假设双方的分配都为零。为了简化设定，这里假设两个参与人的偏好都以线性效用函数 <span class="math inline">u_1(\alpha) = u_2(\alpha) = \alpha, \alpha \in [0,1]</span> 描述，即 <span class="math inline">\alpha</span> 单位的物品可以给参与人带来的效用为 <span class="math inline">\alpha</span>。此时，可行的分配集是由 <span class="math inline">(0,0), (1,0), (0,1)</span> 三点为顶点构成的三角形区域。</p>
+<p>我们用下面的交替报价<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>程序对讨价还价的过程建模。假设共有 <span class="math inline">T+1</span> 个回合，<span class="math inline">T \in \mathbb{N}</span>。在初始回合（<span class="math inline">t=0</span>），参与人 1 给出报价，这里以物品分割比例的形式呈现为 <span class="math inline">(\alpha, 1-\alpha)</span>，<span class="math inline">\alpha \in [0,1]</span>。即参与人 1 获得 <span class="math inline">\alpha</span> 单位，参与人 2 获得 <span class="math inline">1-\alpha</span> 单位。参与人 2 可以接受或者拒绝这个提议，接受时物品以该比例分配后结束博弈，拒绝时则进入下一回合。在 <span class="math inline">t=1</span> 回合，两个参与人的角色互换，由参与人 2 进行报价，参与人 1 决定接受或者拒绝。如果参与人 1 接受提议，则以该提议的比例进行分配后结束博弈，拒绝则进入下一回合。在 <span class="math inline">t=2</span> 回合，参与人的角色继续互换并重复之前的操作。因此，每当回合数为偶数时由参与人 1 报价，而回合数为奇数时由参与人 2 进行报价。最后一个回合是 <span class="math inline">t=T</span>，如果到达这个回合，则认为双方没有达成共识，执行分歧方案 <span class="math inline">(0,0)</span> 后结束博弈。</p>
+<div class="no-row-height column-margin column-container"><div id="fn8"><p><sup>8</sup>&nbsp;这里将 offer 翻译成报价，但并不代表报出的一定是价格。在这个例子中，参与人报出的就是分配比例。</p></div></div><p>假设效用需要折现（discount）。即在 <span class="math inline">t</span> 回合获得的效用 <span class="math inline">\alpha</span> 通过折现因子 <span class="math inline">0 &lt; \delta &lt; 1</span> 进行折现计算后，对应 <span class="math inline">t-1</span> 回合的效用 <span class="math inline">\delta \alpha</span>，对应 <span class="math inline">0</span> 回合的效用 <span class="math inline">\delta^t \alpha</span>。这体现了相同单位的物品获得的越早其价值也越高。</p>
+
+<div class="no-row-height column-margin column-container"><div id="fig-6.5" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-6.5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;6.5: 有限回合讨价还价模型的扩展式博弈表达。总回合数 T+1 为偶数，\alpha 代表提议中参与人 1 获得的分配比例。"><img src="assets/fig/fig-6.5.png" class="img-fluid figure-img" width="330"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.5: 有限回合讨价还价模型的扩展式博弈表达。总回合数 <span class="math inline">T+1</span> 为偶数，<span class="math inline">\alpha</span> 代表提议中参与人 1 获得的分配比例。
+</figcaption>
+</figure>
+</div></div><p>在 <a href="#fig-6.5" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> 中我们能看到这个讨价还价过程对应的扩展式博弈。图中假设 <span class="math inline">T</span> 为奇数，因此最后一个报价者为 <span class="math inline">T-1</span> 回合的参与人 1。</p>
+<p>下面我们通过逆向归纳法推导子博弈完美均衡。注意子博弈由决策节点开始，而 <a href="#fig-6.5" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> 中的每个决策节点实际上包含了无数个子博弈，因为有无数条路径可以到达这些节点。</p>
+<p>首先，在最后一个决策节点上，参与人 2 在 <span class="math inline">\alpha &lt; 1</span> 时都会选择接受，而在 <span class="math inline">\alpha = 1</span> 时认为接受和拒绝没有区别。在 <span class="math inline">T-1</span> 回合由参与人 1 报价的决策节点上，唯一的均衡是参与人 1 提议 <span class="math inline">\alpha = 1</span>，然后参与人 2 接受任何提议。如果参与人 2 拒绝 <span class="math inline">\alpha - 1</span>，则参与人 1 只要将提议改为 <span class="math inline">0 &lt; \alpha &lt; 1</span> 即可增加自身的效用，因此只有在参与人 2 接受 <span class="math inline">\alpha = 1</span> 时才能形成均衡，而参与人 1 的最佳选择是 <span class="math inline">\alpha = 1</span>。据此，我们可以用收益组合 <span class="math inline">(\delta^{T-1}, 0)</span> 替换博弈的 <span class="math inline">T-1</span> 回合以后的部份，见 <a href="#fig-6.6" class="quarto-xref">Figure&nbsp;<span>6.6</span></a>。</p>
+
+<div class="no-row-height column-margin column-container"><div id="fig-6.6" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="assets/fig/fig-6.6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;6.6: 将 Figure&nbsp;fig-6.5 中的 T-1 和 T 回合替换为对应子博弈的均衡收益"><img src="assets/fig/fig-6.6.png" class="img-fluid figure-img" width="330"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.6: 将 <a href="#fig-6.5" class="quarto-xref">Figure&nbsp;<span>6.5</span></a> 中的 <span class="math inline">T-1</span> 和 <span class="math inline">T</span> 回合替换为对应子博弈的均衡收益
+</figcaption>
+</figure>
+</div></div><p>在缩短后的博弈的 <span class="math inline">T-2</span> 回合的子博弈中，参与人 1 通过拒绝参与人 2 的提议可以获得的收益为 <span class="math inline">\delta^{T-1}</span>。这是 <span class="math inline">t = T-1</span> 时的效用 <span class="math inline">1</span> 在 <span class="math inline">t=0</span> 时的折现值，而其在 <span class="math inline">t = T-2</span> 时的折现值是 <span class="math inline">\delta</span>。因此，在均衡中参与人 2 的提议是 <span class="math inline">\alpha = \delta</span>，然后参与人 1 选择接受 <span class="math inline">\alpha \geq \delta</span> 但拒绝 <span class="math inline">\alpha &lt; \delta</span>。据此，我们可以用收益组合 <span class="math inline">(\delta^{T-2}\delta, \delta^{T-2}(1-\delta)) = (\delta^{T-1}, \delta^{T-2}(1-\delta))</span> 替换这个子博弈。通过重复这一逻辑可知，在 <span class="math inline">T-3</span> 回合，参与人 1 提议 <span class="math inline">\alpha = 1 - \delta(1-\delta)</span>，而参与人 2 接受，对应的收益组合是 <span class="math inline">(\delta^{T-3}(1 - \delta(1-\delta)), \delta^{T-2}(1-\delta)) = (\delta^{T-3}(1 - \delta + \delta^2), \delta^{T-2}(\delta - \delta^2))</span>。用同样方法可以继续将博弈缩短直至起始点。核心逻辑是每个参与人的提议只需分配给对方希望在下一回合获得的收益乘以 <span class="math inline">\delta</span> 的值。</p>
+<p>逆向追溯至 <span class="math inline">0</span> 回合时，参与人 1 提议 <span class="math inline">\alpha = 1 - \delta + \delta^2 - \dots + \delta^{T-1}</span>（见 <a href="#tbl-6.1" class="quarto-xref">Table&nbsp;<span>6.1</span></a>），然后参与人 2 接受此提议。参与人 1 的收益为 <span class="math inline">1 - \delta + \delta^2 - \dots + \delta^{T-1}</span>，参与人 2 的收益为 <span class="math inline">\delta - \delta^2 + \dots - \delta^{T-1}</span>。这是子博弈完美均衡策略的结果，也是均衡收益。子博弈完美均衡策略为：</p>
+<ul>
+<li><p>在偶数回合 <span class="math inline">t</span>，参与人 1 提议 <span class="math inline">\alpha = 1 - \delta + \dots + \delta^{T-1-t}</span>，参与人 2 接受任何不大于此 <span class="math inline">\alpha</span> 的提议，但拒绝任何大于此 <span class="math inline">\alpha</span> 的提议。</p></li>
+<li><p>在奇数回合 <span class="math inline">t</span>，参与人 2 提议 <span class="math inline">\alpha = \delta - \delta^2 + \dots + \delta^{T-1-t}</span>，参与人 1 接受任何不小于此 <span class="math inline">\alpha</span> 的提议，但拒绝任何小于此 <span class="math inline">\alpha</span> 的提议。</p></li>
+</ul>
+<div id="tbl-6.1" class="quarto-float quarto-figure quarto-figure-center anchored" data-tbl-colwidths="[15,15,35,35]">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-6.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;6.1: 子博弈完美均衡中的报价
+</figcaption>
+<div aria-describedby="tbl-6.1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>回合</th>
+<th>报价人</th>
+<th>参与人 1 的分配比例</th>
+<th>参与人 2 的分配比例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">T</span></td>
+<td></td>
+<td><span class="math inline">0</span></td>
+<td><span class="math inline">0</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">T-1</span></td>
+<td>1</td>
+<td><span class="math inline">1</span></td>
+<td><span class="math inline">0</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">T-2</span></td>
+<td>2</td>
+<td><span class="math inline">\delta</span></td>
+<td><span class="math inline">1-\delta</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">T-3</span></td>
+<td>1</td>
+<td><span class="math inline">1-\delta+\delta^2</span></td>
+<td><span class="math inline">\delta - \delta^2</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">T-4</span></td>
+<td>2</td>
+<td><span class="math inline">\delta - \delta^2 + \delta^3</span></td>
+<td><span class="math inline">1 - \delta + \delta^2 -\delta^3</span></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+<td><span class="math inline">\vdots</span></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">0</span></td>
+<td>1</td>
+<td><span class="math inline">1-\delta + \delta^2 -\dots + \delta^{T-1}</span></td>
+<td><span class="math inline">\delta - \delta^2 + \dots - \delta^{T-1}</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+</section>
+<section id="sec-6.7.2" class="level3" data-number="6.7.2">
+<h3 data-number="6.7.2" class="anchored" data-anchor-id="sec-6.7.2"><span class="header-section-number">6.7.2</span> 无限回合的讨价还价</h3>
+<p>这一节里我们将上一节的讨价还价问题修改为拥有无限回合，即 <span class="math inline">T = \infty</span>。如果没有达成共识，则两个参与人都无法获得任何收益。和有限回合讨价还价博弈一样，这个博弈也有很多纳什均衡。</p>
+<p>分析无限回合讨价还价博弈的方法之一是从有限回合博弈出发计算 <span class="math inline">T=\infty</span> 时的极限。事实上，这样获得的极限分配是子博弈完美均衡的唯一结果，但仅仅计算极限无法证明这一点。</p>
+<p>在无限回合下，子博弈完美均衡不能通过逆向归纳法计算，因为该博弈没有最终决策节点。这里我们只能给出一组策略然后证明它是子博弈完美均衡。至于任意子博弈完美均衡都会产生相同结果的证明则需从文献中学习。</p>
+<p>令 <span class="math inline">\boldsymbol{x}^* = (x_1^*, x_2^*)</span> 和 <span class="math inline">\boldsymbol{y}^* = (y_1^*, y_2^*)</span> 满足 <span class="math inline">x_1^2, x_2^*, y_1^*, y_2^* \geq 0, x_1^* + x_2^* = y_1^* + y_2^* = 1</span>，并且</p>
+<p><span class="math display">
+x_2^* = \delta y_2^*, \quad y_1^* = \delta x_1^* .
+</span></p>
+<p>计算可得 <span class="math inline">\boldsymbol{x}^* = (1/(1+\delta), \delta / (1+\delta))</span>，<span class="math inline">\boldsymbol{y}^* = (\delta / (1+\delta), 1 / (1+\delta))</span>。考虑下面的策略组合：</p>
+<ul>
+<li><p>参与人 1 的策略 <span class="math inline">\sigma_1^*</span>：在回合 <span class="math inline">t = 0, 2, 4, \dots</span> 提议 <span class="math inline">\boldsymbol{x}^*</span>；在回合 <span class="math inline">t = 1, 3, 5, \dots</span> 当且仅当参与人 2 的提议 <span class="math inline">(z_1, z_2)</span> 满足 <span class="math inline">z_1 \geq \delta x_1^*</span> 时接受它。</p></li>
+<li><p>参与人 2 的策略 <span class="math inline">\sigma_2^*</span>：在回合 <span class="math inline">t = 1, 3, 5, \dots</span> 提议 <span class="math inline">\boldsymbol{y}^*</span>；在回合 <span class="math inline">t = 0, 2, 4, \dots</span> 当且仅当参与人 1 的提议 <span class="math inline">(z_1, z_2)</span> 满足 <span class="math inline">z_2 \geq \delta y_2^*</span> 时接受它。</p></li>
+</ul>
+<p>这组策略是稳定的，即参与人每回合都提出相同的分配方案。而且每个参与人都会接受任何能给他带来不小于自己想获得收益的折现值的方案。根据 <span class="math inline">\boldsymbol{x}^*</span> 和 <span class="math inline">\boldsymbol{y}^*</span> 的定义，参与人 2 会接受 <span class="math inline">\boldsymbol{x}^*</span>，而参与人 1 会接受 <span class="math inline">\boldsymbol{y}^*</span>。因此，策略组合 <span class="math inline">(\sigma_1^*, \sigma_2^*)</span> 的结果是在首轮 <span class="math inline">t=0</span> 时参与人 1 提议 <span class="math inline">\boldsymbol{x}^* = (1/(1+\delta), \delta / (1+\delta))</span>，随后被参与人 2 接受。这也是二人获得的收益。下面我们证明 <span class="math inline">(\sigma_1^*, \sigma_2^*)</span> 是子博弈完美均衡。</p>
+<p>此博弈中共有两类子博弈，一类是在起始节点参与人需要提出方案的，另一类是在起始节点参与人需要决定接受或者拒绝方案的。</p>
+<p>对于第一类子博弈，我们可以不失一般性地考虑原博弈，即从 <span class="math inline">t=0</span> 开始的博弈。我们需要证明 <span class="math inline">(\sigma_1^*, \sigma_2^*)</span> 是纳什均衡。首先假设参与人 1 选择策略 <span class="math inline">\sigma_1^*</span>。如果参与人 2 在 <span class="math inline">t=0</span> 回合选择接受，他的收益就是 <span class="math inline">\delta/(1+\delta)</span>。如果他选择拒绝，则针对 <span class="math inline">\sigma_1^*</span>，他能够获得的最大收益是通过在 <span class="math inline">t=1</span> 回合提议 <span class="math inline">\boldsymbol{y}^*</span> 带来的 <span class="math inline">\delta/(1+\delta)</span>。这是因为任何使 <span class="math inline">z_2 &gt; y_2^* \Leftrightarrow z_1 &lt; y_1^*</span> 的提议 <span class="math inline">\boldsymbol{z}</span> 都不会被参与人 1 接受。因此 <span class="math inline">\sigma_2^*</span> 是 <span class="math inline">\sigma_1^*</span> 的最佳响应。同理，如果参与人 2 选择 <span class="math inline">\sigma_2^*</span>，则参与人 1 能够获得的最大收益是通过在 <span class="math inline">t=0</span> 回合提议 <span class="math inline">\boldsymbol{x}^*</span> 带来的 <span class="math inline">1/(1+\delta)</span>，因为参与人 2 会拒绝任何给参与人 1 带来更多收益的方案，同时也不会提出那样的方案。这说明 <span class="math inline">\sigma_1^*</span> 也是 <span class="math inline">\sigma_2</span> 的最佳响应。</p>
+<p>对于第二类子博弈，我们也可以不失一般性地考虑原博弈，并假设参与人 1 已经提出了方案 <span class="math inline">\boldsymbol{z} = (z_1, z_2)</span>。而对于奇数回合由参与人 2 报价的情形也可以用相同方法分析。首先假设在这个子博弈中参与人 1 选择策略 <span class="math inline">\sigma_1^*</span>。如果 <span class="math inline">z_2 \geq \delta y_2^*</span>，则接受 <span class="math inline">\boldsymbol{z}</span> 会给参与人 2 带来回报 <span class="math inline">z_2 \geq \delta y_2^* = \delta / (1+\delta)</span>。如果拒绝，则针对 <span class="math inline">\sigma_1^*</span> 参与人 2 能够获得的最大回报是在 <span class="math inline">t=1</span> 提议 <span class="math inline">\boldsymbol{y}^*</span> 带来的 <span class="math inline">\delta / (1+\delta)</span>，这也会被参与人 1 接受。反之，如果 <span class="math inline">z_2 &lt; \delta y_2^*</span>，则参与人 2 选择拒绝然后在 <span class="math inline">t=1</span> 提议 <span class="math inline">\boldsymbol{y}^*</span> 能给自己带来更高收益 <span class="math inline">\delta/(1+\delta)</span>。因此 <span class="math inline">\sigma_2^*</span> 是 <span class="math inline">\sigma_1^*</span> 的最佳响应。然后假设参与人 2 选择 <span class="math inline">\sigma_2^*</span>。这种情况下如果 <span class="math inline">z_2 \geq \delta y_2^*</span> 则 <span class="math inline">\boldsymbol{z}</span> 会被接受，否则会被拒绝。如果是前者则参与人 1 的响应策略对结果没有影响，如果是后者则会得到一个以参与人 2 报价为起始节点的博弈，而此时可以用类似方法证明 <span class="math inline">\sigma_1^*</span> 是 <span class="math inline">\sigma_2^*</span> 的最佳响应。</p>
+<p>综上所述，我们证明了 <span class="math inline">(\sigma_1^*, \sigma_2^*)</span> 是子博弈完美均衡。</p>
+<p>最后，我们给出两个备注。</p>
+<div class="callout callout-style-simple callout-caution no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="rem-6.1" class="proof remark">
+<p><span class="proof-title"><em>Remark 6.1</em>. </span>如果我们不把 <span class="math inline">\delta</span> 当作折现因子而是当作博弈进行到下一回合的概率，上面的整个分析过程不会有任何变化。具体的说就是假设当一个提议被拒绝时，博弈以 <span class="math inline">1-\delta</span> 的概率直接结束且每个参与人的收益都为零，而以 <span class="math inline">\delta</span> 的概率继续照常进行。在这个解释下，无限回合博弈早晚会结束的概率为 <span class="math inline">1</span>。这使无限回合的设定更容易被接受。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-caution no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="rem-6.2" class="proof remark">
+<p><span class="proof-title"><em>Remark 6.2</em>. </span>在无限回合博弈的子博弈完美均衡中，参与人 1 获得的比例为 <span class="math inline">1/(1+\delta)</span>，参与人 2 获得的比例为 <span class="math inline">\delta/(1+\delta)</span>。当 <span class="math inline">\delta</span> 趋近于 <span class="math inline">1</span> 时，即参与人更有耐心时，这两个比例都趋近于 <span class="math inline">1/2</span>。而 <span class="math inline">(1/2, 1/2)</span> 也是纳什谈判解（通过最大化 <span class="math inline">\alpha(1-\alpha)</span> 获得，见 <a href="note_1.html#sec-1.3.5" class="quarto-xref"><span>Section 1.3.5</span></a>）。此结论在效用函数不是线性函数时也成立。</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+</section>
+</section>
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -268,18 +965,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -311,7 +997,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -319,7 +1025,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -423,7 +1129,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -668,13 +1373,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
+<p>Since 2024, Jia-Ping HUANG. <a href="https://huangjp.com" class="uri">https://huangjp.com</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
