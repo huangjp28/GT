@@ -347,7 +347,7 @@ window.Quarto = {
 </div>
 </div>
 <p>也就是说，参与人 1 的 maximin 策略将自己的最小收益（由参与人 2 的策略导致）最大化，而参与人 2 的 minimax 将自己的最大支付（由参与人 1 的策略导致）最小化。因为策略集是有限的，maximin 策略和 minimax 策略永远存在。两个策略在定义上的区别自然是源于矩阵博弈中的数字对参与人 1 来说是收益，但对参与人 2 来说则是支付额。</p>
-<p>如果要检验某个策略 <span class="math inline">\boldsymbol{p}</span> 是否是参与人 1 的 maximin 策略，我们只需针对 <span class="math inline">\boldsymbol{e}^j, j = 1, 2, \dots, n</span> 检验 <a href="#def-maximin" class="quarto-xref">Definition&nbsp;<span>2.2</span></a> 中的第一个不等式是否成立即可，而不需要检验所有的 <span class="math inline">\boldsymbol{q} \in \Delta^n</span>。这是因为任意的 <span class="math inline">\boldsymbol{p}A\boldsymbol{q}</span> 都是 <span class="math inline">\boldsymbol{p}A\boldsymbol{e}^j</span> 的线性组合，其最大值只会出现在某个 <span class="math inline">\boldsymbol{p}A\boldsymbol{e}^j</span>。同样的逻辑也适用于参与人 2 的 minimax 策略。换句话说，检验 maximin 或 minimax 策略时，我们只需要考虑对方的纯策略。</p>
+<p>如果要检验某个策略 <span class="math inline">\boldsymbol{p}</span> 是否是参与人 1 的 maximin 策略，我们只需针对 <span class="math inline">\boldsymbol{e}^j, j = 1, 2, \dots, n</span> 检验 <a href="#def-maximin" class="quarto-xref">Definition&nbsp;<span>2.2</span></a> 中的第一个不等式是否成立即可，而不需要检验所有的 <span class="math inline">\boldsymbol{q} \in \Delta^n</span>。这是因为任意的 <span class="math inline">\boldsymbol{p}A\boldsymbol{q}</span> 都是 <span class="math inline">\boldsymbol{p}A\boldsymbol{e}^j</span> 的线性组合，其最小值只会出现在某个 <span class="math inline">\boldsymbol{p}A\boldsymbol{e}^j</span>。同样的逻辑也适用于参与人 2 的 minimax 策略。换句话说，检验 maximin 或 minimax 策略时，我们只需要考虑对方的纯策略。</p>
 <p>为什么我们对这两个策略感兴趣？这两个策略看上去代表了一种非常保守或悲观的，假设最坏情况的态度。而支撑 maximin/minimax 策略的理由源自 minimax 定理：对任意矩阵博弈 <span class="math inline">A</span>，存在一个实数 <span class="math inline">v=v(A)</span> 并满足下面的条件</p>
 <ol type="a">
 <li><p>当且仅当策略 <span class="math inline">\boldsymbol{p}</span> 是参与人 1 的 maximin 策略时，它可以保证参与人 1 至少可以获得收益 <span class="math inline">v</span>。</p></li>
@@ -365,11 +365,11 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Definition 2.3 (鞍点)</strong></span> 矩阵博弈 <span class="math inline">A</span> 中的 <span class="math inline">(i,j)</span> 要素如果满足下面的条件，则称其为鞍点（saddle point）：</p>
 <p><span class="math display">
 \begin{align*}
-&amp; a_{ij} \geq a_{ij} \ \text{ for all } k = 1, \dots, m, \\
+&amp; a_{ij} \geq a_{kj} \ \text{ for all } k = 1, \dots, m, \\
 &amp; a_{ij} \leq a_{ik} \ \text{ for all } k = 1, \dots, n,
 \end{align*}
 </span></p>
-<p>即 <span class="math inline">a_{ij}</span> 是在列 <span class="math inline">j</span> 中是最大值，在行 <span class="math inline">i</span> 中是最小值。</p>
+<p>即 <span class="math inline">a_{ij}</span> 在列 <span class="math inline">j</span> 中是最大值，在行 <span class="math inline">i</span> 中是最小值。</p>
 </div>
 </div>
 </div>
