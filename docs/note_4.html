@@ -521,7 +521,7 @@ Figure&nbsp;4.6: 在参与人 2 的决策节点无法形成子博弈
 </div>
 </div>
 </div>
-<p>让我们通过 <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 验证一下此定义的含义。在确认一个策略组合是否是子博弈完美均衡时，我们需要针对每个子博弈进行验证。因为原博弈永远是自身的一个子博弈，因此子博弈完美均衡必须是原博弈的一个纳什均衡。这时我们就有了 <span class="math inline">10</span> 个备选项。这个结论具有一般性，因此可以说<strong>任意子博弈完美均衡也是纳什均衡</strong>。</p>
+<p>让我们通过 <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 验证一下此定义的含义。在确认一个策略组合是否是子博弈完美均衡时，我们需要针对每个子博弈进行验证。因为原博弈永远是自身的一个子博弈，因此子博弈完美均衡必须是原博弈的一个纳什均衡，也就是说 <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> 的子博弈完美均衡是其 <span class="math inline">10</span> 个纳什均衡中的一个。这个结论具有一般性，因此可以说<strong>任意子博弈完美均衡也是纳什均衡</strong>。</p>
 <p>接下来我们验证四个由终点的前一个节点开始的子博弈。这四个子博弈都只包含一个参与人，因此也称为单人博弈（one-person game）<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>。虽然我们没有定义单人博弈的纳什均衡，但其唯一合理的定义应该就是参与人永远选择最优行动。在这个例子中，这意味着在这四个子博弈里，参与人应当分别（从左到右）选择 <span class="math inline">r, \ell', R</span> 和 <span class="math inline">a</span>。而这同时也意味着在由随机选择节点开始的子博弈中，参与人们也作出了最优选择<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>。综合以上信息可知，我们需要能够在最后的决策节点实现 <span class="math inline">r, \ell', R, a</span> 的纳什均衡，而满足条件的唯一策略组合是 <span class="math inline">(Ca, r \ell' R)</span>。因此，<span class="math inline">(Ca, r \ell' R )</span> 是此博弈中唯一的子博弈完美均衡。同时我们观察到，<strong>在完美信息博弈中，逆向归纳均衡和子博弈完美均衡是一致的</strong>。</p>
 <div class="no-row-height column-margin column-container"><div id="fn9"><p><sup>9</sup>&nbsp;单人博弈问题其实就是单人决策问题，因此通常不放在博弈论的范畴内讨论。</p></div><div id="fn10"><p><sup>10</sup>&nbsp;随机选择本身是随机的，不是决策的结果，因此不存在优劣之分。</p></div></div><p>现在我们回到 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的不完美信息博弈。在这个例子中，逆向归纳法无法应用到博弈树的左半边，因为此处的参与人 2 的信息集包含两个节点，也就是说参与人 2 不知道之前参与人 1 的选择是 <span class="math inline">A</span> 还是 <span class="math inline">B</span>，因此也就无法选择最优行动：当参与人 1 选择 <span class="math inline">A</span> 时则 <span class="math inline">r</span> 更好，反之则 <span class="math inline">\ell</span> 更好。而关于子博弈完美均衡，我们需要验证四个子博弈：原博弈整体，由随机选择节点开始的子博弈，<span class="math inline">U</span> 下面的子博弈，<span class="math inline">D</span> 下面的子博弈。因此，子博弈完美性要求参与人 1 选择 <span class="math inline">a</span> 而参与人 2 选择 <span class="math inline">R</span>，同时需是原博弈的纳什均衡。原博弈的 <span class="math inline">6</span> 个纳什均衡中，满足此条件的是 <span class="math inline">(Ca, \ell R)</span> 和 <span class="math inline">(Ca, rR)</span>，因此它们是子博弈完美均衡。</p>
 <p>在本节的最后，我们用一个更清晰的例子说明子博弈完美均衡比逆向归纳均衡的适用范围更广。考虑 <a href="#fig-4.7" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> 中的三人博弈。由于参与人 3 无法作出最优选择，我们无法应用逆向归纳法。关于子博弈完美均衡，我们要讨论两个子博弈：原博弈和由参与人 2 的决策节点开始的子博弈。后者是参与人 2 和参与人 3 之间的博弈，其策略式表达是</p>
@@ -585,7 +585,13 @@ Figure&nbsp;4.7: 一个三人博弈
 </div>
 </div>
 <p>第一个条件说的是，只要可行，信念应当针对策略依照贝叶斯公式进行计算。第二个条件说的是，参与人应当根据自己的信念计算期望收益并进行最优化。如果你感觉看不懂，那是非常正常的。我们将通过几个例子展示这两个条件具体意味着什么，而更加正式的定义可以参考原书第十四章。</p>
-<p><a href="#fig-4.8" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> 针对 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈进行了一些补充。在参与人 2 的非平凡信息集中，信念 <span class="math inline">(\alpha, 1-\alpha)</span> 现在被明确标注出来了。这意味着如果博弈进行到了这个信息集，则参与人 2 认为参与人 1 选择了 <span class="math inline">A</span> 的概率为 <span class="math inline">\alpha</span>，而选择了 <span class="math inline">B</span> 的概率为 <span class="math inline">1-\alpha</span>。所有其他信息集都是平凡的，因此对应的信念都是概率 <span class="math inline">1</span>。条件 (2) 的序贯理性在这里意味着参与人 2 在 <span class="math inline">U</span> 下面的信息集应当选择 <span class="math inline">R</span>，参与人 1 在 <span class="math inline">D</span> 下面的信息集应当选择 <span class="math inline">a</span>。参与人 2 在他的非平凡信息集时应当基于信念最大化自身的期望收益：行动 <span class="math inline">\ell</span> 的期望收益为 <span class="math inline">\alpha \cdot 1 + (1-\alpha)\cdot 3 = 3-2\alpha</span>，行动 <span class="math inline">r</span> 的期望收益为 <span class="math inline">\alpha \cdot 2 + (1-\alpha)\cdot 0 = 2\alpha</span>，因此当 <span class="math inline">3-2\alpha \geq 2\alpha \Leftrightarrow 0 \leq \alpha \leq 3/4</span> 时应选择 <span class="math inline">\ell</span>，而在 <span class="math inline">3/4 \leq \alpha \leq 1</span> 时应选择 <span class="math inline">r</span>。</p>
+
+<div class="no-row-height column-margin column-container"><div class="margin-aside">
+<p>贝叶斯公式：</p>
+<p><span class="math display">
+\mathrm{Pr}[P\mid Q] = \frac{\mathrm{Pr}[P] \times  \mathrm{Pr}[Q \mid P]}{\mathrm{Pr}[Q]}
+</span></p>
+</div></div><p><a href="#fig-4.8" class="quarto-xref">Figure&nbsp;<span>4.8</span></a> 针对 <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> 中的博弈进行了一些补充。在参与人 2 的非平凡信息集中，信念 <span class="math inline">(\alpha, 1-\alpha)</span> 现在被明确标注出来了。这意味着如果博弈进行到了这个信息集，则参与人 2 认为参与人 1 选择了 <span class="math inline">A</span> 的概率为 <span class="math inline">\alpha</span>，而选择了 <span class="math inline">B</span> 的概率为 <span class="math inline">1-\alpha</span>。所有其他信息集都是平凡的，因此对应的信念都是概率 <span class="math inline">1</span>。条件 (2) 的序贯理性在这里意味着参与人 2 在 <span class="math inline">U</span> 下面的信息集应当选择 <span class="math inline">R</span>，参与人 1 在 <span class="math inline">D</span> 下面的信息集应当选择 <span class="math inline">a</span>。参与人 2 在他的非平凡信息集时应当基于信念最大化自身的期望收益：行动 <span class="math inline">\ell</span> 的期望收益为 <span class="math inline">\alpha \cdot 1 + (1-\alpha)\cdot 3 = 3-2\alpha</span>，行动 <span class="math inline">r</span> 的期望收益为 <span class="math inline">\alpha \cdot 2 + (1-\alpha)\cdot 0 = 2\alpha</span>，因此当 <span class="math inline">3-2\alpha \geq 2\alpha \Leftrightarrow 0 \leq \alpha \leq 3/4</span> 时应选择 <span class="math inline">\ell</span>，而在 <span class="math inline">3/4 \leq \alpha \leq 1</span> 时应选择 <span class="math inline">r</span>。</p>
 
 <div class="no-row-height column-margin column-container"><div id="fig-4.8" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -599,18 +605,12 @@ Figure&nbsp;4.8: <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>4.1</s
 </div></div><p>那么条件 (1) 的贝叶斯一致性意味着什么呢？它意味着只要可行，参与人 2 在左侧的非平凡信息集中的信念应当基于参与人 1 的策略（尤其是在根节点所选择的行动）利用贝叶斯公式计算。例如，当参与人 1 的策略使他首先选择了 <span class="math inline">A</span> 时，参与人 2 应当相信该策略并赋予 <span class="math inline">\alpha=1</span>。反之，当参与人 1 的策略使他首先选择了 <span class="math inline">B</span> 时，参与人 2 应当赋予 <span class="math inline">\alpha=0</span>。这是通过条件概率的公式计算的：</p>
 <p><span class="math display">
 \begin{align*}
-\alpha &amp;= \mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A \mid {\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B\big] \\
-&amp;= \frac{\mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A\big] \times \mathrm{Pr} \big[ {\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B \mid \text{\small 参与人\ 1\ 选择了\ } A \big]}{\mathrm{Pr} \big[{\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B\big]} \\
-&amp;= \frac{\mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A\big]}{\mathrm{Pr} \big[{\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B\big]}
+\alpha &amp;= \mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A \mid \text{\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B\big] \\
+&amp;= \frac{\mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A\big] \times \mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B \mid \text{\small 参与人\ 1\ 选择了\ } A \big]}{\mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B\big]} \\
+&amp;= \frac{\mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A\big]}{\mathrm{Pr} \big[\text{\small 参与人\ 1\ 选择了\ } A \text{\small \ 或\ } B\big]}
 \end{align*}
 </span></p>
-
-<div class="no-row-height column-margin column-container"><div class="margin-aside">
-<p>贝叶斯公式：</p>
-<p><span class="math display">
-\mathrm{Pr}[P\mid Q] = \frac{\mathrm{Pr}[P] \times  \mathrm{Pr}[Q \mid P]}{\mathrm{Pr}[Q]}
-</span></p>
-</div></div><p>上式的第一行是 <span class="math inline">\alpha</span> 的定义，第二行中分子的第二项的值为 <span class="math inline">1</span>。其他概率应该基于参与人 1 的策略计算。因此，如果策略决定参与人 1 选择 <span class="math inline">A</span>，则 <span class="math inline">\alpha = 1/1 = 1</span>；如果策略决定他选择 <span class="math inline">B</span>，则 <span class="math inline">\alpha = 0/1 = 0</span>。但是，如果策略决定参与人 1 选择 <span class="math inline">C</span>，则分母中的概率为 <span class="math inline">0</span>，这说明上面的算式不适用。此时，我们无法确定参与人 2 在他的非平凡信息集中的信念，而通常我们允许任意信念适用这种情况。</p>
+<p>上式的第一行是 <span class="math inline">\alpha</span> 的定义，第二行中分子的第二项的值为 <span class="math inline">1</span>。其他概率应该基于参与人 1 的策略计算。因此，如果策略决定参与人 1 选择 <span class="math inline">A</span>，则 <span class="math inline">\alpha = 1/1 = 1</span>；如果策略决定他选择 <span class="math inline">B</span>，则 <span class="math inline">\alpha = 0/1 = 0</span>。但是，如果策略决定参与人 1 选择 <span class="math inline">C</span>，则分母中的概率为 <span class="math inline">0</span>，这说明上面的算式不适用。此时，我们无法确定参与人 2 在他的非平凡信息集中的信念，而通常我们允许任意信念适用这种情况。</p>
 <div class="callout callout-style-simple callout-warning no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
