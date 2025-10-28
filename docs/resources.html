@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>课程资料 – 博弈论</title>
+<title>资源和工具 – 博弈论</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./note_0.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./assignments.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -82,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./slides.html">课程资料</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resources.html">资源和工具</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides.html" class="sidebar-item-text sidebar-link active">
+  <a href="./slides.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">课程资料</span></a>
   </div>
 </li>
@@ -198,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./resources.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">资源和工具</span></a>
   </div>
 </li>
@@ -207,15 +206,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#game-solvers" id="toc-game-solvers" class="nav-link active" data-scroll-target="#game-solvers">Game Solvers</a></li>
+  <li><a href="#书籍和文献" id="toc-书籍和文献" class="nav-link" data-scroll-target="#书籍和文献">书籍和文献</a></li>
+  <li><a href="#其他有用的网站" id="toc-其他有用的网站" class="nav-link" data-scroll-target="#其他有用的网站">其他有用的网站</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">课程资料</h1>
+<h1 class="title">资源和工具</h1>
 </div>
 
 
@@ -232,34 +239,36 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>在这里你可以查看课堂上使用的课件和其他相关资料。我会根据课程进度依次更新，请持续关注。</p>
+<section id="game-solvers" class="level2">
+<h2 class="anchored" data-anchor-id="game-solvers">Game Solvers</h2>
 <ul>
-<li><p>第一讲 绪论：</p>
-<ul>
-<li><a href="./assets/slides/1.Introduction.pdf" target="blank">Slides</a></li>
-<li>参考文献：<a href="https://www.jstor.org/stable/166693">Haywood Jr.&nbsp;(1954)</a></li>
-</ul></li>
-<li><p>第二讲 二人零和博弈：</p>
-<ul>
-<li><a href="./assets/slides/2.Zero-sum.pdf" target="blank">Slides</a></li>
-<li><a href="./assets/slides/E2.Zero-sum_web.pdf" target="blank">练习</a>, <a href="./assets/slides/E2.Zero-sum_ans.pdf" target="blank">课后练习参考答案</a></li>
-</ul></li>
-<li><p>第三讲 二人博弈：</p>
-<ul>
-<li><a href="./assets/slides/3.Two-person_web.pdf" target="blank">Slides</a></li>
-</ul></li>
-<li><p>第四讲 扩展式博弈：</p>
-<ul>
-<li>第一部分：<a href="./assets/slides/4.Extensive-1_web.pdf" target="blank">Slides</a></li>
-</ul></li>
+<li><p>A matrix game solver by Prof.&nbsp;Thomas S. Ferguson at UCLA<br>
+<a href="https://www.math.ucla.edu/~tom/gamesolve.html" target="blank">https://www.math.ucla.edu/~tom/gamesolve.html</a></p></li>
+<li><p>A bimatrix game solver by Prof.&nbsp;Rahul Savani at University of Liverpool<br>
+<a href="https://cgi.csc.liv.ac.uk/~rahul/bimatrix_solver/" target="blank">https://cgi.csc.liv.ac.uk/~rahul/bimatrix_solver/</a></p></li>
 </ul>
-
+</section>
+<section id="书籍和文献" class="level2">
+<h2 class="anchored" data-anchor-id="书籍和文献">书籍和文献</h2>
+<ul>
+<li>Martin J. Osborne 和 Ariel Rubinstein 的几本合著著作，包括著名的 <em>A Course in Game Theory</em><br>
+<a href="https://books.osborne.economics.utoronto.ca" target="blank">https://books.osborne.economics.utoronto.ca</a></li>
+</ul>
+</section>
+<section id="其他有用的网站" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="其他有用的网站">其他有用的网站</h2>
+<ul>
+<li>The Game Theory Society<br>
+<a href="https://gametheorysociety.org" target="blank">https://gametheorysociety.org</a></li>
+</ul>
 
 
 
 <div class="no-row-height column-margin column-container"><div class="margin-aside">
 
-</div></div></main> <!-- /main -->
+</div></div></section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -686,14 +695,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="课程信息">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">课程信息</span>
+      <a href="./assignments.html" class="pagination-link" aria-label="作业和期末考核">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">作业和期末考核</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./note_0.html" class="pagination-link" aria-label="前言">
-        <span class="nav-page-text">前言</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
