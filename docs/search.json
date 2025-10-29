@@ -514,7 +514,7 @@
     "href": "assignments.html#作业",
     "title": "作业和期末考核",
     "section": "",
-    "text": "第一次作业：\n\n内容（PDF）\n提交截止时间：2025年10月28日 23:00\n提交渠道：微助教。具体要求如下：\n\n可以选择手写、平板电脑的手写输入工具、或者文字编辑软件等方式完成。无论采用哪种方式，最后都需要存为 A4 尺寸的 PDF 文件，通过添加附件的形式提交。\n为了最大限度避免网络通信状态带来的影响，请不要赶在截至时间前几分钟提交。\n总分 100 分。如果在截至时间后提交，则在应得分数的基础上减去 20 分。在公布答案后提交视为无效作业，记 0 分。",
+    "text": "第一次作业：\n\n内容（PDF）\n提交截止时间：2025年10月28日 23:00\n提交渠道：微助教。具体要求如下：\n\n可以选择手写、平板电脑的手写输入工具、或者文字编辑软件等方式完成。无论采用哪种方式，最后都需要存为 A4 尺寸的 PDF 文件，通过添加附件的形式提交。\n为了最大限度避免网络通信状态带来的影响，请不要赶在截至时间前几分钟提交。\n总分 100 分。如果在截至时间后提交，则在应得分数的基础上减去 20 分。在公布答案后提交视为无效作业，记 0 分。\n\n参考答案（公布时间：2025年10月29日 10:30）",
     "crumbs": [
       "作业和期末考核"
     ]
@@ -545,16 +545,6 @@
     "title": "资源和工具",
     "section": "",
     "text": "A matrix game solver by Prof. Thomas S. Ferguson at UCLA\nhttps://www.math.ucla.edu/~tom/gamesolve.html\nA bimatrix game solver by Prof. Rahul Savani at University of Liverpool\nhttps://cgi.csc.liv.ac.uk/~rahul/bimatrix_solver/",
-    "crumbs": [
-      "资源和工具"
-    ]
-  },
-  {
-    "objectID": "resources.html#文献",
-    "href": "resources.html#文献",
-    "title": "资源和工具",
-    "section": "文献",
-    "text": "文献\n\nMartin J. Osborne 和 Ariel Rubinstein 几本合著著作，包括著名的 A Course in Game Theory\nhttps://books.osborne.economics.utoronto.ca",
     "crumbs": [
       "资源和工具"
     ]
