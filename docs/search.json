@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "博弈论",
     "section": "",
-    "text": "基本信息\n这里是深圳大学经济学院开设的本科课程《博弈论》的课程网站。本门课程面向经济学专业的本科高年级学生讲授博弈论的核心内容，包括非合作博弈中的零和博弈、二人非零和博弈、扩展式博弈、不完全信息博弈以及经济学中的经典应用问题，同时也兼顾合作博弈的基本理论及其应用。将合作博弈作为课程内容的一个主要部分是本门课程的特色。\n博弈论是微观经济学理论中不可或缺的重要内容，也是应用数学的一个研究领域，对学习者的数学基础要求较高。鉴于经济学专业本科生的平均数学能力有限，课程内容中不会涉及过多的数学推导和证明，因此大部分概念会以例子的形式进行介绍，但多数定义依然会保留数学上的严谨性。为了更好地理解博弈论的思维方式，建议数学基础较差的同学对集合论、线性代数和基本的最优化理论进行补充学习。",
+    "text": "基本信息\n这里是深圳大学经济学院开设的本科课程《博弈论》的课程网站。\n本门课程面向经济学专业的本科高年级学生讲授博弈论的基础内容，包括非合作博弈中的零和博弈、二人非零和博弈、扩展式博弈、不完全信息博弈以及经济学中的经典应用问题，同时也兼顾合作博弈的基本理论及其应用。\n博弈论是微观经济学理论中不可或缺的重要内容，也是应用数学的一个研究领域，对学习者的数学基础要求较高。鉴于经济学专业本科生的平均数学能力有限，课程内容中不会涉及过多的数学推导和证明，因此大部分概念会以例子的形式进行介绍，但多数定义依然会保留数学上的严谨性。为了更好地理解博弈论的思维方式，建议数学基础较差的同学对集合论、线性代数和基本的优化理论进行补充学习。",
     "crumbs": [
       "课程信息"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#基本信息",
     "title": "博弈论",
     "section": "",
-    "text": "课程代码：0202860001\n开课学期：2025秋冬\n上课时间与地点：星期三 7-8节，丽湖校区四方楼 东306\n任课教师：黄嘉平（中国经济特区研究中心）\n联系方式：请发邮件至 huangjp %at% szu %dot% edu %dot% cn\n办公室：粤海校区汇文楼 1510，丽湖校区守正楼 A 栋三楼公共办公室\n接访时间：为方便与选课学生交流，接访地点为丽湖校区，需事先邮件预约时间地点\n教学辅助工具：深圳大学教学平台（可以从网页端和企业微信端访问，主要用于签到、课堂互动和收作业）\n【2025.10.14 更新】教辅工具改为微助教（网页版，微信版可在微信中搜索“微助教服务号”），主要用于签到、课堂互动和收作业。\n主要参考书：\nPeters, H. (2015). Game Theory: A Multi-Leveled Approach, 2nd Edition. Springer.\nhttps://link.springer.com/book/10.1007/978-3-662-46950-7\n可通过 深圳大学图书馆 &gt; 数据库 &gt; Springer Nature 电子图书 下载 PDF 版本\n\n\n\n参考书封面",
+    "text": "课程代码：0202860001\n开课学期：2026秋冬\n上课时间与地点：星期四 7-8节，丽湖校区四方楼 南309\n任课教师：黄嘉平（中国经济特区研究中心）\n联系方式：请发邮件至 huangjp %at% szu %dot% edu %dot% cn，或通过企业微信联系\n办公室：粤海校区汇文楼 1510，丽湖校区守正楼 A 栋三楼公共办公室\n接访时间：为方便与选课学生交流，接访地点为丽湖校区，需事先沟通时间地点\n教学辅助工具：微助教（网页版，微信版可在微信中搜索“微助教服务号”），主要用于签到、课堂互动和收作业。\n主要参考书：\nPeters, H. (2015). Game Theory: A Multi-Leveled Approach, 2nd Edition. Springer.\nhttps://link.springer.com/book/10.1007/978-3-662-46950-7\n可通过 深圳大学图书馆 &gt; 数据库 &gt; Springer Nature 电子图书 下载 PDF 版本\n\n\n\n参考书封面",
     "crumbs": [
       "课程信息"
     ]
@@ -34,7 +34,7 @@
     "href": "index.html#成绩评定",
     "title": "博弈论",
     "section": "成绩评定",
-    "text": "成绩评定\n本门课程采用期末考核为主的成绩评定方式，具体分数分配为\n\n\\text{出席情况}\\ 10\\% + \\text{课堂表现}\\ 10\\% + \\text{作业}\\ 20\\% + \\text{期末考核}\\ 60\\%\n\n其中课堂表现包括课堂参与度、随堂测验成绩等。\n根据《深圳大学本科课程考核办法（修订）》，对缺课时数累计超过规定教学时数三分之一或缺交平时作业、实验报告量超过三分之一的学生，任课教师可取消其考试资格，成绩记载为F。请选课同学不要无故缺席课程。\n期末考核计划采用报告形式，需按要求独立完成报告内容。如果发生变更会提前告知。",
+    "text": "成绩评定\n本门课程采用期末考核为主的成绩评定方式，具体分数分配为\n\n\\text{出席情况}\\ 10\\% + \\text{课堂表现}\\ 10\\% + \\text{作业}\\ 20\\% + \\text{期末考核}\\ 60\\%\n\n其中课堂表现包括课堂参与度、随堂测验成绩等。\n根据《深圳大学本科课程考核办法（修订）》，对缺课时数累计超过规定教学时数三分之一或缺交平时作业、实验报告量超过三分之一的学生，任课教师可取消其考试资格，成绩记载为 F。请选课同学不要无故缺席课程。\n期末考核采用大作业形式，需按要求独立完成。如果发生变更会提前告知。",
     "crumbs": [
       "课程信息"
     ]
@@ -44,7 +44,7 @@
     "href": "index.html#教学进度",
     "title": "博弈论",
     "section": "教学进度",
-    "text": "教学进度\n下面是 2025-2026 学年第一学期的教学进度计划。由于课程进程和学校放假安排具有不确定性，下表中的内容可能发生变化。深圳大学校历\n\n\n\n\n\n\n\n周次\n学习内容\n\n\n\n\n第一周（9月3日）\n课程介绍\n博弈的例子（一）\n\n\n第二周（9月10日）\n博弈的例子（二）\n二人零和博弈（一）\n\n\n第三周（9月17日）\n二人零和博弈（二）\n二人博弈（一）\n\n\n第四周（9月24日）\n二人博弈（二）\n课堂练习\n\n\n第五周（10月1日）\n十一放假\n\n\n第六周（10月8日）\n扩展式博弈（一）\n\n\n第七周（10月15日）\n扩展式博弈（二）\n课堂练习\n\n\n第八周（10月22日）\n不完全信息博弈（一）\n\n\n第九周（10月29日）\n不完全信息博弈（二）\n\n\n第十周（11月5日）\n课堂练习\n非合作博弈的应用（一）\n\n\n第十一周（11月12日）\n非合作博弈的应用（二）\n\n\n第十二周（11月19日）\n非合作博弈的应用（三）\n课堂练习\n\n\n第十三周（11月26日）\n合作博弈（一）\n\n\n第十四周（12月3日）\n合作博弈（二）\n\n\n第十五周（12月10日）\n合作博弈的应用（一）\n\n\n第十六周（12月17日）\n合作博弈的应用（二）\n课堂练习\n\n\n第十七周（12月24日）\n总结与答疑\n\n\n第十八周（12月31日）\n提交期末报告",
+    "text": "教学进度\n下面是 2026-2027 学年第一学期的教学进度计划。由于课程进程和学校放假安排具有不确定性，下表中的内容可能发生变化。深圳大学校历\n\n\n\n\n\n\n\n周次\n学习内容\n\n\n\n\n第一周（9月3日）\n课程介绍\n博弈的例子\n\n\n第二周（9月10日）\n博弈的例子（续）\n二人零和博弈\n\n\n第三周（9月17日）\n二人零和博弈（续）\n课堂练习\n\n\n第四周（9月24日）\n二人博弈\n\n\n第五周（10月1日）\n十一放假\n\n\n第六周（10月8日）\n课堂练习\n扩展式博弈（一）\n\n\n第七周（10月15日）\n扩展式博弈（一续）\n课堂练习\n\n\n第八周（10月22日）\n扩展式博弈（二）\n\n\n第九周（10月29日）\n扩展式博弈（二续）\n课堂练习\n\n\n第十周（11月5日）\n不完全信息博弈\n\n\n第十一周（11月12日）\n不完全信息博弈（续）\n课堂练习\n\n\n第十二周（11月19日）\n合作博弈（一）\n\n\n第十三周（11月26日）\n合作博弈（一续）\n课堂练习\n\n\n第十四周（12月3日）\n合作博弈（二）\n\n\n第十五周（12月10日）\n合作博弈（二续）\n课堂练习\n\n\n第十六周（12月17日）\n博弈的应用\n\n\n第十七周（12月24日）\n总结与答疑\n\n\n第十八周（12月31日）\n提交期末报告",
     "crumbs": [
       "课程信息"
     ]
@@ -54,7 +54,7 @@
     "href": "slides.html",
     "title": "课程资料",
     "section": "",
-    "text": "在这里你可以查看课堂上使用的课件和其他相关资料。我会根据课程进度依次更新，请持续关注。\n\n第一讲 绪论：\n\nSlides\n参考文献：Haywood Jr. (1954)\n\n第二讲 二人零和博弈：\n\nSlides\n练习, 课后练习参考答案\n\n第三讲 二人博弈：\n\nSlides\n\n第四讲 扩展式博弈：\n\n第一部分：Slides\n\n第二部分：Slides\n\n练习\n\n第五讲 不完全信息博弈：\n\nSlides\n\n第六讲 非合作博弈的应用：（本年度跳过）\n第七讲 合作博弈：\n\n第一部分：Slides\n\n第二部分：Slides\n\n第八讲 合作博弈的应用：（本年度跳过）",
+    "text": "在这里你可以查看课堂上使用的课件和其他相关资料。我会根据课程进度依次更新，请持续关注。\n\n第一讲 绪论：\n\nSlides\n参考文献：Haywood Jr. (1954)\n\n第二讲 二人零和博弈：\n\nSlides\n练习\n\n第三讲 二人博弈：\n\nSlides\n\n第四讲 扩展式博弈：\n\n第一部分：Slides\n\n第二部分：Slides\n\n练习\n\n第五讲 不完全信息博弈：\n\nSlides\n\n第六讲 非合作博弈的应用：见讲义\n第七讲 合作博弈：\n\n第一部分：Slides\n\n第二部分：Slides\n\n第八讲 合作博弈的应用：见讲义",
     "crumbs": [
       "课程资料"
     ]
@@ -64,7 +64,7 @@
     "href": "note_0.html",
     "title": "前言",
     "section": "",
-    "text": "本讲义主要参考了 Peters (2015) 中的内容，包括非合作博弈和合作博弈的基础概念以及部分应用问题，涵盖原书中的第1～6、9、10章。这部分内容适用于数学基础有限（例如经济学等社会科学领域）的本科高年级学生学习。\n\nPeters, Hans. 2015. Game Theory: A Multi-Leveled Approach. Springer Texts in Business and Economics. Berlin, Heidelberg: Springer Berlin Heidelberg. https://doi.org/10.1007/978-3-662-46950-7.\n\nFudenberg, Drew, and Jean Tirole. 1991. Game Theory. Cambridge, Mass: MIT Press.\n\nOsborne, Martin J., and Ariel Rubinstein. 1994. A Course in Game Theory. Cambridge, Mass: MIT Press.\n\nTadelis, Steve. 2013. Game Theory: An Introduction. Princeton ; Oxford: Princeton University Press.\n\nPeleg, Bezalel, and Peter Sudhölter. 2007. Introduction to the Theory of Cooperative Games. 2nd ed. Introduction to the Theory of Cooperative Games 34. Berlin: Springer.\n\nGilles, Robert P. 2010. The Cooperative Game Theory of Networks and Hierarchies. Theory and Decision Library. Series c, Game Theory, Mathematical Programming and Operations Research, v. 44. Heidelberg: Springer.\n原书作者 Hans Peters 博士是荷兰 Maastricht University 的数理经济学荣休教授，国际著名理论经济学家，主要研究方向是博弈论和社会选择理论。该书采用了一种独特的编写方式，作者称之为 multi-leveled approach，可以理解为“从零开始的晋级之路”。简单的说，该方法就是将复杂深邃的博弈论内容分成两个阶段进行讲授，第一阶段注重对基本概念和方法的理解与应用，第二阶段则注重理论的构筑。因此，该书既可以作为本科高年级学生初学博弈论的参考书，也可以作为理论经济学学科的研究生用书。该书另一个重要特点是涵盖的话题比较全面，既包括标准教科书 (例如 Fudenberg and Tirole 1991; Osborne and Rubinstein 1994; 或 Tadelis 2013) 中包含的非合作博弈内容，也比较详细地介绍了合作博弈的内容，而后者通常是只能在更加专业的学术书籍 (例如 Peleg and Sudhölter 2007; Gilles 2010) 中才会涉及。\n据我所知，原书还没有中文翻译版1。因此本讲义的第一版将比较忠实地体现原书中的内容，同时不排除根据需要进行删减或补充的可能。随着本门课程的持续开展，我会不断充实和完善讲义的内容。\n1 如果此信息有误，欢迎通过电子邮件指正。作者在原书第一版的 Preface 中指出，\n\nPart I is meant for students who are knowledgeable in basic calculus, and does not try to avoid the use of mathematics on that basic level. There is, after all, a reason why we teach calculus courses to (for instance) undergraduate students in economics. Nevertheless, the mathematics in Part I does not go beyond such things as maximizing a quadratic function or elementary matrix notation. In my own experience, the difficulties that students encounter when studying formal models are usually conceptual rather than mathematical, but they are often confused with mathematical difficulties.\n\n因此，作者从第一阶段起就十分注意模型描述的准确性（这也是很多其他书籍的共同特征）。我非常认同这一做法，也会在本讲义中使用这种方式。\n\n符号的定义\n以下是本讲义中出现的数学符号的用法和定义。\n\n向量用粗体符号表示，例如 \\boldsymbol{p}, \\boldsymbol{e}。\n矩阵和向量的转置仅在需要时明示，其符号为 \\top，例如 A^\\top。\n向量间的比较：\n\n\\boldsymbol{a} &gt; \\boldsymbol{b} 代表对于所有 i，a_i &gt; b_i 成立；\n\\boldsymbol{a} \\geq \\boldsymbol{b} 代表对于所有 i，a_i \\geq b_i 成立。",
+    "text": "本讲义主要参考了 Peters (2015) 中的内容，包括非合作博弈和合作博弈的基础概念以及部分应用问题，涵盖原书中的第1～6、9、10章。这部分内容适用于数学基础有限（例如经济学等社会科学领域）的本科高年级学生学习。\n\nPeters, Hans. 2015. Game Theory: A Multi-Leveled Approach. Springer Texts in Business and Economics. Berlin, Heidelberg: Springer Berlin Heidelberg. https://doi.org/10.1007/978-3-662-46950-7.\n\nFudenberg, Drew, and Jean Tirole. 1991. Game Theory. Cambridge, Mass: MIT Press.\n\nOsborne, Martin J., and Ariel Rubinstein. 1994. A Course in Game Theory. Cambridge, Mass: MIT Press.\n\nTadelis, Steve. 2013. Game Theory: An Introduction. Princeton ; Oxford: Princeton University Press.\n\nPeleg, Bezalel, and Peter Sudhölter. 2007. Introduction to the Theory of Cooperative Games. 2nd ed. Introduction to the Theory of Cooperative Games 34. Berlin: Springer.\n\nGilles, Robert P. 2010. The Cooperative Game Theory of Networks and Hierarchies. Theory and Decision Library. Series c, Game Theory, Mathematical Programming and Operations Research, v. 44. Heidelberg: Springer.\n原书作者 Hans Peters 是荷兰 Maastricht University 的数理经济学荣休教授，国际著名理论经济学家，主要研究方向是博弈论和社会选择理论。该书采用了一种独特的编写方式，作者称之为 multi-leveled approach，可以理解为“从零开始的晋级之路”。简单的说，该方法就是将复杂深邃的博弈论内容分成两个阶段进行讲授，第一阶段注重对基本概念和方法的理解与应用，第二阶段则注重理论的构筑。因此，该书既可以作为本科高年级学生初学博弈论的参考书，也可以作为理论经济学学科的研究生用书。该书另一个重要特点是涵盖的话题比较全面，既包括标准教科书 (例如 Fudenberg and Tirole 1991; Osborne and Rubinstein 1994; 或 Tadelis 2013) 中包含的非合作博弈内容，也比较详细地介绍了合作博弈的内容，而后者通常是只能在更加专业的学术书籍 (例如 Peleg and Sudhölter 2007; Gilles 2010) 中才会广泛涉及。\n据我所知，原书还没有中文翻译版1。因此本讲义将比较忠实地体现原书中的内容，同时不排除根据需要进行删减或补充的可能。随着本门课程的持续开展，我会不断充实和完善讲义的内容。\n1 如果此信息有误，欢迎通过电子邮件指正。作者在原书第一版的 Preface 中指出，\n\nPart I is meant for students who are knowledgeable in basic calculus, and does not try to avoid the use of mathematics on that basic level. There is, after all, a reason why we teach calculus courses to (for instance) undergraduate students in economics. Nevertheless, the mathematics in Part I does not go beyond such things as maximizing a quadratic function or elementary matrix notation. In my own experience, the difficulties that students encounter when studying formal models are usually conceptual rather than mathematical, but they are often confused with mathematical difficulties.\n\n因此，作者从第一阶段起就十分注意模型描述的准确性（这也是很多其他书籍的共同特征）。我非常认同这一做法，也会在本讲义中遵循这一原则。\n\n符号的定义\n以下是本讲义中出现的数学符号的用法和定义。\n\n向量用粗体符号表示，例如 \\boldsymbol{p}, \\boldsymbol{e}。\n矩阵和向量的转置仅在需要时明示，其符号为 \\top，例如 A^\\top。\n向量间的比较：\n\n\\boldsymbol{a} &gt; \\boldsymbol{b} 代表对于所有 i，a_i &gt; b_i 成立；\n\\boldsymbol{a} \\geq \\boldsymbol{b} 代表对于所有 i，a_i \\geq b_i 成立。",
     "crumbs": [
       "讲义",
       "前言"
