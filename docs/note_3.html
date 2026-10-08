@@ -336,7 +336,7 @@ window.Quarto = {
 \Bigg)
 \end{align*}
 </span></p>
-</div><div id="fn1"><p><sup>1</sup>&nbsp;或者说以自身利益为首要目标。</p></div></div><p>非合作博弈的核心概念是最佳响应（best reply）。它主张一个理性且自私<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>的参与人在知道（或预测）对方的策略的基础上，永远以最大化自己的（期望）收益为准则选择策略。</p>
+</div><div id="fn1"><p><sup>1</sup>&nbsp;或者说以自身利益为首要目标。</p></div></div><p>非合作博弈的核心概念是最佳响应（best reply/response）。它主张一个理性且自私<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>的参与人在知道（或预测）对方的策略的基础上，永远以最大化自己的（期望）收益为准则选择策略。</p>
 <div class="callout callout-style-simple callout-important no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -444,18 +444,18 @@ window.Quarto = {
 <p><span class="math display">
 \beta_1(q, 1-q) =
 \begin{cases}
-\{(1,0)\} &amp; \text{ if } \tfrac{3}{4} &lt; q \leq 1 \\
+\{(0,1)\} &amp; \text{ if } 0 \leq q &lt; \tfrac{3}{4} \\
 \{(p, 1-p) \mid 0 \leq p \leq 1\} &amp; \text{ if } q = \tfrac{3}{4} \\
-\{(0,1)\} &amp; \text{ if } 0 \leq q &lt; \tfrac{3}{4}
+\{(1,0)\} &amp; \text{ if } \tfrac{3}{4} &lt; q \leq 1
 \end{cases}
 </span></p>
 <p>同理，针对参与人 1 的策略 <span class="math inline">(p, 1-p)</span> 的最佳响应策略集合 <span class="math inline">\beta_2(p, 1-p)</span> 可以写成</p>
 <p><span class="math display">
 \beta_2(p, 1-p) =
 \begin{cases}
-\{(1,0)\} &amp; \text{ if } \tfrac{2}{3} &lt; p \leq 1 \\
+\{(0,1)\} &amp; \text{ if } 0 \leq p &lt; \tfrac{2}{3} \\
 \{(q, 1-q) \mid 0 \leq q \leq 1\} &amp; \text{ if } p = \tfrac{2}{3} \\
-\{(0,1)\} &amp; \text{ if } 0 \leq p &lt; \tfrac{2}{3}
+\{(1,0)\} &amp; \text{ if } \tfrac{2}{3} &lt; p \leq 1
 \end{cases}
 </span></p>
 <p>根据定义，纳什均衡 <span class="math inline">\boldsymbol{p}^*, \boldsymbol{q}^*</span> 应满足 <span class="math inline">\boldsymbol{p}^* \in \beta_1(\boldsymbol{q}^*)</span> 和 <span class="math inline">\boldsymbol{q}^* \in \beta_2(\boldsymbol{p}^*)</span>，即两个最佳响应函数的交点。画出两个函数 <span class="math inline">\beta_1(q, 1-q)</span> 和 <span class="math inline">\beta_2(p, 1-p)</span> 的图像即可轻松地找到这些交点。如果令横轴为 <span class="math inline">p</span>，纵轴为 <span class="math inline">q</span>，则函数图像如 <a href="#fig-3.1" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> 所示。</p>
