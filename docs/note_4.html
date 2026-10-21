@@ -290,7 +290,7 @@ window.Quarto = {
 <p>大多数从现实的经济和政治现象引申出的博弈问题都和棋牌类游戏有着共同点，即它们都不是单次博弈，参与人按照一定顺序选择行动，且同一个参与人往往会有多次行动的机会。这类博弈最好以决策树的形式表达，这样可以明确参与人的行动顺序，以及在行动时该参与人了解哪些信息。</p>
 <p>在本章中我们学习这类扩展式博弈（games in extensive form）。我们只讨论有限参与人（一般为两人），有限决策回合，以及有限行动集的博弈，参见 <a href="note_1.html#sec-1.3.3" class="quarto-xref"><span>Section 1.3.3</span></a> 中展示的例子。我们也假设每个参与人都拥有完全信息（complete information），即博弈中不存在随机选择，或即使存在随机选择也是在所有参与人完成选择之后，且随机选择的结果不公开。这不包括 <a href="note_1.html#sec-1.3.3" class="quarto-xref"><span>Section 1.3.3</span></a> 中的不完全信息下的市场进入与威慑博弈，也不包括大部分以分牌开始的棋牌类游戏（分牌的过程可以视作随机选择）。我们将在 <a href="note_5.html" class="quarto-xref"><span>Chapter 5</span></a> 学习不完全信息博弈。原书第十四章在这两章的基础上进行了扩展。</p>
 <p>在第一节中我们将定义扩展式博弈。为了避免使用过于复杂的符号，这一节中的定义会有些不正式，但依然是准确的。在 <a href="#sec-4.2" class="quarto-xref"><span>Section 4.2</span></a> 中我们将定义策略以及策略式博弈（games in strategic form）<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。扩展式博弈的纳什均衡可以通过其对应的策略式博弈求得。在这一节中我们只专注于求纯策略纳什均衡。</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;也称为标准式博弈（normal form game）。</p></div><div id="fn2"><p><sup>2</sup>&nbsp;在博弈论中，精炼（refinement）一词的数学含义是通过加入更多的限制条件使集合包含的要素变得更少。精炼后的纳什均衡比原始定义包含更少的策略组合，可以提供更好的预测或排除不合理的策略。</p></div></div><p>在第三节中，我们将通过使用逆向归纳法和附加子博弈完美性的方式精炼（refine）纳什均衡<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。作为更进一步精炼的完美贝叶斯均衡将在第四节中介绍。</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;也称为标准式博弈（normal form game）。</p></div><div id="fn2"><p><sup>2</sup>&nbsp;在博弈论中，改进（refinement）一词的数学含义是通过加入更多的限制条件使集合包含的要素变得更少。改进后的纳什均衡比原始定义包含更少的策略组合，可以提供更好的预测或排除不合理的策略。</p></div></div><p>在第三节中，我们将通过使用逆向归纳法和附加子博弈完美性的方式改进（refine）纳什均衡<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。作为更进一步改进的完美贝叶斯均衡将在第四节中介绍。</p>
 <section id="sec-4.1" class="level2 page-columns page-full" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sec-4.1"><span class="header-section-number">4.1</span> 扩展式博弈</h2>
 <p>扩展式博弈由一个博弈树（game tree）表达。博弈树由节点（node）和边（edge）组成。节点可以表达下列内容之一：参与人的决策点（decision node），随机选择的决策点（chance node），博弈的终点（end node）。边可以代表参与人或随机选择的一个行动（action）。随机选择有时也被称作自然（Nature）的选择<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>。</p>
@@ -573,7 +573,7 @@ Figure&nbsp;4.7: 一个三人博弈
 </section>
 <section id="sec-4.4" class="level2 page-columns page-full" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="sec-4.4"><span class="header-section-number">4.4</span> 完美贝叶斯均衡</h2>
-<p>针对纳什均衡和子博弈完美均衡的进一步精炼是完美贝叶斯均衡（perfect Bayesian equilibrium, PBE）。在扩展式博弈的信息集中，在该信息集作决策的参与人的信念（belief）是针对该信息集所包含节点（或到达该信息集的行动）的概率分布。如果信息集是平凡的，则信念也是平凡的，这意味着赋予该节点以概率 <span class="math inline">1</span>。完美贝叶斯均衡的（非正式）定义如下。</p>
+<p>针对纳什均衡和子博弈完美均衡的进一步改进是完美贝叶斯均衡（perfect Bayesian equilibrium, PBE）。在扩展式博弈的信息集中，在该信息集作决策的参与人的信念（belief）是针对该信息集所包含节点（或到达该信息集的行动）的概率分布。如果信息集是平凡的，则信念也是平凡的，这意味着赋予该节点以概率 <span class="math inline">1</span>。完美贝叶斯均衡的（非正式）定义如下。</p>
 <div class="callout callout-style-simple callout-important no-icon">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
